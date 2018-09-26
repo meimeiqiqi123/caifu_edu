@@ -1,0 +1,14 @@
+ <template name="teacher_cell">
+ <view class="view-item {{index == 1 ? 'marginTop' :''}}">  
+    <view>
+      <image style="width: 300rpx; height: 300rpx;" mode="widthFix" src="{{picUrl}}{{course.logo}}"></image>  
+      <view class="ft fw">{{course.name}}</view>  
+      <!--<button class="weui-btn weui-btn_mini weui-btn_primary btn_course title" wx:if="{{course.status}}">人气课程</button>
+      <button class="weui-btn weui-btn_mini weui-btn_primary btn_course title" wx:else></button>  -->
+    </view> 
+    <view class="ft flex-around">
+      已报名：<text class="title fw">{{course.num}}</text>
+      <button class="weui-btn btn"> 报名 </button>       
+    </view>   
+  </view>
+  </template>

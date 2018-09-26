@@ -1,0 +1,91 @@
+<view class="cate">
+    <view class="cate-item {{currentTabsIndex==0?'hover':''}}" bindtap="catClick" data-sid='0'> 
+      待付款
+  </view>
+    <view class="cate-item {{currentTabsIndex==1?'hover':''}}" bindtap="catClick"  data-sid='1'> 
+     已付款
+  </view>
+    <view class="cate-item {{currentTabsIndex==3?'hover':''}}" bindtap="catClick" data-sid='3'> 
+     已成交
+  </view>
+    <view class="cate-item {{currentTabsIndex==6?'hover':''}}" bindtap="catClick"  data-sid='6'> 
+     已完成
+  </view>
+</view>
+
+<view class='blank' hidden="{{isBlank}}">
+ <image src="../../resource/images/u74.png" class="cart-image"/>
+  <view class="des">暂时没有订单</view>
+</view>
+
+<view class="orderlist">
+<view class="order" wx:for="{{orders}}" wx:key="{{index}}">
+  <view class="order_item" > 
+    <view class="order_title"> 
+      <view class="course_name">
+      {{item.course.name}}
+      <image src="../../resource/images/right.png"></image>
+      </view>
+    </view>
+   <view class="order_div">
+     <view class="order_left">
+      <dl>
+        <dt>订单号：{{item.number}}</dt>
+        <dd>下单时间：{{item.orderDate}}</dd>
+      </dl>
+      </view>
+      <view class="order_right">
+      <view class="price" wx:if="{{item.status=='0'}}">
+          <view class="refuse">待付款：<text>¥</text>{{item.totalPrice}}</view></view>
+       <view class="price" wx:if="{{item.status=='1'}}"><text>¥</text>{{item.totalPrice}}</view>
+       <view class="price" wx:if="{{item.status=='4'}}">
+          <view class="refuse">待退款：<text>¥</text>{{item.refuseAmount}}</view></view>
+       <view class="price" wx:if="{{item.status=='7'}}">
+           <text>¥</text>{{item.totalPrice-item.refuseAmount}}</view>
+      
+      </view>
+      
+   </view>
+    <view class="order_status">
+      <view class="order_status_left"></view>
+      <view class="order_status_right" >
+        <block wx:if="{{item.status=='0'}}">
+          <view class="order_status_button" bindtap="payOrder" data-id='{{item.id}}'>
+            立即支付
+          </view>
+          <view class="order_status_button" bindtap="delOrder" data-id='{{item.id}}'>
+            删除订单
+          </view>
+        </block>
+
+      <block wx:if="{{item.status=='1'}}">
+        <!--<view class="order_status_button" bindtap="xuzhu"  data-id='{{item.id}}'
+           wx:if="{{userInfo.sign == 1}}" data-price='{{item.price}}'>
+            续住
+        </view>-->
+          <view class="order_status_button" bindtap="cancelOrder" data-id='{{item.id}}'>
+            申请退款
+          </view>
+        </block>
+
+        <block wx:if="{{item.status=='4'}}">
+          <view class="order_status_button" bindtap="gotoComment" 
+         data-id='{{item.id}}'  wx:if="{{item.comment != 1}}">
+            评价
+          </view>
+        </block>
+
+         <block wx:if="{{item.status=='7'}}">
+         <view class="order_status_button" bindtap="gotoComment" 
+         data-id='{{item.id}}'  wx:if="{{item.comment != 1}}">
+            评价
+          </view>
+          <view class="order_status_button" bindtap="delOrder" data-id='{{item.id}}'>
+            删除订单
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>
+</view>

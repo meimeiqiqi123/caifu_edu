@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "tootip": "/components/tooltip/tooltip"
+  },
+  "navigationBarTitleText": "采赋",
+  "enablePullDownRefresh": true
+}

@@ -1,0 +1,150 @@
+<view class="container_c">
+   <view class="swiper">
+      <swiper indicator-dots="true" autoplay="true" interval="3000" duration="1200">
+        <swiper-item wx:for="{{shows}}" wx:key="{{index}}" bindtap='courseDetail' data-id="{{item.id}}">
+          <image class="nav-icon"  src="{{picUrl}}{{item.logo}}" />
+        </swiper-item>
+      </swiper>
+    </view>
+    <!--搜索-->
+    <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+          <view class="weui-search-bar__box">     
+              <icon class="weui-icon-search_in-box" type="search" size="14"></icon> 
+              <input type="text" class="weui-search-bar__input" placeholder="输入机构名称或课程名称" value="{{query}}"  bindtap="showInput" maxlength='0'/>
+              <view class="weui-icon-clear" wx:if="{{query.length > 0}}" bindtap="clearInput">
+                  <icon type="clear" size="14"></icon>
+              </view>
+          </view>
+        </view>
+     </view>
+    <!--推荐课程 -->
+    <view wx:if="{{isshow}}">
+      <view class="course_title">
+          <image class="gc" src="../../resource/images/gc.png" />
+          <view class="title_img">
+            <image class="ct" src="../../resource/images/course_title.png" />
+          </view>
+      </view>
+
+      <view class="course_list">
+        <block wx:for="{{courses}}" wx:key="{{item.id}}" wx:if="{{item.isRecommand==1}}">
+        <view class="course" >
+          <image  mode="aspectFill" src="{{picUrl}}{{item.logo}} "/>
+          <view class="content">
+            <view class="a_name">
+               <view class="name">{{item.agency.name}}</view>
+               <view><image src="../../resource/images/c_gz.png" class="c_gz"/></view>
+            </view>
+            <view class="c_name">{{item.name}}</view>
+            <view class="tuan" wx:if="{{item.isLeague == 1}}">
+              <view >({{item.leagueCount}}人成团)</view><view style='color:#FFC93A'>已团{{item.incount==null?0:item.incount}}人</view>
+            </view>
+            <view class="c_price">￥{{item.realAmount}}</view>
+            <view class="b_b" bindtap='courseDetail' data-id="{{item.id}}">
+              <image src="../../resource/images/tuangou.png" />
+            </view>
+            
+          </view>
+         </view>
+         </block>
+      </view>
+    </view>
+    <!-- 推荐课程结束-->
+
+    <!--体验课程 -->
+    <view style='margin-top:50rpx' wx:if="{{isshow}}">
+      <view class="course_title">
+          <image class="gc" src="../../resource/images/tc.png" />
+          <view class="title_img">
+            <image class="ct" src="../../resource/images/course_title.png" />
+          </view>
+      </view>
+
+      <view class="course_list">
+        <block wx:for="{{courses}}" wx:key="{{item.id}}" wx:if="{{item.isExperience==1}}">
+        <view class="course" >
+          <image  mode="aspectFill" src="{{picUrl}}{{item.logo}} "/>
+          <view class="content">
+            <view class="a_name">
+               <view class="name">{{item.agency.name}}</view>
+               <view><image src="../../resource/images/c_gz.png" class="c_gz"/></view>
+            </view>
+            <view class="c_name">{{item.name}}体验课1次</view>
+            
+            <view class="c_price">￥{{item.experienceAmount}}</view>
+            <view class="b_b" bindtap='courseDetail' data-id="{{item.id}}">
+              <image src="../../resource/images/tiyan.png" />
+            </view>
+            
+          </view>
+         </view>
+         </block>
+      </view>
+    </view>
+    <!-- 体验课程结束-->
+
+    <!--团购课程 -->
+    <view style='margin-top:50rpx' wx:if="{{isshow}}">
+      <view class="course_title">
+          <image class="gc" src="../../resource/images/lc.png" />
+          <view class="title_img">
+            <image class="ct" src="../../resource/images/course_title.png" />
+          </view>
+      </view>
+
+      <view class="course_list">
+        <block wx:for="{{courses}}" wx:key="{{item.id}}" wx:if="{{item.isLeague==1}}">
+        <view class="course" >
+          <image  mode="aspectFill" src="{{picUrl}}{{item.logo}} "/>
+          <view class="content">
+            <view class="a_name">
+               <view class="name">{{item.agency.name}}</view>
+               <view><image src="../../resource/images/c_gz.png" class="c_gz"/></view>
+            </view>
+            <view class="c_name">{{item.name}}</view>
+            <view class="tuan" wx:if="{{item.isLeague == 1}}">
+              <view >({{item.leagueCount}}人成团)</view><view style='color:#FFC93A'>已团{{item.incount==null?0:item.incount}}人</view>
+            </view>
+            <view class="c_price">￥{{item.leagueAmount}}</view>
+            <view class="b_b" bindtap='courseDetail' data-id="{{item.id}}">
+              <image src="../../resource/images/tuangou.png" />
+            </view>
+            
+          </view>
+         </view>
+         </block>
+      </view>
+    </view>
+    <!-- 团购课程结束-->
+
+     <!--搜索课程 -->
+    <view style='margin-top:50rpx' wx:if="{{!isshow}}">
+      
+      <view wx:if="{{courses.length == 0}}" class="nocontent">没有搜索到内容</view>
+      <view class="course_list" >
+        <block wx:for="{{courses}}" wx:key="{{item.id}}" wx:if="{{item.isLeague==1}}">
+        <view class="course">
+          <image  mode="aspectFill" src="{{picUrl}}{{item.logo}} "/>
+          <view class="content">
+            <view class="a_name">
+               <view class="name">{{item.agency.name}}</view>
+               <view><image src="../../resource/images/c_gz.png" class="c_gz"/></view>
+            </view>
+            <view class="c_name">{{item.name}}</view>
+            <view class="tuan" wx:if="{{item.isLeague == 1}}">
+              <view >({{item.leagueCount}}人成团)</view><view style='color:#FFC93A'>已团{{item.incount==null?0:item.incount}}人</view>
+            </view>
+            <view class="c_price">￥{{item.leagueAmount}}</view>
+            <view class="b_b" bindtap='courseDetail' data-id="{{item.id}}">
+              <image src="../../resource/images/tuangou.png" />
+            </view>
+            
+          </view>
+         </view>
+         </block>
+      </view>
+    </view>
+    <!-- 搜索课程结束-->
+
+</view>

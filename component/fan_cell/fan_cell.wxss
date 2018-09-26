@@ -1,0 +1,33 @@
+.weui-btn_primary{
+    background-color:#FE2B54;
+    display: inline-block;    
+    line-height: 2.3;
+    font-size: 26rpx;
+    margin:0; 
+    color: #fff;     
+  }
+  .title{
+    font-size: 26rpx;
+  }
+  .sub_title{
+    color: red;
+  }
+  .titles{
+    margin: 0 0 0 10px;
+    color: #6c6f78;
+    font-size: 28rpx;
+  }
+  .flex{
+    margin-left:20rpx;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    line-height:100rpx;
+  }
+  .content{
+    background: #161824;
+  }
+  .signature{
+    font-size: 24rpx;
+  }
+  

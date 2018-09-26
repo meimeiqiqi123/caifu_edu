@@ -1,0 +1,12 @@
+<template name="video_cell">
+ <view class="page_body">
+    <view class="page-section tc">
+      <image src="{{picUrl}}{{topic.url}}" mode="aspectFill"></image>
+      <view class="img flex-center">
+        <image class="icon" src="../../resource/images/like.png" ></image>
+        <text class="text ft">{{topic.up}}</text>
+      </view>
+    </view>
+  </view>               
+ 
+</template>

@@ -1,0 +1,62 @@
+<view class="add-page">
+ <!-- 活动内容 -->
+    <view class="comment_title">请为本次服务评价</view>
+    <view class="mod-a mt20">
+      <view class="mod-big my-nick">
+        <textarea name="content" class="weui-textarea" placeholder="请吐槽" value="{{content}}" style="height: 7em" bindinput="bindTextAreaChange" maxlength="200" />
+        <view class="chnumber">{{noteNowLen}}/200</view>
+      </view>
+    </view>
+
+    <view class="mod t-name">
+        <text class="key">打分</text>
+        <view class="content">
+        <view class="value" bindtap="setHotelEn" data-sid="1">
+            <view wx:if="{{hotelen >=1}}">
+              <image src="../../resource/images/dafen_12.jpg" />
+             </view>
+             <view wx:if="{{hotelen ==0}}">
+              <image src="../../resource/images/dafen_11.jpg" />
+             </view>
+        </view>
+        <view class="value" bindtap="setHotelEn" data-sid="2">
+            <view wx:if="{{hotelen >=2}}">
+              <image src="../../resource/images/dafen_12.jpg" />
+             </view>
+             <view wx:if="{{hotelen <2}}">
+              <image src="../../resource/images/dafen_11.jpg" />
+             </view>
+        </view>
+        <view class="value" bindtap="setHotelEn" data-sid="3">
+            <view wx:if="{{hotelen >=3}}">
+              <image src="../../resource/images/dafen_12.jpg" />
+             </view>
+             <view wx:if="{{hotelen <3}}">
+              <image src="../../resource/images/dafen_11.jpg" />
+             </view>
+        </view>
+        <view class="value" bindtap="setHotelEn" data-sid="4">
+            <view wx:if="{{hotelen >=4}}">
+              <image src="../../resource/images/dafen_12.jpg" />
+             </view>
+             <view wx:if="{{hotelen <4}}">
+              <image src="../../resource/images/dafen_11.jpg" />
+             </view>
+        </view>
+        <view class="value" bindtap="setHotelEn" data-sid="5">
+            <view wx:if="{{hotelen >=5}}">
+              <image src="../../resource/images/dafen_12.jpg" />
+             </view>
+             <view wx:if="{{hotelen <5}}">
+              <image src="../../resource/images/dafen_11.jpg" />
+             </view>
+        </view>
+        </view>
+    </view>
+   
+
+    <view class="submit-btn" bindtap="submitInfo">
+        <button class='button'  >提交评价</button>
+      </view>
+</view>
+

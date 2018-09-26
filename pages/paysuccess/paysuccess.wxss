@@ -1,0 +1,68 @@
+.container{
+  font-family: PingFang SC-Bold;
+  font-size: 28rpx;
+  width: 80%;
+  margin: 0 auto
+}
+.title{
+  margin-top: 50rpx;
+  font-size: 40rpx;
+  color: #ff6c6c;
+  font-weight: bold
+}
+.secret{
+  margin-top: 40rpx;
+  color: #9d9d9d;
+}
+.blue{
+  color: #709fff
+}
+.forget{
+  margin-top: 20rpx;
+  color: #709fff
+}
+
+.hotel .name{
+  display: inline-block;
+  margin-top: 40rpx;
+  color: #000;
+
+}
+.hotel .name_detail{
+  display: inline-block;
+  margin-top: 40rpx;
+  color: #696969;
+  margin-left: 100rpx
+  
+}
+.botton_t{
+  margin-top: 100rpx;
+}
+.button_1 {
+  display: inline-block;
+   width: 260rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 16px;
+  border: 0 none;
+  background: #5060b5;
+  color: #fff;
+  border-radius: 20rpx;
+  margin-top: 50rpx
+}
+
+.button_2 {
+  display: inline-block;
+   width: 260rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 16px;
+  border: 0 none;
+  background: #CCCCCC;
+  color:#000;
+  margin-left: 50rpx;
+  border-radius: 20rpx;
+  margin-top: 50rpx
+}

@@ -1,0 +1,39 @@
+
+<image class="cover" src="{{picUrl}}{{url}}" mode="aspectFill" ></image>
+<view class="container_1" >
+  <scroll-view class="list" scroll-y="true"  >
+  <block wx:for="{{ records }}" wx:for-item="comment" wx:key="{{index}}" >
+  <view class="comment">
+      <view class="head"><image src="{{comment.user.headUrl}}" /></view>
+      <view class="content">
+        <view class="nick">{{comment.user.nickName}}</view>
+        <view class="time">{{comment.time}}</view>
+        <view class="com">{{comment.content}}</view>
+      </view>
+  </view>
+  </block>
+  </scroll-view>
+  <view class="more" wx:if="{{records.length == 0}}" >暂无评论</view>
+  <view class="more" wx:if="{{total > currentCount}}" bindtap="commentMore">查看更多评论</view>
+</view>
+
+
+<view class="comment-bottom" >
+    <view class="send-comment">
+      <view class="send-view">
+          <textarea class="send-input"  value="{{content}}"                              bindinput='contentChange' bindtap='focuson' 
+        placeholder='有爱评论,说点好听的' bindblur=''
+          maxlength='200' >
+          
+          
+          </textarea>
+      </view>
+      <view class="send-buttom">
+        <text class="activty" bindtap='publish'>发布</text>
+      </view>
+      </view>
+    </view>
+
+    <tootip show="{{showtooltip}}" height='20%' >
+   <view class="error_tooltips">{{tooltip}}</view>
+ </tootip>

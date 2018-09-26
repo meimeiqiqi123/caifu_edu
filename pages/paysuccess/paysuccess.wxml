@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="title">课程预订成功!</view>
+
+  <view class="secret blue" wx:if="{{bond==0}}" >您还没有手机认证</view>
+
+   <view class="forget" bindtap="bond" wx:if="{{bond==0}}">前去认证？</view>
+
+    <view class="hotel">  
+        <view class="name">课程名称</view>
+        <view class="name_detail">{{courseName}}</view>
+    </view>
+     
+    <view class="botton_t">
+   <button class='button_1' bindtap="gotoIndex" >返回首页</button>
+    <button class='button_2' bindtap="gotoOrder" >查看订单</button>
+  </view>
+</view>

@@ -1,0 +1,121 @@
+<view class="container">    
+      <view class="header"> 
+        <view class="userInfo bb">
+          <view class="flex-around">
+            <image class="image" src="{{picUrl}}{{userinfo.manager.headUrl}}"/>
+            <view class="inline" style="margin-left:-60rpx;">
+              <view class="font fw">{{userinfo.manager.name}}</view>
+              <view class="font">{{userinfo.manager.agency.name}}</view>
+             
+            </view>
+            <view>
+              <view class="font label label0">性格好</view>
+              <view class="font label label1">技术一流</view>
+              <view class="font label label2">认真负责</view>              
+            </view>          
+          </view>
+          <view class="font" style="margin-left:40rpx;">
+            <view>采赋号：{{sn}}</view>
+            <view class="font-gray inline">个人简介： {{userinfo.manager.description}}</view>
+            <text class="inline appreciates fw" style='float:right;margin-right:30rpx'>获赞：{{zan}}</text>
+          </view>
+        </view>
+          
+          <view class="topTabSwiper">
+              <view class="font fw  tab">{{courseCount}}课程</view>
+              <view class="font fw line tab">{{fans}}粉丝</view>
+              <view class="font fw  tab">{{count}}发布</view>
+          </view>  
+          
+          <view class="weui-cells bt-none title_cell">            
+            <view class="weui-cell ft">
+                  <view class="weui-cell__bd">
+                      <view class="fw">最近精彩</view>
+                  </view>
+                  <view class="weui-cell__ft font24"></view>
+              </view>
+             
+              <view class="weui-cell">
+                  <view class="weui-cell__bd flex-center">
+                      <block wx:for="{{topics}}" wx:key="{{item.id}}">
+                        <view class="topic_list">
+                        <image class="weui_image" src="{{picUrl}}{{item.url}}" mode="aspectFill"></image>
+                          <view class="zan">
+                            <image class="zan_img" src="../../resource/images/index_33.png"></image>
+                            <view class="zan_title">{{item.up}}</view>
+                          </view>
+                        </view>
+                      </block>
+                  </view>                  
+              </view>
+          </view>
+
+           <view class="weui-cells bt-none class_cell">            
+            <view class="weui-cell ft">
+                  <view class="weui-cell__bd">
+                      <view class="fw">班级管理</view>
+                  </view>                  
+              </view>
+
+              <view class="weui-cell">
+                  <view class="weui-cell__bd flex-around">
+                      <view class="tc" bindtap="uploadPic">
+                        <view>
+                          <image class="title_image" src="../../resource/images/u51.png"></image>
+                        </view>
+                        <view style="font-size:26rpx">照片上传</view>
+                      </view>
+                      <view class="tc" bindtap="publish">
+                        <view>
+                          <image class="title_image" src="../../resource/images/u51.png"></image>
+                        </view>
+                        <view style="font-size:26rpx">发布</view>
+                      </view>
+                      <!--<view class="tc">
+                        <view>                          
+                          <image class="title_image"   src="../../resource/images/u74.png"></image>
+                        </view>
+                        <view style="font-size:26rpx">班级管理</view>
+                      </view>-->
+                  </view>                  
+              </view>
+          </view>
+
+          <view class="weui-cells bt-none class_cell">            
+            <view class="weui-cell ft">
+                  <view class="weui-cell__bd">
+                      <view class="fw" style="margin:10rpx 0 10rpx 0;">课程管理</view>
+                      <view class="flex-start">
+                          <text>体验课</text>
+                          <text class="progress"  style="width:{{length1}}rpx"></text>                      
+                          <text>{{count1}}人</text>
+                      </view>
+                  </view>                  
+              </view>
+
+              <view class="weui-cell ft">
+                  <view class="weui-cell__bd"> 
+                    <view class="flex-start">
+                        <text>团购课</text>
+                        <text  class="progress" style="width:{{length2}}rpx"></text>                      
+                        <text>{{count2}}人</text>                    
+                    </view>                     
+                  </view>                  
+              </view>
+          </view>
+
+          <view class="weui-cells bt-none class_cell">            
+            <view class="weui-cell ft">
+                  <view class="weui-cell__bd">
+                      <view class="fw">考勤打卡</view>
+                  </view>                  
+              </view>
+
+              <view class="weui-cell bt-none" bindtap="kaoqin">
+                  <view class="weui-cell__bd flex-center">
+                     <button class="weui-btn weui-btn_mini weui-btn_primary font fw" style="width:200rpx;">打卡</button>
+                  </view>                  
+              </view>
+          </view>
+        </view>
+  </view>

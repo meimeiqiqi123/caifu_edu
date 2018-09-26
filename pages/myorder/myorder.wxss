@@ -1,0 +1,154 @@
+page{
+    background: #f1f0f8;
+   font-size: 12px;
+   color: #333; 
+   
+}
+.orderlist{
+  margin-top: 100rpx;
+}
+.orderlist .order{
+  background: white;
+  padding: 10rpx 0;
+  padding-bottom: 30rpx;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 30rpx;
+}
+.order_div{
+  display: flex;
+  width: 94%;
+  margin: 0rpx auto;
+}
+.order_left{
+  width: 82%;
+}
+.order_right{
+  width:35%;
+  font-size: 14px;
+  color:#000;
+  text-align: right;
+  margin-top:100rpx
+}
+.order_right .refuse{
+  color:#000;
+  font-size: 26rpx
+}
+dl dd,dt{
+  width: 90%;
+  display: block;
+}
+dt{
+  margin-bottom:15rpx;
+  font-size: 14px
+}
+dd{
+  color: #666;
+  font-size: 12px;
+}
+
+.isin image{
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 10rpx;
+  margin-top: 10rpx
+
+}
+.order_title{
+  border-bottom:1px solid #eee;
+  height: 50rpx;
+  display: flex;
+  justify-content: space-between;
+  width: 94%;
+  margin: 0rpx auto;
+}
+.order_title .course_name{
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx
+}
+.order_title .course_name image{
+width: 22rpx;
+height: 22rpx
+}
+.order_title .status{
+font-size: 24rpx;
+font-family: PingFangSC-Regular;
+}
+.order_title .status .jiesuan{
+font-family: STHeiti Light;
+}
+.order_status{
+  border-top:1px solid #eee;
+  margin-top: 5rpx;
+  height: 50rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.order_status_left{
+  margin: 18rpx 25rpx;
+  color:#099fde;
+}
+.order_status_right{
+  padding-top: 13rpx;
+  margin-right: 10rpx;
+  display: flex;
+}
+.order_status_button{
+  border:1px solid #dddddd;
+  height: 50rpx;
+  width: 150rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  color:#0099Ff;
+  margin-right: 10rpx;
+}
+.blank{
+  position: fixed;
+  top:30%;
+  left:40%
+}
+.blank .des{
+  margin-top: 20rpx;
+  text-align: center;
+}
+.blank .cart-image {
+  width: 80px;
+  height: 80px;
+}
+.cate_bg{
+  width: 100%;
+  height: 50rpx;
+  background: #099fde;
+}
+.cate{
+  border-bottom: 1px solid #f3f3f3;
+  display: flex;
+  font-size: 14px;
+  background: white;
+  flex-wrap: wrap;
+  color: #666;
+  position: fixed;
+  top:0;
+  width: 100%;
+ 
+}
+.cate-item{
+  text-align: center;
+  width:25%;
+  margin-top:20rpx;
+  padding-bottom: 20rpx;
+}
+  
+.hover{
+  /* font-weight: bold; */
+  color: #0099Ff;
+  border-bottom: 2px solid #0099Ff;
+  padding-bottom: 20rpx;
+}
+
+.order_left dl dd span{
+  margin-right: 30rpx;
+}
+
+

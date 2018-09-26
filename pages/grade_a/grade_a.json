@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "tootip": "/components/tooltip/tooltip",
+    "modal": "/components/modal/modal",
+    "selector": "/components/selector/selector"
+  },
+  "navigationBarTitleText": "班级"
+}

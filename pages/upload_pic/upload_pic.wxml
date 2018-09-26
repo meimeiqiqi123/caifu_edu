@@ -1,0 +1,37 @@
+<view class="add-page">
+
+    <view class="upload-img">
+      <view  class="imgs-style" wx:for="{{arrimg}}" wx:key="{{arrimg}}">
+            <view class="close" bindtap="closeImgFn"  id="{{index}}">
+                    <image src="../../resource/images/close.png"></image>
+            </view>
+          <image src="{{item}}" data-id="{{index}}"></image>
+        </view>
+        <image   src="../../resource/images/upload.png" bindtap="chooseimage" bindtouchstart=""></image>
+        
+        <text>{{index}}/{{len}}</text>
+    </view>
+   
+  <view class="weui-cells page_body bt-none bb-none">
+  <view class="weui-cell weui-cell_select ft-gray height90">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label font28">课程</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="courseChange" value="{{index}}" range="{{courses}}" range-key="name">
+            <view class="font24">{{courses[courses_index].name}}</view>
+            <view class="right_png"><image src="../../resource/images/right.png" ></image></view>
+          </picker>
+        </view>
+      </view>    
+  </view>      
+
+    <view class="submit-btn" >
+        <button class='button' bindtap="upload" disabled='{{subdisabled}}'>上传</button>
+      </view>
+</view>
+
+
+<tootip show="{{showtooltip}}" height='20%' >
+   <view class="error_tooltips">{{tooltip}}</view>
+ </tootip>

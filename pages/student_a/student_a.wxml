@@ -1,0 +1,124 @@
+<view class="cate">
+    <view class="cate-item {{currentTabsIndex==1?'hover':''}}" bindtap="catClick"  data-sid='1'> 
+     添加学生
+  </view>
+    <view class="cate-item {{currentTabsIndex==2?'hover':''}}" bindtap="catClick" data-sid='2'> 
+     学生管理
+  </view>
+</view>
+
+<view class="container1" wx:if="{{currentTabsIndex==1}}">
+  <view>
+    <view class="header_s"> 
+     <view class="ft fw title_content flex-center">添加学生</view>                            
+   </view>
+   <view class="weui-cells page_body bt-none bb-none">
+      <view class="weui-cell weui-cell_input font28 ft-gray height90"> 
+         <view class="weui-cell__hd ">
+            <view class="weui-label font28">学生姓名</view>
+          </view>     
+        <view class="weui-cell__bd font24">
+          <input class="weui-input" maxlength="15" placeholder="填写学生姓名" 
+          bindinput='changeName' value="{{studentName}}" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input font28 ft-gray height90"> 
+         <view class="weui-cell__hd ">
+            <view class="weui-label font28">联系方式</view>
+          </view>     
+        <view class="weui-cell__bd font24">
+          <input class="weui-input" maxlength="15" placeholder="填写联系方式" bindinput='changePhone' value="{{phone}}" type="number"/>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_select ft-gray height90">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label font28">学习班级</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="gradeChange" value="{{gradeIndex}}" range="{{grades}}" range-key="name">
+            <view class="font24">{{grades[gradeIndex].name}}</view>
+            <view class="right_png"><image src="../../resource/images/right.png" ></image></view>
+          </picker>
+        </view>
+      </view>
+
+        <view class="weui-cell weui-cell_select ft-gray height90">
+            <view class="weui-cell__hd weui-cell__hd_in-select-after">
+              <view class="weui-label font28">学生来源</view>
+            </view>
+            <view class="weui-cell__bd">
+              <picker bindchange="sourceChange" value="{{sourceIndex}}" range="{{source}}" range-key="name">
+                <view class="font24">{{source[sourceIndex].name}}</view>
+                <view class="right_png"><image src="../../resource/images/right.png" ></image></view>
+              </picker>
+            </view>
+          </view>     
+
+          <view class="weui-cell weui-cell_select ft-gray height200">
+            <view class="weui-cell__hd weui-cell__hd_in-select-after">
+              <view class="weui-label font28">学生头像</view>
+            </view>
+            <view class="weui-cell__bd">
+              <view class="upload-img">
+              <view  class="imgs-style" wx:for="{{arrimg}}" wx:key="{{arrimg}}">
+                    <view class="close" bindtap="closeImgFn"  data-id="{{index}}">
+                            <image src="../../resource/images/close.png"></image>
+                    </view>
+                  <image src="{{item}}" data-id="{{index}}"></image>
+                </view>
+                <image   src="../../resource/images/upload.png" bindtap="chooseimage"></image>
+                <text>{{index}}/{{len}}</text>
+              </view>
+            </view>
+          </view>            
+    </view>
+                 
+  </view>
+
+<view class="submit-btn" bindtap="submitInfo">
+        <button class='button' disabled="{{subdisabled}}" >保存</button>
+      </view>
+
+
+</view>
+
+
+<view class="container1" wx:if="{{currentTabsIndex==2}}">
+    <view class="header_s"> 
+        <view class="ft fw title_content flex-center">学生管理</view>                         
+    </view>  
+  <view class="bd">
+    <view class="analyze">
+      <image src="../../resource/images/u61.png"></image>
+      <text>学生分析</text>
+    </view>
+    <view class="student_box">
+      <view class="s_box">
+        <view>本月新增</view>
+        <view>学生人数</view>
+        <view class="number">0</view>
+      </view>
+      <view class="s_box">
+        <view>本月新增</view>
+        <view>学生人数</view>
+        <view class="number">0</view>
+      </view>
+      <view class="s_box">
+        <view>本月新增</view>
+        <view>学生人数</view>
+        <view class="number">0</view>
+      </view>
+      <view class="s_box last_box">
+        <view>本月新增</view>
+        <view>学生人数</view>
+        <view class="number">0</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<tootip show="{{showtooltip}}" height='20%' >
+   <view class="error_tooltips">{{tooltip}}</view>
+ </tootip>

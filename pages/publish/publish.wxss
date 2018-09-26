@@ -1,0 +1,114 @@
+page{
+  background-color: #f1f0f8
+}
+.add-page{
+  display: flex;
+  flex-direction: column;
+  font-size: 32rpx;
+  color: #676767;
+}
+.add-page .comment_title{
+height: 90rpx;
+text-align: center;
+line-height: 90rpx
+}
+
+.mod-a{
+  padding: 0 20rpx;
+  border: 1px solid #f0f0f0;
+  background-color: #fff;
+  width: 90%;
+  margin: 0 auto;
+  font-size: 26rpx
+
+}
+.content{
+  flex-grow: 3;
+  display: flex;
+  flex-direction: row;
+}
+
+.t-name{
+  margin-top: 50rpx
+}
+
+.content .value {
+ margin: 0 20rpx
+}
+.t-name .key{
+  flex-grow: 1;
+}
+.mod{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90rpx;
+  padding: 0 20rpx;
+}
+
+.mod-big{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 250rpx;
+  padding: 0 20rpx;
+  position:relative;
+}
+.chnumber{
+  position:absolute;
+  right:0;
+  bottom:0;
+  color:#b2b2b2;
+ text-align:right;
+}
+
+.mod image{
+  width:50rpx;
+  height: 50rpx
+}
+
+.button {
+   width: 600rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 16px;
+  border: 0 none;
+  background: #0099Ff;
+  color: #fff;
+  margin: 30rpx auto;
+  border-radius: 20rpx;
+  margin-top: 50rpx
+}
+.upload-img {
+      display: flex;
+      padding: 15rpx;
+     flex-wrap: wrap;
+    align-content: space-between;
+      align-items:center;
+}
+.upload-img image {
+    height: 150rpx;
+    width: 150rpx;
+    margin-left: 15rpx;
+}
+.upload-img  .imgs-style {
+    display: flex;
+     justify-content: center;
+     align-items:center;
+     position: relative;
+}
+.upload-img  .imgs-style .close{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.upload-img  .imgs-style .close image{
+    height: 45rpx;
+    width: 45rpx;
+}
+.upload-img  text{
+    padding-left: 15rpx;
+}

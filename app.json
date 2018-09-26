@@ -1,0 +1,66 @@
+{
+  "pages": [
+    "pages/index/index",
+   "pages/course_list/course_list",
+    
+   "pages/courses/courses",
+    "pages/course_detail/course_detail",
+    "pages/comment_list/comment_list",
+    "pages/person_profile/person_profile",
+    "pages/tea_profile/tea_profile",
+    "pages/teacher/teacher",
+    "pages/person/person",
+    "pages/agency/agency",
+    
+    "pages/logs/logs",
+    "pages/bond/bond",
+    "pages/diary/diary",
+    "pages/student_a/student_a",
+    "pages/student_m/student_m",
+    "pages/course_m/course_m",
+    "pages/course_a/course_a",
+    "pages/grade_a/grade_a",
+    "pages/publish/publish",
+    "pages/myorder/myorder",
+    "pages/teacher_m/teacher_m",
+    "pages/upload_pic/upload_pic",
+    "pages/p_publish/p_publish",
+    "pages/comment/comment",
+    "pages/paysuccess/paysuccess",
+    "pages/orderconfirm/orderconfirm",
+    "pages/search/search"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": " ",
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColor": "#f5f5f5",
+    "enablePullDownRefresh": false,
+    "enablePullUpRefresh": false
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#0099Ff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "resource/images/home_select.png",
+        "iconPath": "resource/images/home.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "resource/images/course_select.png",
+        "iconPath": "resource/images/course.png",
+        "pagePath": "pages/courses/courses",
+        "text": "课程"
+      },
+      {
+        "selectedIconPath": "resource/images/me_select.png",
+        "iconPath": "resource/images/me.png",
+        "pagePath": "pages/person/person",
+        "text": "我的"
+      }
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+.upload-img {
+      display: flex;
+      padding: 15rpx;
+     flex-wrap: wrap;
+    align-content: space-between;
+      align-items:center;
+}
+.upload-img image {
+    height: 150rpx;
+    width: 150rpx;
+    margin-left: 15rpx;
+}
+.upload-img  .imgs-style {
+    display: flex;
+     justify-content: center;
+     align-items:center;
+     position: relative;
+}
+.upload-img  .imgs-style .close{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.upload-img  .imgs-style .close image{
+    height: 45rpx;
+    width: 45rpx;
+}
+.upload-img  text{
+    padding-left: 15rpx;
+}
+.button {
+   width: 600rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 16px;
+  border: 0 none;
+  background: #0099Ff;
+  color: #fff;
+  margin: 30rpx auto;
+  border-radius: 20rpx;
+  margin-top: 50rpx
+}
+.height90{
+  height: 90rpx;
+}
+.right_png image{
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right: 30rpx;
+  bottom:30rpx
+}

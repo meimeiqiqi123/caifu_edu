@@ -1,0 +1,10 @@
+<view class="container_1">
+    <view class="search">
+      <input   bindinput="searchChange" 
+      placeholder='输入机构名称或课程名称' />
+    </view>
+
+     <view class="submit-btn" bindtap="search">
+        <button class='button' >搜索</button>
+      </view>
+</view>

@@ -1,0 +1,78 @@
+/* pages/diary/diary.wxss */
+.weui-btn_primary{
+    background-color:#FFC93A;
+    display: inline-block;    
+    line-height: 2.3;
+    font-size: 26rpx;
+    margin:0; 
+    color: #fff;     
+  }
+  .title{
+    font-size: 26rpx;
+  }
+  .sub_title{
+    color: red;
+  }
+  .titles{
+    margin: 0 0 0 10px;
+  }
+  .flex{
+    margin-left:20rpx;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    line-height:100rpx;
+  }
+  .page_title{
+    width: 100%;
+    height: 88rpx;
+    background: linear-gradient(to right, #33CB93,#1FA4C7 );
+    text-align: center;
+  }
+
+  .title{
+    font-size: 26rpx;
+  }
+  .sub_title{
+    color: red;
+  }
+  .titles{
+    margin: 0 0 0 10px;
+  }
+  .flex{
+    margin-left:20rpx;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    line-height:100rpx;
+  }
+  .image{
+    width: 200rpx;
+    height: 140rpx;
+  }
+  .weui-cell:before {
+
+  border-top: none;
+  }
+.com-widget-goTop { 
+position: fixed; 
+bottom: 125px; 
+right: 5px; 
+background: rgba(0,0,0,0.48); 
+border-radius: 50%; 
+overflow: hidden; 
+z-index: 500; 
+} 
+.com-widget-goTop .icon-gotop{ 
+background-color: rgba(0,0,0,0.8); 
+display: inline-block; 
+width: 50px; 
+height: 50px; 
+line-height: 68px; 
+font-size: 12px; 
+color: #ffffff; 
+text-align: center; 
+border-radius: 50%; 
+background: url(http://m.dev.vd.cn/static/xcx/v1/goo/w_2-3451cc437e.png) no-repeat center -1110px; 
+background-size: 50px auto; 
+}

@@ -1,0 +1,23 @@
+.tc{
+   position:relative;
+ }
+ image{
+  width:247rpx;
+  height:290rpx;
+  display:inline-block;
+  line-height:0;
+  overflow:hidden;
+ }
+ .img{
+  position: absolute;
+  left: 20rpx;
+  bottom: 20rpx;
+ }
+ .text{
+   margin-left: 20rpx;
+  color: #fff;
+ }
+ .icon{
+   width: 30rpx;
+   height: 30rpx;
+ }

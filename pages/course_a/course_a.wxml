@@ -1,0 +1,120 @@
+<view class="cate">
+    <view class="cate-item {{currentTabsIndex==1?'hover':''}}" bindtap="catClick"  data-sid='1'> 
+     添加课程
+  </view>
+    <view class="cate-item {{currentTabsIndex==2?'hover':''}}" bindtap="catClick" data-sid='2'> 
+      课程列表
+  </view>
+</view>
+
+<view class="container1" wx:if="{{currentTabsIndex==1}}">
+  <view>
+  <view class="header_s"> 
+     <view class="ft fw title_content flex-center">{{title}}</view>                             
+   </view>
+   <view class="weui-cells page_body bt-none bb-none">
+      <view class="weui-cell weui-cell_input font28 ft-gray height90"> 
+         <view class="weui-cell__hd ">
+            <view class="weui-label font28">课程名称</view>
+          </view>     
+        <view class="weui-cell__bd font24">
+          <input class="weui-input" maxlength="20" placeholder="填写课程名称" bindinput='changeName' value="{{courseName}}"/>
+        </view>
+      </view>
+      <!--<view class="weui-cell weui-cell_input font28 ft-gray height90"> 
+         <view class="weui-cell__hd ">
+            <view class="weui-label font28">课程价格</view>
+          </view>     
+        <view class="weui-cell__bd font24">
+          <input class="weui-input" maxlength="15" placeholder="填写课程价格" bindinput='changeAmount' value="{{realAmount}}" type="number" />
+        </view>
+      </view>-->
+
+      <view class="weui-cell weui-cell_input font28 ft-gray height90"> 
+         <view class="weui-cell__hd ">
+            <view class="weui-label font28">上课地址</view>
+          </view>     
+        <view class="weui-cell__bd font24">
+          <input class="weui-input" maxlength="40" placeholder="填写上课地址" bindinput='changeLocation' value="{{location}}"/>
+        </view>
+      </view>
+
+     <!-- <view class="weui-cell weui-cell_select ft-gray height90">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label font28">课程类别</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="scaleChange" value="{{index}}" range="{{scales}}" range-key="name">
+            <view class="  font24">{{scales[currentIndex].name}}</view>
+            <view class="right_png"><image src="../../resource/images/right.png" ></image></view>
+          </picker>
+        </view>
+      </view>   -->
+
+       <view class="weui-cell weui-cell_select ft-gray height90">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label font28">课程图片</view>
+        </view>
+        <view class="weui-cell__bd">
+          
+            
+          
+        </view>
+      </view>   
+
+
+      <view class="upload-img">
+      <view  class="imgs-style" wx:for="{{arrimg}}" wx:key="{{arrimg}}">
+            <view class="close" bindtap="closeImgFn"  data-id="{{index}}">
+                    <image src="../../resource/images/close.png"></image>
+            </view>
+          <image src="{{item}}" data-id="{{index}}"></image>
+        </view>
+        <image   src="../../resource/images/upload.png" bindtap="chooseimage" bindtouchstart=""></image>
+        <text>{{index}}/{{len}}</text>
+       </view>
+
+    </view>
+      <view class="submit-btn" bindtap="submitInfo">
+        <button class='button' disabled="{{subdisabled}}" >添加</button>
+      </view>
+</view>
+</view>
+
+
+<view class="container1" wx:if="{{currentTabsIndex==2}}">
+  <view class="page">
+  <view class="header_s"> 
+     <view class="ft fw title_content flex-center">{{title}}</view>                            
+   </view>
+   <view id="panel" class="flex-column font24">
+     <view class="flex-cell flex-row">
+       <text class="flex-cell flex-row text">课程编号</text>
+       <text class="flex-cell flex-row text">课程名称</text>
+       <text class="flex-cell flex-row text">编辑</text>
+     </view>
+     <view wx:for="{{courses}}" wx:key="index">
+        <view class="flex-row flex-cell line">
+
+          <text class="flex-cell flex-row ">{{item.id}}</text>
+          <text class="flex-cell flex-row ">{{item.name}}</text>
+          <view class="flex-cell flex-row " catchtap="delCourse" data-id="{{item.id}}">   
+              <!--<image src="../../resource/images/u145.png"></image>-->
+              <image  src="../../resource/images/u147.png"></image>
+          </view>             
+        </view> 
+     </view>
+   </view>                              
+                 
+</view>
+</view>
+
+
+<tootip show="{{showtooltip}}" height='20%' >
+   <view class="error_tooltips">{{tooltip}}</view>
+ </tootip>
+ <modal show="{{showmodal}}" height='20%' bindconfirm='confirmDelete' >
+   <view class="error_tooltips">{{tooltip}}</view>
+ </modal>
+
+  

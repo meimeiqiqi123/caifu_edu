@@ -1,0 +1,137 @@
+<view class="cate">
+    <view class="cate-item {{currentTabsIndex==1?'hover':''}}" bindtap="catClick"  data-sid='1'> 
+     添加老师
+  </view>
+    <view class="cate-item {{currentTabsIndex==2?'hover':''}}" bindtap="catClick" data-sid='2'> 
+      老师管理
+  </view>
+  <view class="cate-item {{currentTabsIndex==3?'hover':''}}" bindtap="catClick" data-sid='3'> 
+      考勤管理
+  </view>
+</view>
+
+<view class="container1" wx:if="{{currentTabsIndex==1}}">
+  <view>
+  <view class="header_s"> 
+     <view class="ft fw title_content flex-center">{{title}}</view>                             
+   </view>
+   <view class="weui-cells page_body bt-none bb-none">
+      <view class="weui-cell weui-cell_input font28 ft-gray height90"> 
+         <view class="weui-cell__hd ">
+            <view class="weui-label font28">老师姓名</view>
+          </view>     
+        <view class="weui-cell__bd font24">
+          <input class="weui-input" maxlength="20" placeholder="填写老师姓名" bindinput='changeName' value="{{teacherName}}"/>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input font28 ft-gray height90"> 
+         <view class="weui-cell__hd ">
+            <view class="weui-label font28">联系方式</view>
+          </view>     
+        <view class="weui-cell__bd font24">
+          <input class="weui-input" maxlength="15" placeholder="填写联系方式" bindinput='changePhone' value="{{phone}}" type="number" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input font28 ft-gray height90"> 
+         <view class="weui-cell__hd ">
+            <view class="weui-label font28">教龄</view>
+          </view>     
+        <view class="weui-cell__bd font24">
+          <input class="weui-input" maxlength="15" placeholder="填写教龄" bindinput='changeAge' value="{{age}}" type="number" />
+        </view>
+      </view>
+     <view class="weui-cell weui-cell_input font28 ft-gray height90"> 
+         <view class="weui-cell__hd ">
+            <view class="weui-label font28">老师简介</view>
+          </view>     
+        <view class="weui-cell__bd font24">
+          <input class="weui-input" maxlength="120" placeholder="填写老师简介" bindinput='changeDes' value="{{description}}"/>
+        </view>
+      </view> 
+
+      <view class="weui-cell weui-cell_select ft-gray height200">
+            <view class="weui-cell__hd weui-cell__hd_in-select-after">
+              <view class="weui-label font28">老师头像</view>
+            </view>
+            <view class="weui-cell__bd">
+              <view class="upload-img">
+              <view  class="imgs-style" wx:for="{{arrimg}}" wx:key="{{arrimg}}">
+                    <view class="close" bindtap="closeImgFn"  data-id="{{index}}">
+                            <image src="../../resource/images/close.png"></image>
+                    </view>
+                  <image src="{{item}}" data-id="{{index}}"></image>
+                </view>
+                <image   src="../../resource/images/upload.png" bindtap="chooseimage"></image>
+                <text>{{index}}/{{len}}</text>
+              </view>
+            </view>
+          </view>      
+
+    </view>
+      <view class="submit-btn" bindtap="submitInfo">
+        <button class='button' disabled="{{subdisabled}}" >保存</button>
+      </view>
+</view>
+</view>
+
+
+<view class="container1" wx:if="{{currentTabsIndex==2}}">
+  <view class="page">
+  <view class="header_s"> 
+     <view class="ft fw title_content flex-center">{{title}}</view>                            
+   </view>
+   <view id="panel" class="flex-column font24">
+     <view class="flex-cell flex-row">
+       <text class="flex-cell flex-row text">编号</text>
+       <text class="flex-cell flex-row text">姓名</text>
+       <text class="flex-cell flex-row text">联系方式</text>
+       <text class="flex-cell flex-row text">编辑</text>
+     </view>
+     <view wx:for="{{teachers}}" wx:key="index">
+        <view class="flex-row flex-cell line">
+           <!--<view class="flex-cell flex-row "><image src="{{picUrl}}{{item.headUrl}}" style="width:40rpx;height:40rpx"></image></view>-->
+           <text class="flex-cell flex-row ">{{item.id}}</text>
+          <text class="flex-cell flex-row ">{{item.name}}</text>
+          <text class="flex-cell flex-row ">{{item.phone}}</text>
+          <view class="flex-cell flex-row " >    
+              <image src="../../resource/images/u145.png" catchtap="editTeacher" data-id="{{index}}"></image>
+              <image  src="../../resource/images/u147.png" catchtap="delTeacher" data-id="{{item.id}}" style='margin-left:10rpx'></image>
+          </view>             
+        </view> 
+     </view>
+   </view>                              
+                 
+</view>
+</view>
+
+<view class="container1" wx:if="{{currentTabsIndex==3}}">
+  <view class="page">
+  <view class="header_s"> 
+     <view class="ft fw title_content flex-center">{{title}}</view>                            
+   </view>
+   <view id="panel" class="flex-column font24">
+     <view class="flex-cell flex-row">
+       <text class="flex-cell flex-row text">老师姓名</text>
+       <text class="flex-cell flex-row text">出勤次数</text>
+       <text class="flex-cell flex-row text">缺勤次数</text>
+     </view>
+     <view wx:for="{{teachers}}" wx:key="index">
+        <view class="flex-row flex-cell">
+          <text class="flex-cell flex-row line">{{item.name}}</text>
+          <text class="flex-cell flex-row line">{{item.phone}}</text>
+           <text class="flex-cell flex-row line">{{item.phone}}</text>        
+        </view> 
+     </view>
+   </view>                              
+                 
+</view>
+</view>
+
+<tootip show="{{showtooltip}}" height='20%' >
+   <view class="error_tooltips">{{tooltip}}</view>
+ </tootip>
+ <modal show="{{showmodal}}" height='20%' bindconfirm='confirmDelete' >
+   <view class="error_tooltips">{{tooltip}}</view>
+ </modal>
+
+  

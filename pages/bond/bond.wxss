@@ -1,0 +1,75 @@
+/* pages/bond/bond.wxss */
+.content{
+			background:linear-gradient(#00BFFF,#00ffff);
+			height: 100vh;
+		}
+.caifu{
+  padding-top: 20%;
+  font-size: 52rpx;
+  color:#fff;
+  text-align: center;
+}
+.add-page{
+  padding-top: 30%;
+  display: flex;
+  flex-direction: column;
+  font-size: 32rpx;
+  color: #676767;
+}
+.mod{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90rpx;
+  padding: 0 20rpx;
+  border-bottom: 1px solid #f0f0f0;
+  
+}
+.t-name,.t-code{
+  width: 90%;
+  font-size:12px;
+  overflow: hidden;
+  margin: auto
+
+}
+.key{
+  width: 20%;
+}
+.t-code .code{
+  width: 30%;
+}
+.t-code .code button{
+  width: 180rpx;
+  height:60rpx;
+  background-color: #00ffff;
+  border-radius: 10rpx;
+  font-size: 12px;
+  line-height: 60rpx;
+  color:#fff
+}
+.t-code .input{
+  width: 50%;
+  overflow: hidden;
+  color: #b2b2b2;
+  height: 44rpx;
+}
+.t-name .input{
+  width: 80%;
+  overflow: hidden;
+  color: #b2b2b2;
+  height: 44rpx;
+}
+
+.button {
+  width: 400rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 16px;
+  border: 0 none;
+  background: #00ffff;
+  color: #fff;
+  margin: 50rpx auto;
+  border-radius: 50px;
+}

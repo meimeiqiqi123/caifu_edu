@@ -1,0 +1,17 @@
+<template name="fan_cell">
+ <view class="weui-cell bb content">
+        <view class="weui-cell__hd"><image style="width: 100rpx; height: 100rpx;" mode="widthFix" src="{{fan.fanUser.headUrl}}"></image> </view>
+        <view class="weui-cell__bd">
+          <view class="titles">
+            <text class="ft fw title">{{fan.fanUser.nickName}}</text>            
+          </view>
+          <view class="flex">
+            <text class="ft signature" style="color:#3f424c">本宝宝暂时还没想到个性的签名</text>            
+          </view>
+        </view> 
+        <div class="weui-cell__ft">
+           <!-- <button class="weui-btn weui-btn_mini weui-btn_primary"> 关注 </button>-->
+        </div>       
+    </view>           
+ 
+</template>

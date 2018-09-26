@@ -1,0 +1,148 @@
+ <view class="container">    
+      <view class="header"> 
+        <view class="userInfo">
+          <view class="flex-start">
+            <image class="image" src="{{userinfo.headUrl}}"/>
+            <view  style="margin-left:10rpx;">
+              <view class="font26 bold">{{userinfo.manager.agency.name}}</view>             
+            </view>                  
+          </view>
+          <view class="font" style="margin-left:40rpx;">
+            <view class="font24">采赋号：
+               {{userinfo.manager.agency.number}}</view>
+            <view class="font inline">机构简介：{{userinfo.manager.agency.description}}</view>            
+          </view>
+        </view>
+          
+          <!--<view class="topTabSwiper">
+              <view class="font fw  tab">10课程</view>
+              <view class="font fw line tab">20发布</view>
+              <view class="font fw  tab">20粉丝</view>
+          </view>  -->
+          
+          <view class="weui-cells bt-none title_cell">            
+            <view class="weui-cell weui-cell_access ft">
+                  <view class="weui-cell__bd">
+                      <view class="ft fw">昨日指标</view>
+                  </view>
+                  <view class="weui-cell__ft font24" bindtap="jumppage">{{look_all}}</view>
+              </view>
+
+              <view class="weui-cell">
+                  <view class="weui-cell__bd">
+                     <block wx:for="{{list}}" wx:key="index" index="index" item="item">
+                       <view class="inline font24">
+                          <view class="border {{index == list.length-1 ? 'border1': ''}}">
+                            <view>
+                              <view>
+                                {{item.title}}
+                              </view>
+
+                              <view>
+                                {{item.subtitle}}
+                              </view>
+                            </view>
+                            <view class="font40 fw">
+                              {{item.content}}
+                            </view>
+                            <view style="font-size:20rpx; text-align:left; margin-bottom:15px;">
+                              <view class="height30">
+                                <text class="inlilne">日</text>
+                                <image style="width:20rpx;height:20rpx" src="../../resource/images/up.png"></image>
+                                <text class="inline">
+                                  {{item.d}}
+                                </text> 
+                              </view>
+                              <view  class="height30">
+                                <text class="inline">周</text>
+                                <image style="width:20rpx;height:20rpx" src="../../resource/images/up.png"></image>
+                                <text class="inline">
+                                  {{item.w}}
+                                </text> 
+                              </view>
+
+                              <view class="height30">
+                                <text class="inline">月</text>
+                                <image style="width:20rpx;height:20rpx" src="../../resource/images/down.png"></image>
+                                <text class="inline">
+                                  {{item.m}}
+                                </text> 
+                              </view>                             
+                            </view>
+                          </view>                                                               
+                       </view>                        
+                      </block>
+                  </view>
+                                             
+              </view>
+            </view>
+
+
+              <view class="weui-cells bt-none">            
+                <view class="weui-cell weui-cell_access ft">
+                      <view class="weui-cell__bd">
+                          <view class="ft fw">日常管理</view>
+                      </view>                      
+                </view>
+
+                 <view class="weui-cell">
+                    <view class="weui-cell__bd flex-around">
+
+                     <view class="tc" catchtap="addCourse">
+                          <view >                          
+                            <image class="title_image"   src="../../resource/images/u73.png"></image>
+                          </view>
+                          <view style="font-size:26rpx">课程</view>
+                          
+                        </view>
+                         <view class="tc" catchtap='addManager'>
+                          <view bindtap="teacherManager">                          
+                            <image class="title_image"   src="../../resource/images/u691.png"></image>
+                          </view>
+                          <view style="font-size:26rpx">老师</view>
+                          
+                        </view>
+                        <view class="tc" catchtap='addGrade'>
+                          <view bindtap="gradeManager">
+                            <image class="title_image" src="../../resource/images/u89.png"></image>
+                          </view>
+                          <view style="font-size:26rpx" >班级</view>
+                        </view>
+                      
+
+                        <view class="tc" catchtap='addStudent'>
+                          <view bindtap="studentManager">                          
+                            <image class="title_image"   src="../../resource/images/u61.png"></image>
+                          </view>
+                          <view style="font-size:26rpx">学生</view>
+                          
+                        </view>                      
+                    </view>                  
+                </view>
+              </view>            
+
+              
+              <view class="weui-cells bt-none">                            
+                 <view class="weui-cell">
+                    <view class="weui-cell__bd ft fw">
+                       行业分析                                       
+                    </view>                  
+                </view>
+                 <view class="weui-cell">
+                    <view class="weui-cell__bd ft font24">
+                       销售榜单                                       
+                    </view>                  
+                </view>
+                 <view class="weui-cell">
+                    <view class="weui-cell__bd ft font24">
+                       口碑top                                       
+                    </view>                  
+                </view>
+                 <view class="weui-cell">
+                    <view class="weui-cell__bd ft font24">
+                       月度报告                                       
+                    </view>                  
+                </view>
+              </view>                             
+          </view>        
+  </view>

@@ -1,0 +1,186 @@
+
+.container_1{
+  font-family: PingFang SC-Bold;
+  font-size: 28rpx;
+  width: 90%;
+  margin: 0 auto
+}
+
+.container_1 .detail{
+  display: flex;
+  margin-top: 50rpx;
+  padding-bottom: 50rpx;
+  border-bottom: solid 1px #e1e1e1
+}
+.container_1 .detail .item{
+  width: 160rpx;
+  height: 120rpx;
+
+}
+.container_1 .detail .hotel{
+  width: 500rpx;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx
+}
+.hotel .name{
+  font-size: 30rpx;
+  color: #707070;
+  word-wrap: break-word;
+}
+.hotel .price{
+  margin-top: 30rpx;
+  color: #000000;
+  font-size: 32rpx;
+}
+.hotel .price text{
+  display: inline-block;
+  color: #707070;
+  font-size: 24rpx;
+  margin-left: 10rpx;
+}
+
+.room_detail{
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  font-size: 30rpx;
+  padding-bottom: 50rpx;
+  border-bottom: solid 1px #e1e1e1
+}
+.room_detail .room_sn{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 40rpx
+}
+.room_sn .sn{
+  font-size: 28rpx;
+  color: #696969;
+}
+
+.pay{
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  font-size: 30rpx;
+}
+.pay .pay_detail{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 40rpx
+}
+
+.yuan{
+   width: 30rpx;
+  height: 30rpx;
+  border: 1rpx solid #d6d6d6;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 20rpx;
+}
+
+.price_div{
+  width: 100%;
+  height: 100rpx;
+  background: #f8f8f8;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+}
+.price_b{
+  width: 72%;
+  text-indent: 20rpx;
+  color: #000;
+  line-height: 100rpx;
+  font-size: 18px;
+}
+.price_info{
+  font-size: 12px;
+  color:#666
+}
+.price_btn{
+  width: 28%;
+}
+.price_button{
+  width: 100%;
+  height: 100%;
+  background: #5060b5;
+  line-height: 100rpx;
+  text-align: center;
+  color:#fff;
+  font-size: 14px;
+  border-radius: 0
+}
+.price_button::after{ border: none; }
+
+.shade{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: #333;
+  z-index:77;
+  top:0;
+  left: 0;
+  opacity: 0.8;
+}
+.room{
+  width: 60%; height: 48%;
+  top:30%;
+  left: 20%;
+  position:fixed;
+  z-index:999;
+  background: white;
+  border-radius: 10rpx;
+  
+}
+.room_div{
+  position:relative;
+  font-size: 26rpx;
+  width:80%;
+  margin: 0 auto
+}
+.close{
+  position: absolute;
+  top:10rpx;
+  right: 0rpx;
+  width: 70rpx;
+  height: 70rpx;
+}
+.close image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.price_title{
+  height: 90rpx;
+  line-height: 90rpx;
+  border-bottom: 1px solid #efefef;
+  margin-bottom: 30rpx;
+  font-size: 30rpx;
+  font-family: PingFangSC-Semibold
+}
+.price_item{
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 0rpx;
+  font-size: 26rpx
+}
+.price_last{
+  margin-top: 15rpx;
+  border-top: 1px solid #efefef;
+  padding-top:10px;
+}
+.price_last .item_left{
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular
+}
+.price_last .item_right{
+  font-size: 30rpx;
+  color: #FF9999
+}
+.item_right text{
+  font-size: 12px;
+  margin-right: 5rpx;
+}

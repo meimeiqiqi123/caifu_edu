@@ -1,0 +1,73 @@
+<import src="../../component/teacher_cell/teacher_cell.wxml"/>
+<import src="../../component/fan_cell/fan_cell.wxml"/>
+<import src="../../component/video_cell/video_cell.wxml"/>
+<view class="container" style="overflow:hidden;height:100%"> 
+      <block wx:if="{{!topnav}}">
+        <view class="header"> 
+              <view class="userInfo bb">
+                <view class="flex-around">
+                  <image class="image" src="{{userinfo.headUrl}}"/>
+                  <view class="des" >
+                    <view class="font fw">{{userinfo.nickName}}</view>
+                  </view>
+                   <view class="guanzhu" bindtap='guanzhu' wx:if="{{!fan}}">
+                    <button class="weui-btn weui-btn_mini weui-btn_primary font">+关注</button>
+                  </view>    
+                  <view class="guanzhu"  wx:if="{{fan}}">
+                    <button class="weui-btn weui-btn_mini weui-btn_primary font">已关注</button>
+                  </view>          
+                </view>
+               <view class="font" style="margin-left:40rpx;">
+                  <view>采赋号：{{sn}}</view>
+                  <text class="font-gray">个人简介： 怡丰最受欢迎的足球教练</text>
+                </view>
+              </view>      
+            
+            <view class="topTabSwiper">
+                <view class="font fw br tab  {{currentData == 0 ? 'tabBorer' : ''}}" data-current="0" bindtap="checkCurrent">{{zan}}获赞</view>
+                <view class="font fw br tab  {{currentData == 1 ? 'tabBorer' : ''}}" data-current="1" bindtap="checkCurrent">{{topicCount}}发布</view>
+                <view class="font fw br tab  {{currentData == 2 ? 'tabBorer' : ''}}" data-current="2" bindtap="checkCurrent">{{fans}}粉丝</view>
+            </view>
+          </view>
+        </block>
+        <block wx:else>
+            <view class="header1"> 
+              <view class="font40 fw title_content flex-center">{{fanStatus ? 'TA的粉丝':'足球教练Alex'}}</view>                            
+              <view class="topTabSwiper">
+                  <view class="font fw br tab  {{currentData == 0 ? 'tabBorer' : ''}}" data-current="0" bindtap="checkCurrent">{{zan}}获赞</view>
+                  <view class="font fw br tab  {{currentData == 1 ? 'tabBorer' : ''}}" data-current="1" bindtap="checkCurrent">{{topicCount}}发布</view>
+                  <view class="font fw br tab  {{currentData == 2 ? 'tabBorer' : ''}}" data-current="2" bindtap="checkCurrent">{{fans}}粉丝</view>
+              </view>
+          </view>          
+        </block>
+      <scroll-view style="width:100%; height:100%" scroll-y="true" bindscroll="scrollTopFun">  
+          <swiper current="{{currentData}}" class="swiper {{topnav?'top':''}}" 
+          style="height:{{currentData == 0 ?'600px':'908px'}}" duration="300"                             bindchange="bindchange">
+            <swiper-item>
+              <view class="flex-around">
+                <block wx:for="{{zanList}}" wx:key="index" index="index" item="item">
+                 <template is="video_cell"  data="{{topic:item,picUrl:picUrl}}" />
+                    
+                </block>                
+              </view>
+            </swiper-item> 
+            <swiper-item>
+              <view class="flex-around" style=" flex-wrap:wrap ">
+                <block wx:for="{{topics}}" wx:key="index" index="index" item="item">                                 <template is="video_cell" data="{{topic:item,picUrl:picUrl}}" />
+                    
+                </block>
+              </view>
+              
+            </swiper-item>
+            <swiper-item>
+              <block wx:for="{{fansList}}" wx:key="index" index="index" item="item">
+                <template is="fan_cell" data="{{fan:item}}"  />
+              </block>
+            </swiper-item>  
+          </swiper> 
+        </scroll-view>                     
+  </view>
+
+<tootip show="{{showtooltip}}" height='20%' >
+   <view class="error_tooltips">{{tooltip}}</view>
+ </tootip>

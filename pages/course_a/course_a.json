@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "tootip": "/components/tooltip/tooltip",
+    "modal": "/components/modal/modal"
+  },
+  "navigationBarTitleText": "课程"
+}

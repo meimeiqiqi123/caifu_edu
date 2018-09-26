@@ -1,0 +1,151 @@
+.cate{
+  display: flex;
+  font-size: 14px;
+  flex-wrap: wrap;
+  color: #666;
+  background: #fff;
+  position: fixed;
+  bottom:0;
+  width: 100%;
+  z-index: 99
+}
+.cate-item{
+  text-align: center;
+  width:33%;
+  margin-top:20rpx;
+  padding-bottom: 20rpx;
+}
+.hover{
+  color: #0099Ff;
+  padding-bottom: 20rpx;
+}
+
+.container1{
+  background: #F2F2F2;
+  height: 100%;
+}
+#panel{  
+  background:#fff;
+}
+
+.picker{
+  padding: 13px;
+  background-color: #333;
+}
+
+
+.height90{
+  height: 90rpx;
+}
+.right_png image{
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right: 30rpx;
+  bottom:30rpx
+}
+
+.button {
+   width: 600rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 16px;
+  border: 0 none;
+  background: #0099Ff;
+  color: #fff;
+  margin: 30rpx auto;
+  border-radius: 20rpx;
+  margin-top: 50rpx
+}
+
+#panel .text{
+  padding:30rpx 0;
+  border-bottom: 1rpx solid #000;
+}
+.line{
+  padding:30rpx 0;
+  border-bottom: 1rpx dashed #000;
+}
+
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.flex-column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.flex-cell{
+  flex: 1;
+}
+.container{
+  background: #F2F2F2;
+}
+
+.page{
+  background: #fff;
+  height: 100%;
+}
+
+image{
+  width: 38rpx; 
+  height: 38rpx;
+}
+.select{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20rpx
+}
+.select .icon_none{
+  width: 40rpx;
+  height: 40rpx;
+  border: 1rpx solid #d6d6d6;
+  border-radius: 50%;
+  margin-right: 20rpx
+}
+.select icon{
+
+  margin-right: 20rpx
+}
+.select .content{
+  font-size: 30rpx;
+  margin-left: 30rpx
+}
+.upload-img {
+      display: flex;
+      padding: 15rpx;
+     flex-wrap: wrap;
+    align-content: space-between;
+      align-items:center;
+}
+.upload-img image {
+    height: 150rpx;
+    width: 150rpx;
+    margin-left: 15rpx;
+}
+.upload-img  .imgs-style {
+    display: flex;
+     justify-content: center;
+     align-items:center;
+     position: relative;
+}
+.upload-img  .imgs-style .close{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.upload-img  .imgs-style .close image{
+    height: 45rpx;
+    width: 45rpx;
+}
+.upload-img  text{
+    padding-left: 15rpx;
+}

@@ -1,0 +1,57 @@
+<swiper duration="500" bindchange="changeScale" style='height:{{Height}};' circular='false'>
+      <swiper-item wx:for="{{topics}}" wx:key="{{index}}"  item-id="{{index}}">
+          <image class="cover" src="{{picUrl}}{{item.url}}"  mode="aspectFill"                           bindload='imgHeight' data-id="{{item.id}}"></image>
+        </swiper-item>
+</swiper>
+    <view class='comment' wx:if="{{currentId != 0}}">
+    <view class="toux"><image src="../../resource/images/index_1.png"></image></view>
+    <swiper autoplay="true" interval="3000" duration="1200"  class="com_swp">
+          <swiper-item wx:for="{{records}}" wx:key="{{index}}"  item-id="{{item.id}}">
+              <text class="title">{{item.content}}</text>
+            </swiper-item>
+    </swiper>
+    <view class="mine" bindtap="sendMessage"><text>我想说</text></view> 
+    </view>
+
+  <view class="music" wx:if="{{currentId != 0}}" bindtap='musicChange'>
+      <image class="avatar" src="../../resource/images/music_on.png" wx:if="{{musicon}}"></image>
+      <image class="avatar" src="../../resource/images/music_off.png" wx:if="{{!musicon}}"></image>
+  </view>
+  <view class="right_content" wx:if="{{currentId != 0}}" >
+    <view class="head" bindtap='profilePage'>
+      <image class="avatar" src="{{headUrl}}"></image>
+    </view>
+
+    <view class="zan" bindtap="dianzan">
+      <image class="avatar" src="../../resource/images/index_3.png" wx:if="{{!iszan}}"></image>
+      <image class="avatar" src="../../resource/images/index_33.png" wx:if="{{iszan}}"></image>
+      <view class="zan_title">{{zan}}</view>
+    </view>
+
+    <view class="zan" style='margin-top:30rpx' bindtap="sendMessage">
+      <image class="avatar" src="../../resource/images/index_2.png"></image>
+      <view class="zan_title">{{comment}}</view>
+    </view>
+
+    <button class="zan_button" style='margin-top:30rpx' open-type="share">
+      
+    </button>
+    <view class="left_content">
+      
+      <view class="agency">#{{agency}}</view>
+      <view class="nickname">@{{nickName}}</view>
+      <view class="nickname">{{topicDes}}</view>
+
+    </view>
+
+
+
+    </view>
+
+    
+
+    <audio id="myAudio" src="{{autioUrl}}{{mp3}}" action="{{action}}" loop bindplay="funplay" bindpause="funpause" bindended="funended" binderror="funerror"></audio>
+
+    <tootip show="{{showtooltip}}" height='20%' >
+   <view class="error_tooltips">{{tooltip}}</view>
+ </tootip>

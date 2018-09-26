@@ -1,0 +1,25 @@
+<!--pages/bond/bond.wxml-->
+<view class="content">
+<view class="caifu">采赋</view>
+<view class="add-page">
+
+ <view class="mod t-name">
+        <text class="key">联系方式</text>
+        <input name="title" type="number" class="input"  placeholder="请输入手机号码"              bindinput="phoneChange"/>
+      </view>
+ <view class="mod t-code">
+        <text class="key">验证码</text>
+        <input name="title" type="number" class="input" bindinput="codeChange" placeholder="请输入验证码" />
+        <view class="code">
+         <button bindtap='getCode' disabled='{{code_disabled}}'>{{code_title}}</button>
+         </view>
+  </view>
+  <view class="submit-btn" bindtap="submitInfo">
+        <button class='button' disabled="{{subdisabled}}" >绑定</button>
+      </view>
+  </view>
+  </view>
+ 
+  <tootip show="{{showtooltip}}" height='20%' bindconfirm='closetooltip'>
+   <view class="error_tooltips">{{tooltip}}</view>
+ </tootip>

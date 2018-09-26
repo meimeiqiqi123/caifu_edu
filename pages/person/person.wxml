@@ -1,0 +1,174 @@
+<!--pages/person/person.wxml-->
+<view class="container">    
+      <view class="header"> 
+        <view class="userInfo">
+        <block wx:if="{{userinfo}}">
+          <view class="flex-start">
+            <image class="image" src="{{userinfo.headUrl}}"/>
+            <view  style="margin-left:10rpx;">
+              <view class="font26 fw">{{userinfo.nickName}}</view>            
+            </view>    
+            <button wx:if="{{userinfo.bond!=1}}" bindtap='bond' class="login">绑定</button>      
+            <view wx:if="{{userinfo.role!=0}}" bindtap='switchRole' class="view_bu">切换角色</view>           
+          </view>
+        
+          <view class="font" style="margin-left:40rpx;margin-top:20rpx">
+            <view class="font24">采赋号：{{sn}}</view>
+            <view class="font inline">个人签名：{{userinfo.signature?userinfo.signature:''}}</view>
+            <view bindtap='editDes' class="description inline" >编辑</view> 
+             
+           </view>
+          </block>
+           <button wx:if="{{!userinfo}}" bindgetuserinfo='login' class="login"
+         open-type='getUserInfo'>登录</button> 
+         
+        </view>
+          
+          <view class="topTabSwiper">
+              <view class="font fw tab">{{zan}}获赞</view>
+              <view class="font fw tab">{{count}}发布</view>
+              <view class="font fw tab">{{fans}}粉丝</view>
+          </view>  
+          
+          <view class="weui-cells bt-none title_cell">            
+            <view class="weui-cell weui-cell_access ft">
+                  <view class="weui-cell__bd">
+                      <view class="ft fw">成长日记</view>
+                  </view>
+                  <view class="weui-cell__ft font24" bindtap="jumppage">查看更多日记 ></view>
+              </view>
+
+              <view class="weui-cell ft">
+                <view class="weui-cell__hd flex-direction flex-start" style="height:400rpx;">
+                   <view wx:if="{{picNum!=0}}">
+                     <text class="font40 fw">{{pics[0].day}}</text>
+                     <text class="font24">{{pics[0].month}}月</text>
+                   </view>
+                   <view class="font24" style="margin-top:100rpx;">
+                     为他每一刻的精彩，记录心情......
+                   </view>
+                </view>
+                
+                <view class="weui-cell__bd" wx:if="{{picNum==1}}">
+                    <image class="image_cell" src="{{picUrl}}{{pics[0].url}}" mode="aspectFit" catchtap='publish' data-id="0"></image>
+                </view>   
+
+                <view class="weui-cell__bd" wx:if="{{picNum==2}}">
+                    <view class="profile">
+                      <image class="image_cell_1" src="{{picUrl}}{{pics[0].url}}" mode="aspectFill" catchtap='publish' data-id="0"></image>
+                      <image class="image_cell_1" src="{{picUrl}}{{pics[1].url}}" mode="aspectFill" catchtap='publish' data-id="1"></image>
+                    </view>
+                    
+                </view>   
+
+                <view class="weui-cell__bd" wx:if="{{picNum==3}}">
+                    <view class="profile">
+                      <image class="image_cell_1" src="{{picUrl}}{{pics[0].url}}" mode="aspectFill" catchtap='publish' data-id="0"></image>
+                      <view class="right">
+                      <image class="image_cell_2" src="{{picUrl}}{{pics[1].url}}" mode="aspectFill" catchtap='publish' data-id="1"></image>
+                      <image class="image_cell_2" src="{{picUrl}}{{pics[2].url}}" mode="aspectFill" catchtap='publish' data-id="2"></image>
+                      </view>
+                    </view>
+                   
+                </view>      
+
+
+              </view>
+
+
+              <view class="weui-cells bt-none">            
+                <view class="weui-cell weui-cell_access ft">
+                      <view class="weui-cell__bd">
+                          <view class="ft fw">我的订单</view>
+                      </view>
+                      <view class="weui-cell__ft font24" bindtap='gotoOrder' data-id="0">查看所有订单 ></view>
+                </view>
+
+                 <view class="weui-cell">
+                    <view class="weui-cell__bd flex-around">
+                        <view class="tc" bindtap='gotoOrder' data-id="0">
+                          <view>
+                            <image class="title_image" style='height:40rpx' src="../../resource/images/finish.png"></image>
+                          </view>
+                          <view style="font-size:26rpx">待付款</view>
+                        </view>
+                        <view class="tc" bindtap='gotoOrder' data-id="1">
+                          <view>                          
+                            <image class="title_image"   src="../../resource/images/pay.png"></image>
+                          </view>
+                          <view style="font-size:26rpx">可使用</view>
+                        </view>
+
+                        <view class="tc" bindtap='gotoOrder' data-id="3">
+                          <view>                          
+                            <image class="title_image"   src="../../resource/images/uncomment.png"></image>
+                          </view>
+                          <view style="font-size:26rpx">待评价</view>
+                        </view>
+
+                        <view class="tc" bindtap='gotoOrder' data-id="6">
+                          <view>                          
+                            <image class="title_image"   src="../../resource/images/unpay.png"></image>
+                          </view>
+                          <view style="font-size:26rpx">售后</view>
+                        </view>
+
+                       
+                    </view>                  
+                </view>
+              </view>
+
+
+              <view class="weui-cells bt-none">            
+                <view class="weui-cell weui-cell_access ft">
+                      <view class="weui-cell__bd">
+                          <view class="ft fw">关联家人</view>
+                      </view>                      
+                </view>
+
+                 <view class="weui-cell">
+                    <view class="weui-cell__bd flex-around">
+                        <view class="tc">
+                          <view>
+                            <image class="title_image" src="../../resource/images/u69.png"></image>
+                          </view>
+                          <view style="font-size:26rpx">爸爸</view>
+                        </view>
+                        <view class="tc">
+                          <view>                          
+                            <image class="title_image"   src="../../resource/images/u71.png"></image>
+                          </view>
+                          <view style="font-size:26rpx">妈妈</view>
+                        </view>                       
+                    </view>                  
+                </view>
+              </view>  
+
+              
+              <view class="weui-cells bt-none">                            
+                 <view class="weui-cell">
+                    <view class="weui-cell__bd ft fw">
+                       帮助中心                                       
+                    </view>                  
+                </view>
+              </view>                    
+          </view>
+        </view>
+  </view>
+
+<tootip show="{{showtooltip}}" height='20%' bindconfirm='closetooltip'>
+   <view class="tooltips">{{tooltip}}</view>
+ </tootip>
+
+<view class='mask' wx:if='{{showDes}}'>
+ <view class='modal-content' >
+  <view class='main-content'>
+      <view><input  bindinput="desChange" 
+      placeholder='请输入个性签名' maxlength='40'/></view>
+  </view>
+  <view class='modal-btn-wrapper'>
+   <view class='cancel-btn' style='color:rgba(7,17,27,0.6)' bindtap='canceldes'>取消</view>
+   <view class='confirm-btn' style='color:#13b5f5' bindtap='confirmdes'>确定</view>
+  </view>
+ </view>
+ </view>

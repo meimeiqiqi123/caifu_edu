@@ -1,0 +1,26 @@
+<view class="add-page">
+ <!-- 活动内容 -->
+    <view class="comment_title">
+
+     <image src="{{picUrl}}{{url}}" mode="aspectFit"></image>
+
+    </view>
+
+
+
+    <view class="mod-a mt20">
+      <view class="mod-big my-nick">
+        <textarea name="content" class="weui-textarea" placeholder="这一刻的想法" value="{{content}}" style="height: 7em" bindinput="bindTextAreaChange" maxlength="100" />
+        <view class="chnumber">{{noteNowLen}}/100</view>
+      </view>
+    </view>
+
+
+    <view class="submit-btn" >
+        <button class='button' bindtap="publish" disabled="{{subdisabled}}">发布</button>
+      </view>
+</view>
+
+<tootip show="{{showtooltip}}" height='20%' >
+   <view class="error_tooltips">{{tooltip}}</view>
+ </tootip>

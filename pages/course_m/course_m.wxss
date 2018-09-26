@@ -1,0 +1,48 @@
+
+#panel{  
+  background:#fff;
+}
+
+#panel .text{
+  padding:30rpx 0;
+  border-bottom: 1rpx solid #000;
+}
+.line{
+  padding:30rpx 0;
+  border-bottom: 1rpx dashed #000;
+}
+
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.flex-column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.flex-cell{
+  flex: 1;
+}
+.container{
+  background: #F2F2F2;
+}
+
+.page{
+  background: #fff;
+  height: 700rpx;
+}
+
+.image{
+  width: 42rpx;
+  height: 38rpx;
+}
+.title_content{
+  height: 88rpx;
+  color: #FFF;
+}

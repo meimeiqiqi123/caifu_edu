@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "tootip": "/components/tooltip/tooltip"
+  },
+  "navigationBarTitleText": "发布"
+}
