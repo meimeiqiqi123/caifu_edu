@@ -1,6 +1,7 @@
 <swiper duration="500" bindchange="changeScale" style='height:{{Height}};' circular='false'>
       <swiper-item wx:for="{{topics}}" wx:key="{{index}}"  item-id="{{index}}">
-          <image class="cover" src="{{picUrl}}{{item.url}}"  mode="aspectFill"                           bindload='imgHeight' data-id="{{item.id}}"></image>
+          <image class="cover" src="{{picUrl}}{{item.url}}"  mode="aspectFill"           
+                    bindload='imgHeight' data-id="{{item.id}}"></image>
         </swiper-item>
 </swiper>
     <view class='comment' wx:if="{{currentId != 0}}">

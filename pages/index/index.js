@@ -139,7 +139,7 @@ Page({
     var imgh = e.detail.height;//图片高度
     var imgw = e.detail.width;//图片宽度
     if (imgh < imgw) {
-      this.data.ss.push(e.currentTarget.dataset.id)
+      //this.data.ss.push(e.currentTarget.dataset.id)
     }
     var swiperH = winWid * imgh / imgw + "px"//等比设置swiper的高度。 即 屏幕宽度 / swiper高度 = 图片宽度 / 图片高度  ==》swiper高度 = 屏幕宽度 * 图片高度 / 图片宽度
     this.setData({

@@ -8,7 +8,7 @@
             <view  style="margin-left:10rpx;">
               <view class="font26 fw">{{userinfo.nickName}}</view>            
             </view>    
-            <button wx:if="{{userinfo.bond!=1}}" bindtap='bond' class="login">绑定</button>      
+            <view wx:if="{{userinfo.bond!=1}}" bindtap='bond' class="view_bu">绑定</view>      
             <view wx:if="{{userinfo.role!=0}}" bindtap='switchRole' class="view_bu">切换角色</view>           
           </view>
         

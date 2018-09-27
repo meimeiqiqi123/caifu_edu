@@ -1,52 +1,106 @@
 page{
-  background-color: #fff
+  background-color: #d9eeff
 }
-.head{
+
+.course_list{
+  width: 95%;
+  margin: 10rpx auto
+}
+.course_list .course{
+  margin-top: 20rpx;
   width: 100%;
-  height: 300rpx;
-  background: linear-gradient(#ffae00ec,#ffae0049);
-  display: flex
+  height: 280rpx;
+  display: flex;
+  border-radius: 20rpx;
+  box-shadow: 0 3px 6px 0 #237bc2;
 }
-.head .img{
-  flex: 50%
+.course_list .course image{
+  flex:60%;
+  height: 280rpx;
+  border-top-left-radius: 20rpx;
+  border-bottom-left-radius:20rpx;
+} 
+.course_list .course .content{
+  flex:40%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 10rpx;
+  border-top-right-radius: 20rpx;
+  border-bottom-right-radius:20rpx;
 }
-.image_item{
-  width: 300rpx;
-  height: 200rpx;
-  border: solid 5px #fff;
-  margin-left: 20rpx;
-  margin-top: 20rpx
+.content .a_name{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 30rpx;
 }
-.head .course{
-  flex: 50%
+.content .a_name .name{
+  overflow: hidden;
+ text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 260rpx
 }
-.head .course .course_name{
-  font-size: 32rpx;
-  color:#fff;
-   margin-top: 30rpx
+.content .a_name image{
+  width: 35rpx;
+  height: 30rpx;
+  margin-right: 5rpx;
 }
-.head .course .location{
+.content .c_name{
   font-size: 24rpx;
-  color:#fff;
-  margin-top: 20rpx
+  margin-top: 10rpx;
 }
-.head .course .prices{
+.content .tuan{
+  font-size: 24rpx;
+  margin-top: 10rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.content .c_price{
   font-size: 28rpx;
-  color:red;
-  margin-top: 50rpx
+  color: red;
+  margin-top: 10rpx
 }
+.content .b_b{
+text-align: center;
+margin-top: 10rpx;
+}
+.content .b_b image{
+  width: 180rpx;
+  height: 50rpx;
+}
+.nocontent{
+  text-align: center;
+  font-size: 28rpx;
+}
+.course_title{
+  width: 100%
+}
+.course_title .title_img{
+  text-align: center;
+  margin: 20rpx auto
+}
+.course_title .title_img .ct{
+ width:480rpx;
+ height: 100rpx;
+}
+.course_title .gc{
+ width:220rpx;
+ height: 60rpx;
+ position: absolute;
+ margin-top: 20rpx;
+ margin-left: 45%
 
+}
 .container_1{
-  width: 90%;
-  margin: 20rpx auto;
-  background-color: #fff
+  width: 100%;
+  border-radius: 20rpx;
+  box-shadow: 0 3px 6px 0 #237bc2;
 }
-
-
 .bench{
   font-size: 26rpx;
-  color: #333;
-  margin-top: 40rpx
+  margin-top: 20rpx;
+  padding: 10rpx
 }
 .bench .title{
   display: block;
@@ -54,14 +108,13 @@ page{
   font-weight: bold
 }
 .bench .content{
-  margin-top: 40rpx
+  margin-top: 20rpx
 }
 .bench .content .info{
   font-size: 24rpx;
   line-height:50rpx
 }
 .bench .content_2{
-  margin-top: 40rpx;
   display: flex;
   flex-direction: column
 }
@@ -77,19 +130,8 @@ page{
   flex:60%;
   font-size: 24rpx;
 }
-.container_2{
-  width: 100%;
-  margin: 20rpx auto;
-  background-color: #33CCFF
-}
-.bench_2{
-  width: 90%;
-  margin: 0 auto;
-  font-size: 26rpx;
-  color: #fff;
-  margin-top: 40rpx
-}
-.bench_2 .title{
+
+.bench .title{
   display: block;
   font-size: 30rpx; 
   font-weight: bold
@@ -110,23 +152,16 @@ page{
   display: inline-block;
   margin-right: 5rpx
 }
-.container_3{
-  width: 100%;
-  margin: 20rpx auto;
-  background-color: #CC66FF
+.student{
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
 }
-.bench_3{
-  width: 90%;
-  margin: 0 auto;
-  font-size: 26rpx;
-  color: #fff;
-  margin-top: 40rpx
+.student image{
+  width: 33%;
+  height: 200rpx;
 }
-.bench_3 .title{
-  display: block;
-  font-size: 30rpx; 
-  font-weight: bold
-}
+
 .scroll-view_H{
     white-space: nowrap;
 }
@@ -139,8 +174,6 @@ page{
     padding-right: 20rpx
     
 }
-
-
 .scroll-view-item_H .item_head{
     width: 150rpx;
     height: 150rpx;
@@ -167,7 +200,7 @@ page{
   flex: 20%;
   font-size: 24rpx;
   margin-left: 50rpx;
-  
+  margin-top: 30rpx
 }
 
 .price_btn{
@@ -176,7 +209,7 @@ page{
 }
 .price_button{
   width: 200rpx;
-  height: 80rpx;
+  height: 90rpx;
   background: #FFC93A;
   text-align: center;
   color:#000;

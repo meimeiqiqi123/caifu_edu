@@ -1,20 +1,42 @@
-<view class="head">
-  <view class="img"><image class="image_item" src="{{picUrl}}{{course.logo}}" mode="aspectFill"/></view>
-  <view class="course">
-    <view class="course_name">{{course.name}}</view>
-    <view class="location">地址：{{course.location}}</view>
-    <view class="prices">￥{{course.realAmount}}</view>
-  </view>
+<view class="course_list">
+  <view class="course" >
+    <image  mode="aspectFill" src="{{picUrl}}{{course.logo}} "/>
+    <view class="content">
+      <view class="a_name">
+          <view class="name">{{course.agency.name}}</view>
+          <view><image src="../../resource/images/c_gz.png" class="c_gz"/></view>
+      </view>
+      <view class="c_name">{{course.name}}</view>
+      <view class="tuan" wx:if="{{course.isLeague == 1}}">
+        <view >({{course.leagueCount}}人成团)</view><view style='color:#FFC93A'>已团{{course.incount==null?0:course.incount}}人</view>
+      </view>
+      <view class="c_name">地址：{{course.location}}</view>
+      <view class="c_price">￥{{course.realAmount}}</view>
+    
+    </view>
+    </view>
 </view>
-<view class="container_1">
-<view class="bench">
+
+<view class="course_title">
+    <image class="gc" src="../../resource/images/spec_c.png" />
+    <view class="title_img">
+      <image class="ct" src="../../resource/images/course_title.png" />
+    </view>
+</view>
+<view class="course_list">
+  <view class="container_1" style='background-color: #fff;'>
+    <view class="bench">
     <text class="title">特色课程</text>
      <view class="content" >
        <view class="info">{{course.description}}</view>
      </view>
+    </view>
+  </view>
 </view>
 
-<view class="bench">
+<view class="course_list">
+  <view class="container_1" style='background-color: #33CCFF;color:#fff'>
+    <view class="bench">
     <text class="title">课程属性</text>
      <view class="content_2" >
           <view class="anpai">
@@ -29,16 +51,22 @@
               <view class="name">课程要求</view>
               <view class="des">{{course.courseDemand}}</view>
           </view>
+      </view>
+    </view>
+  </view>
+</view>
 
+
+
+<view class="course_title">
+    <image class="gc" src="../../resource/images/agency_c.png" />
+    <view class="title_img">
+      <image class="ct" src="../../resource/images/course_title.png" />
     </view>
 </view>
-
-
-</view>
-
-<view class="container_2">
-<view class="bench_2" >
-    <text class="title">机构简介</text>
+<view class="course_list">
+  <view class="container_1" style='background-color: #fff;'>
+    <view class="bench" >
      <view class="content_2" >
           <view class="agency">
               <view class="name">名称</view>
@@ -60,28 +88,36 @@
           </view>
 
     </view>
-</view>
+    </view>
+  </view>
 </view>
 
-<view class="container_3">
-<view class="bench_3" >
-    <text class="title">学员精彩</text>
-    <view class="section">
-      <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%">
-       <block wx:for="{{pictures}}" wx:key="{{item.id}}" >
-          <view class="scroll-view-item_H_l" bindtap="viewScale" data-id="{{item.id}}">
+
+<view class="course_title" wx:if="{{pictures.length>0}}">
+    <image class="gc" src="../../resource/images/student_c.png" />
+    <view class="title_img">
+      <image class="ct" src="../../resource/images/course_title.png" />
+    </view>
+</view>
+<view class="course_list" wx:if="{{pictures.length>0}}">
+  <view class="container_1" style='background-color: #fff;'>
+    <view class="student" >
+        <block wx:for="{{pictures}}" wx:key="{{item.id}}" >
             <image class="item" src="{{picUrl}}{{item.url}}" />
-            
-          </view>
         </block>
-      </scroll-view>
-      </view>
-</view>
+    </view>
+  </view>
 </view>
 
-<view class="container_1">
+<view class="course_title" wx:if="{{managers.length>0}}">
+    <image class="gc" src="../../resource/images/teacher_c.png" />
+    <view class="title_img">
+      <image class="ct" src="../../resource/images/course_title.png" />
+    </view>
+</view>
+<view class="course_list" wx:if="{{managers.length>0}}" >
+<view class="container_1" style='background-color: #fff;'>
 <view class="bench" >
-    <text class="title">名师风采</text>
     <view class="section">
       <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%">
        <block wx:for="{{managers}}" wx:key="{{item.id}}" >
@@ -95,11 +131,18 @@
       </view>
 </view>
 </view>
+</view>
 
+<view class="course_title" wx:if="{{courses.length>0}}">
+    <image class="gc" src="../../resource/images/other_c.png" />
+    <view class="title_img">
+      <image class="ct" src="../../resource/images/course_title.png" />
+    </view>
+</view>
 
-<view class="container_1" style='padding-bottom:100rpx'>
+<view class="course_list" wx:if="{{courses.length>0}}" style='padding-bottom:100rpx'>
+<view class="container_1" style='background-color: #fff;' >
 <view class="bench" >
-    <text class="title">其他课程</text>
     <view class="section">
       <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%">
        <block wx:for="{{courses}}" wx:key="{{item.id}}" >
@@ -113,11 +156,10 @@
       </view>
 </view>
 </view>
-
+</view>
 <view class="price_div">
   <view class="kefu">
-    <view ><contact-button class="button-image" size="22" style='margin-top:10rpx;margin-bottom:0' /></view>
-    <view>客服</view>
+    <view ><contact-button class="button-image" size="22" /></view>
   </view>
   <view class="price_btn">
     <view class="price_button"  bindtap='submitOrderNo' 
