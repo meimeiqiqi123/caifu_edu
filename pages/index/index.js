@@ -8,7 +8,7 @@ Page({
   data: {
     picUrl:config.picUrl,
     autioUrl: config.autioUrl,
-    mp3:'music_0',
+    mp3:'music_1',
     topics: null,
     records: null,
     headUrl:'',
@@ -166,7 +166,7 @@ Page({
     this.audioCtx = wx.createAudioContext('myAudio');
     var i = Math.floor(5 * Math.random())+1;
     this.setData({
-      mp3: 'music' + i + '.mp3'
+      mp3: 'music_' + i + '.mp3'
     })
 
     this.audioPlay();
@@ -195,7 +195,7 @@ Page({
       var i = Math.floor(5 * Math.random())+1;
       console.log(i)
       this.setData({
-        mp3:'music'+i+'.mp3'
+        mp3:'music_'+i+'.mp3'
       })
       
       this.audioPlay();
