@@ -1,4 +1,4 @@
-.container{
+.container_1{
   font-family: PingFang SC-Bold;
   font-size: 28rpx;
   width: 80%;
@@ -65,4 +65,9 @@
   margin-left: 50rpx;
   border-radius: 20rpx;
   margin-top: 50rpx
+}
+.image_item{
+  margin-top:20rpx;
+  height: 260rpx;
+  width: 100%;
 }

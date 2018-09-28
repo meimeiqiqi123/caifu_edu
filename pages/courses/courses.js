@@ -114,15 +114,15 @@ Page({
             courses: courses,
             shows: res.data.order
           })
-          console.log(courses)
         }
       }
     });
   },
   courseDetail: function (e) {
     var courseId = e.currentTarget.dataset.id;
+    var type = e.currentTarget.dataset.type;
     wx.navigateTo({
-      url: '../course_detail/course_detail?courseId=' + courseId,
+      url: '../course_detail/course_detail?courseId=' + courseId+'&type='+type,
     })
   },
   showInput: function (e) {

@@ -13,7 +13,8 @@ Page({
     userinfo: null,
     courses:null,
     pictures:null,
-    courseId:0
+    courseId:0,
+    orderType:1
   },
 
   /**
@@ -21,9 +22,11 @@ Page({
    */
   onLoad: function (options) {
     var courseId = options.courseId;
+    var orderType = options.type;
     this.setData({
       userinfo: wx.getStorageSync('userInfo'),
-      courseId: courseId
+      courseId: courseId,
+      orderType: orderType
     });
     var _this = this;
     util.request({
@@ -139,26 +142,22 @@ Page({
     })
   },
   getOrderInfo: function (orderType) {
-    var ordertype = this.data.course.scale;
     var totalPrice = this.data.course.realAmount;
-    if(orderType){
-      ordertype = 2;
+    if(orderType==2){
+      totalPrice = this.data.course.experienceAmount;
+    }else if(orderType == 3){
       totalPrice = this.data.course.leagueAmount;
     }
     var courseId = this.data.course.id;
-    var userinfo = wx.getStorageSync('userInfo');
-    
-
-    var openid = wx.getStorageSync('userInfo').openid;
-    var userId = wx.getStorageSync('userInfo').wxInfo.id;
     var order = {
       courseId: courseId,
       totalPrice: totalPrice,
-      orderType: ordertype,
+      orderType: orderType,
       courseName:this.data.course.name,
       pic:this.data.course.logo,
       incount:this.data.course.incount,
-      leagueCount:this.data.course.leagueCount
+      leagueCount:this.data.course.leagueCount,
+      agencyName:this.data.course.agency.name
     };
     var order = JSON.stringify(order);
     wx.navigateTo({
@@ -191,8 +190,7 @@ Page({
   },
   submitOrderNo: function (e) {
     var ordertype = e.currentTarget.dataset.type;
-    var that = this;
-    that.getOrderInfo(ordertype);
+    this.getOrderInfo(ordertype);
 
   },
   

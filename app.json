@@ -1,18 +1,15 @@
 {
   "pages": [
-    
     "pages/index/index",
-   "pages/course_list/course_list",
+    "pages/course_list/course_list",
     "pages/course_detail/course_detail",
-   "pages/courses/courses",
-    
+    "pages/courses/courses",
     "pages/comment_list/comment_list",
     "pages/person_profile/person_profile",
     "pages/tea_profile/tea_profile",
     "pages/teacher/teacher",
     "pages/person/person",
     "pages/agency/agency",
-    
     "pages/logs/logs",
     "pages/bond/bond",
     "pages/diary/diary",
@@ -29,7 +26,8 @@
     "pages/comment/comment",
     "pages/paysuccess/paysuccess",
     "pages/orderconfirm/orderconfirm",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/order_detail/order_detail"
   ],
   "window": {
     "navigationBarTextStyle": "black",

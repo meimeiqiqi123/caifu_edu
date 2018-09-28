@@ -51,7 +51,7 @@
 
     
 
-    <audio id="myAudio" src="{{autioUrl}}{{mp3}}" action="{{action}}" loop bindplay="funplay" bindpause="funpause" bindended="funended" binderror="funerror"></audio>
+    <audio id="myAudio" src="{{autioUrl}}{{mp3}}" action="{{action}}" loop="false" bindplay="funplay" bindpause="funpause" bindended="funended" binderror="funerror"></audio>
 
     <tootip show="{{showtooltip}}" height='20%' >
    <view class="error_tooltips">{{tooltip}}</view>

@@ -114,10 +114,10 @@ Page({
   
   uploadPic:function(e){
     var agencyId = this.data.userinfo.manager.agencyId;
-    var userId = this.data.userinfo.id;
+    var managerId = this.data.userinfo.managerId;
     if (agencyId) {
       wx.navigateTo({
-        url: '../upload_pic/upload_pic?agencyId=' + agencyId +'&userId='+userId,
+        url: '../upload_pic/upload_pic?agencyId=' + agencyId +'&managerId='+managerId,
       })
     }
    

@@ -7,12 +7,13 @@
           <view><image src="../../resource/images/c_gz.png" class="c_gz"/></view>
       </view>
       <view class="c_name">{{course.name}}</view>
-      <view class="tuan" wx:if="{{course.isLeague == 1}}">
+      <view class="tuan" wx:if="{{course.orderType == 3}}">
         <view >({{course.leagueCount}}人成团)</view><view style='color:#FFC93A'>已团{{course.incount==null?0:course.incount}}人</view>
       </view>
       <view class="c_name">地址：{{course.location}}</view>
-      <view class="c_price">￥{{course.realAmount}}</view>
-    
+      <view class="c_price" wx:if="{{orderType==1}}">￥{{course.realAmount}}</view>
+      <view class="c_price" wx:if="{{orderType==2}}">￥{{course.experienceAmount}}</view>
+    <view class="c_price" wx:if="{{orderType==3}}">￥{{course.leagueAmount}}</view>
     </view>
     </view>
 </view>
@@ -161,25 +162,37 @@
   <view class="kefu">
     <view ><contact-button class="button-image" size="22" /></view>
   </view>
-  <view class="price_btn">
+  <view class="price_btn" wx:if="{{orderType == 2}}">
     <view class="price_button"  bindtap='submitOrderNo' 
-        wx:if="{{userinfo}}">
+        wx:if="{{userinfo}}" data-type="2">
+      <text>¥</text>{{course.experienceAmount}} <view style='font-size:24rpx'>去体验</view>
+    </view>
+    <button class="price_button"  bindgetuserinfo='submitOrder' open-type='getUserInfo' 
+        wx:if="{{!userinfo}}" data-type="2">
+      <text>¥</text>{{course.experienceAmount}} <view style='font-size:24rpx'>去体验</view>
+    </button>
+   
+  </view>
+
+  <view class="price_btn" wx:if="{{orderType == 3}}">
+    <view class="price_button"  bindtap='submitOrderNo' 
+        wx:if="{{userinfo}}" data-type="1">
       <text>¥</text>{{course.realAmount}} <view style='font-size:24rpx'>单独购</view>
     </view>
     <button class="price_button"  bindgetuserinfo='submitOrder' open-type='getUserInfo' 
-        wx:if="{{!userinfo}}">
+        wx:if="{{!userinfo}}" data-type="1">
       <text>¥</text>{{course.realAmount}} <view style='font-size:24rpx'>单独购</view>
     </button>
    
   </view>
 
-  <view class="price_btn" wx:if="{{course.isLeague == 1}}">
+  <view class="price_btn" wx:if="{{orderType == 3}}">
     <view class="price_button"  bindtap='submitOrderNo' 
-        wx:if="{{userinfo}}"  data-type='2'>
+        wx:if="{{userinfo}}"  data-type='3'>
       <text>¥</text>{{course.leagueAmount}}<view style='font-size:24rpx'>{{course.leagueCount}}人团</view>
     </view>
     <button class="price_button"  bindgetuserinfo='submitOrder' open-type='getUserInfo' 
-        wx:if="{{!userinfo}}" data-type='2'> 
+        wx:if="{{!userinfo}}" data-type='3'> 
       <text>¥</text>{{course.leagueAmount}}<view style='font-size:24rpx'>{{course.leagueCount}}人团</view>
     </button>
   </view>

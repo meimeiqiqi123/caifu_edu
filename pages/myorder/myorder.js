@@ -7,114 +7,169 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentTabsIndex: 0,
+    picUrl: config.picUrl,
+    userInfo: null,
     isBlank: true,
-    orders:null,
-    status:0
+    orders: null,
+    startPage: 1,
+    recordNum: 10,
+    total: 0,
+    load: true,
+    status:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      status:options.status,
-      currentTabsIndex: options.status
-    })
-
-    this.loadData(options.status)
+    if(options.status){
+      this.setData({
+        status: options.status
+      })
+    }
+   
+    this.loadData();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    var orders = this.data.orders.length;
+    var userInfo = wx.getStorageSync('userInfo');
+    if (!this.data.load || orders >= this.data.total || !userInfo) {
+      return;
+    }
+    this.setData({
+      load: false,
+    })
+    var _this = this;
+    var startPage = _this.data.startPage + 1;
+    var userId = userInfo.wxInfo.id;
+    util.request({
+      url: 'wx/order/status',
+      showLoading: false,
+      data: {
+        userId: userId,
+        status: that.data.status ? that.data.status : -1,
+        offset: startPage,
+        pageSize: _this.data.recordNum
+      },
+      method: 'POST',
+      success: function (res) {
+        if (res.data.ret == 1) {
+          _this.setData({
+            orders: _this.data.orders.concat(res.data.data),
+            startPage: startPage,
+            load: true,
+          })
+        } else {
+          _this.setData({
+            load: true,
+          })
+        }
+      }
+    });
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   },
-  loadData: function (status) {
+  loadData: function () {
     var that = this;
     var user = wx.getStorageSync('userInfo');
-    if (user) {
-      this.setData({
-        userInfo: user.wxInfo
-      })
+    if (user && user.wxInfo) {
       var userId = user.wxInfo.id;
       util.request({
         url: 'wx/order/status',
         data: {
           userId: userId,
-          status: status
+          status: that.data.status?that.data.status:-1,
+          offset: 1,
+          pageSize: that.data.recordNum
         },
         method: 'POST',
         success: function (res) {
           if (res.data.ret == 1) {
-            if (res.data.data.length == 0) {
-              that.setData({
-                isBlank: false
-              })
-            } else {
+            var total = res.data.order;
+            if (res.data.data && res.data.data.length > 0) {
               that.setData({
                 isBlank: true
               })
+            } else {
+              that.setData({
+                isBlank: false
+              })
             }
             that.setData({
+              total: total,
               orders: res.data.data
             })
           }
         }
       });
     } else {
-      // this.tooltips('您还未登录,请登录');
+      that.setData({
+        isBlank: false
+      })
     }
-
   },
-  catClick: function (event) {
-    var sid = event.currentTarget.dataset.sid;
-    this.setData({
-      currentTabsIndex: sid
+  gotoAddress: function (e) {
+    var latitude = e.currentTarget.dataset.latitude;
+    var longitude = e.currentTarget.dataset.longitude;
+    var location = e.currentTarget.dataset.location;
+    wx.openLocation({
+      latitude: Number(latitude),
+      longitude: Number(longitude),
+      address: location
     })
-    this.loadData(sid);
   },
+  orderDetail: function (e) {
+    var order = e.currentTarget.dataset.order;
+    var order = JSON.stringify(order);
+    wx.navigateTo({
+      url: '../order_detail/order_detail?order=' + order,
+    })
+  },
+ 
+ 
+  
 })

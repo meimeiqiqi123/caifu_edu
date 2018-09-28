@@ -10,9 +10,10 @@ Page({
     len: 10,              // 上传的img的最大的length
     index: 0,         // 上传完成的个数
     agencyId:0,
-    courses_index: 0,
-    courseId: 0,
+    grades_index: 0,
+    gradeId: 0,
     currentId: 0,
+    grades:null
   },
 
   /**
@@ -22,7 +23,7 @@ Page({
     this.setData({
       agencyId:options.agencyId
     })
-    this.getCourses(options.userId);
+    this.getGrades(options.managerId);
   },
 
   /**
@@ -74,23 +75,23 @@ Page({
   
   },
   courseChange: function (e) {
-    var courses_index = e.detail.value;
+    var grades_index = e.detail.value;
     this.setData({
-      courses_index: e.detail.value,
-      courseId: this.data.courses[courses_index].id
+      grades_index: e.detail.value,
+      gradeId: this.data.grades[grades_index].gradeId
     })
   },
-  getCourses: function (userId) {
+  getGrades: function (managerId) {
     var _this = this;
     util.request({
-      url: 'wx/course/user/' + userId,
+      url: 'wx/grade/manager/' + managerId,
       method: 'POST',
       success: function (res) {
         if (res.data.ret == 1) {
           if (res.data.data.length > 0) {
             _this.setData({
-              courses: res.data.data,
-              courseId: res.data.data[0].id
+              grades: res.data.data,
+              gradeId: res.data.data[0].gradeId
             })
           }
          
@@ -154,11 +155,11 @@ Page({
       })
       return;
     }
-    var courseId = this.data.courseId;
-    if (courseId == 0) {
+    var gradeId = this.data.gradeId;
+    if (gradeId == 0) {
       this.setData({
         showtooltip: true,
-        tooltip: '请选择课程'
+        tooltip: '请选择班级'
       })
       return;
     }
@@ -183,7 +184,7 @@ Page({
         formData: {
           userId: userId,
           agencyId: _this.data.agencyId,
-          courseId: courseId,
+          gradeId: gradeId,
           index:index
         },
         success: function (res) {

@@ -1,0 +1,312 @@
+page{
+  background-color: #f5f5f5
+}
+
+.order{
+  margin-top: 40rpx
+}
+.order .title{
+  margin-left: 50rpx;
+  font-size: 40rpx;
+
+}
+.detail{
+  height: 100%;
+  width: 95%;
+  margin-left: 5%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10rpx;
+}
+.detail_h{
+  width: 90%;
+  margin:0 auto
+}
+.detail_h .hotel{
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.detail_h .hotel .hotel_l{
+  font-size: 32rpx;
+
+}
+.detail_h .hotel .hotel_r{
+  font-size: 26rpx;
+  color: #707070
+}
+.roomsn_t{
+  display: flex;
+  justify-content: space-between;
+}
+.roomsn{
+  margin-top: 20rpx;
+  font-size: 26rpx;
+}
+.hotel_r image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+  vertical-align: middle
+}
+
+.detail .time{
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+.time .time_l .butt{
+  color: #fff;
+  font-size: 22rpx;
+  background-color: #ff6c6c;
+  border-radius: 10rpx;
+  height: 40rpx;
+  width: 120rpx;
+  text-align: center;
+  line-height: 40rpx;
+  display: inline-block
+}
+.time .time_l .time_s{
+  color: #5060b5;
+  font-size: 26rpx;
+  display: inline-block;
+  margin-left: 10rpx
+}
+.sum_time{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.sum_time .price{
+  color: #000;
+  font-size: 38rpx;
+  font-weight: bold;
+  margin-top: 20rpx;
+}
+.sum_time .leavetime{
+  font-size: 26rpx;
+  color: #707070
+}
+.ordertime{
+ font-size: 26rpx;
+ color: #707070
+}
+.image_item{
+  margin-top:20rpx;
+  height: 260rpx;
+  width: 100%;
+}
+.operate{
+  margin-top: 20rpx; 
+  display: flex;
+  flex-direction: row;
+ justify-content: space-between;
+ padding-bottom: 20rpx
+}
+.button_1{
+  border:1px solid #dddddd;
+  height: 50rpx;
+  width: 150rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border-radius: 35rpx;
+  color:#707070;
+  font-size: 26rpx;
+  background-color: #f1f2f6
+}
+
+.share{
+  width: 90%;
+  margin: 30rpx auto;
+  font-size: 26rpx
+}
+.share .share_list{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+.share .share_list .share_b{
+  width: 160rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  color: #fff;
+  font-size: 26rpx;
+  line-height: 60rpx;
+  text-align: center
+}
+.share .share_list .share_img{
+  display: flex;
+  padding-right: 10rpx;
+  margin-top: 10rpx
+}
+.share .share_list .share_img .item{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 10rpx
+}
+
+
+.address{
+  width: 50rpx;
+  height: 50rpx;
+  vertical-align: middle
+}
+.phone{
+  margin-top: 30rpx;
+  margin-bottom: 100rpx;
+  padding-bottom: 20rpx
+}
+
+.shade{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: #333;
+  z-index:77;
+  top:0;
+  left: 0;
+  opacity: 0.8;
+}
+.room{
+  width: 60%; height: 50%;
+  top:25%;
+  left: 20%;
+  position:fixed;
+  z-index:999;
+  background: white;
+  border-radius: 10rpx;
+  
+}
+.room_div{
+  position:relative;
+  font-size: 26rpx;
+  width:80%;
+  margin: 0 auto
+}
+.close{
+  position: absolute;
+  top:10rpx;
+  right: 0rpx;
+  width: 70rpx;
+  height: 70rpx;
+}
+.close image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.secret_title{
+  height: 90rpx;
+  line-height: 90rpx;
+  border-bottom: 1px solid #efefef;
+  margin-bottom: 30rpx;
+  font-size: 30rpx;
+  font-family: PingFangSC-Semibold
+}
+.secret_item{
+  display: flex;
+  justify-content: space-between;
+   padding: 20rpx 0rpx;
+  font-size: 26rpx
+}
+.bottom_button{
+  border-top: 1px solid #efefef;
+  margin-top: 30rpx;
+  height: 100rpx;
+  text-align: center
+}
+.bottom_button .cancel{
+  display: inline-block;
+  border:1px solid #dddddd;
+  height: 50rpx;
+  width: 120rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  color:#555555;
+  margin-top: 20rpx;
+  font-size: 26rpx
+}
+.bottom_button .submit{
+  display: inline-block;
+  border:1px solid #dddddd;
+  height: 50rpx;
+  width: 120rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  margin-left: 50rpx;
+  margin-top: 20rpx;
+  color: #FF9999;
+  font-size: 26rpx
+}
+.item_left{
+  width: 40%
+}
+.item_right{
+  width: 60%
+}
+.item_last{
+  width: 100rpx;
+  height: 50rpx;
+  border: 1px solid #dddddd;
+  line-height: 50rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  color:#555555;
+
+}
+.item_right input{
+vertical-align:middle;
+  height: 40rpx;
+  line-height: 40rpx;
+  margin: 0
+}
+.secret_last{
+  border-top: 1px solid #efefef;
+  padding-top:10px;
+  color:#ff7d13;
+  
+}
+.item_right text{
+  font-size: 12px;
+  margin-right: 5rpx;
+}
+.bl{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+  height: 200rpx;
+  margin: 50rpx auto 
+}
+.bl  .service image{
+  width: 70rpx;
+  height: 70rpx;
+  margin-left: 20rpx
+}
+.bl .service .name{
+  font-size: 26rpx;
+  margin-top: 10rpx;
+  color: #606060;
+  margin-bottom: 50rpx
+}
+.bl .service .name_2{
+  font-size: 26rpx;
+  color: #606060;
+  margin-top: 30rpx;
+}
+.blooth{
+  height: 200rpx;
+  width: 95%;
+  margin-left: 5%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30rpx;
+}

@@ -1,0 +1,32 @@
+var myDate = getDate();
+var filter = {
+  numberToFix: function (value) {
+    return value.toFixed(2)
+  },
+
+  timeToFix: function (time) {
+    var old_year = time.split(" ")[0].split("-")[0];
+    var old_month = time.split(" ")[0].split("-")[1];
+    var old_day = time.split(" ")[0].split("-")[2];
+
+    var old_hour = time.split(" ")[1].split(":")[0];
+    var old_min = time.split(" ")[1].split(":")[1];
+
+
+    var year = myDate.getFullYear();
+    var month = myDate.getMonth() + 1;
+    var day = myDate.getUTCDate();
+
+    if (year == old_year && old_month == month && old_day == day) {
+      return "今天 " + old_hour + ":" + old_min
+    } else {
+      return old_month + "月" + old_day + "日"
+    }
+
+  },
+
+}
+module.exports = {
+  numberToFix: filter.numberToFix,
+  timeToFix: filter.timeToFix
+}

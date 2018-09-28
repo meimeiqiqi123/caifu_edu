@@ -3,6 +3,7 @@
   <view class="detail">
       <view> <image class="item" src="{{picUrl}}{{order.pic}}" /></view>
       <view class="hotel">
+        <view class="name">{{order.agencyName}}<text wx:if="{{order.orderType==2}}">(体验课)</text></view>
         <view class="name">{{order.courseName}}</view>
         <!--<view class="price">{{order.totalPrice}}元</view>-->
       
@@ -11,7 +12,7 @@
 
    <view class="room_detail">
       
-      <view class="room_sn">
+      <view class="room_sn" wx:if="{{order.orderType == 3}}">
         <view >当前团课人数</view><view class="sn" style='color:#709fff'>{{order.incount==null?0:order.incount}}</view>
       </view>
       <view class="room_sn">
@@ -47,36 +48,8 @@
 
 
 
-<view class="shade" hidden="{{!isshow}}" bindtap='closeRoom'></view>
-<view class="room" hidden="{{!isshow}}">
-  <view class="room_div">
-    <view class="price_title">价格详情</view>
-    <view class="price_item">
-      <view class="item_left">服务费</view>
-      <view class="item_right"><text>¥</text>{{order.serviceAmount}}元</view>
-    </view>
-     <view class="price_item">
-      <view class="item_left">房间数</view>
-      <view class="item_right">{{order.roomNum}}间</view>
-    </view>
-    <view class="price_item">
-      <view class="item_left">小时费</view>
-      <view class="item_right"><text>¥</text>{{order.price}}元/小时</view>
-    </view>
-    <view class="price_item">
-      <view class="item_left">时长</view>
-      <view class="item_right">{{order.real_hour}}小时{{order.minute}}分钟</view>
-    </view>
-    <view class="price_item price_last">
-      <view class="item_left">应付金额</view>
-      <view class="item_right">
-        <text>¥</text>
-        {{order.totalPrice}}</view>
-    </view>
-  </view>
-</view>
 
 
-<modal_t show="{{showmodal_t}}" height='20%' >
+<tootip show="{{showmodal_t}}" height='20%' >
    <view class="error_tooltips">{{tooltip}}</view>
- </modal_t>
+ </tootip>

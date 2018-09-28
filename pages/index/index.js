@@ -162,8 +162,9 @@ Page({
     this.audioCtx.pause()
   },
   funended:function(){
+    
     this.audioCtx = wx.createAudioContext('myAudio');
-    var i = parseInt(10 * Math.random());
+    var i = Math.floor(5 * Math.random())+1;
     this.setData({
       mp3: 'music' + i + '.mp3'
     })
@@ -191,7 +192,8 @@ Page({
     */
     if(this.data.musicon){
       this.audioCtx = wx.createAudioContext('myAudio');
-      var i = parseInt(10 * Math.random());
+      var i = Math.floor(5 * Math.random())+1;
+      console.log(i)
       this.setData({
         mp3:'music'+i+'.mp3'
       })

@@ -1,9 +1,11 @@
+var config = require('../../utils/config.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+       picUrl: config.picUrl,
        courseName:'',
        bond:0
 
@@ -18,6 +20,7 @@ Page({
       this.setData({
         bond: bond,
         courseName: options.courseName,
+        pic:options.pic
       })
     
 

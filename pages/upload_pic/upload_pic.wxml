@@ -15,11 +15,11 @@
   <view class="weui-cells page_body bt-none bb-none">
   <view class="weui-cell weui-cell_select ft-gray height90">
         <view class="weui-cell__hd weui-cell__hd_in-select-after">
-          <view class="weui-label font28">课程</view>
+          <view class="weui-label font28">班级</view>
         </view>
         <view class="weui-cell__bd">
-          <picker bindchange="courseChange" value="{{index}}" range="{{courses}}" range-key="name">
-            <view class="font24">{{courses[courses_index].name}}</view>
+          <picker bindchange="courseChange" value="{{index}}" range="{{grades}}" range-key="gradeName">
+            <view class="font24">{{grades[grades_index].gradeName}}</view>
             <view class="right_png"><image src="../../resource/images/right.png" ></image></view>
           </picker>
         </view>

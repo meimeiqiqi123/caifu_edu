@@ -1,0 +1,118 @@
+<wxs module="filter" src="../myorder/myorder.wxs"></wxs>
+<view class="order">
+  <view class="title" wx:if="{{order.status == 0}}">待付款</view>
+  <view class="title" wx:if="{{order.status == 1}}">待使用</view>
+  <view class="title" wx:if="{{order.status == 2}}">已取消</view>
+  <view class="title" wx:if="{{order.status == 6}}">待评价</view>
+  <view class="title" wx:if="{{order.status == 7}}">已完成</view>
+  <view class="detail">
+    <view class="detail_h">
+      <view class="hotel">
+          <view class="hotel_l" >{{order.course.name}}</view>
+          
+      </view>
+      
+      <view class="time" wx:if="{{order.status == 1 || order.status == 0}}">
+          <view class="time_l" >
+            <view class="butt" >可用时长</view>
+            <view class="time_s" >1年6个月</view>
+             
+          </view>
+          
+      </view>
+    
+      <view class="sum_time">
+         <view>
+          <view class="ordertime" style='margin-top:30rpx'>订单时间：{{order.orderDate}}</view>
+          
+          </view>
+       <view class="price" wx:if="{{order.status == 0 || order.status == 1}}">¥{{order.totalPrice}}</view>
+       <view class="price" wx:if="{{order.status == 4}}"><text style='font-size:30rpx'>待退款：</text>¥{{order.refuseAmount}}</view>
+       <view class="price" wx:if="{{order.status == 6}}">¥{{filter.numberToFix(order.totalPrice-order.refuseAmount)}}</view>
+       <view class="price" wx:if="{{order.status == 7}}">¥{{filter.numberToFix(order.totalPrice-order.refuseAmount)}}</view>
+       </view>
+       <image class="image_item" src="{{picUrl}}{{order.course.logo}}" />
+        <view class="operate">
+
+          
+          <view class="button_1"  bindtap="pay" wx:if="{{order.status == 0}}">去付款</view>
+          
+          <view class="button_1" wx:if="{{order.status == 1}}" bindtap="cancelOrder">取消订单</view>
+          
+          
+          <view class="button_1" wx:if="{{order.status == 6}}" bindtap="gotoComment" >评价</view>
+          
+          <view class="button_1" wx:if="{{order.status == 2 || order.status == 7}}" bindtap="delOrder">删除订单</view>
+        </view>
+    </view>
+  </view>
+
+</view>
+
+<view class="blooth" wx:if="{{order.orderType == 3}}">
+     <view class="share">
+          <view class="share_title">已团购</view>
+          <view class="share_list">
+            <view class="share_img">
+              <block wx:for="{{ shares }}" wx:for-item="share" wx:key="{{index}}" >
+              <image class="item" src="{{share.shareUser.headUrl}}" />
+              </block>
+
+            </view>
+            <view class="share_b bt_b_color" bindtap='shareTo' wx:if="{{(order.status == 1 || order.status == 2)&&order.roomSn}}">邀请好友
+            </view>
+          </view>
+        </view>
+</view>
+
+<view class="blooth" >
+     <view class="share">
+      <view class="location" catchtap='gotoAddress' data-location="{{order.course.agency.location}}" data-longitude="{{order.course.agency.longitude}}" data-latitude="{{order.course.agency.latitude}}">
+        <view style='margin-top:30rpx'>
+        <image class="address" src="../../resource/images/location.png" />
+         {{order.course.agency.location}}</view>
+       </view>
+
+       <view class="phone">
+          <view class="button_1" bindtap='callPhone'>联系机构</view>
+        </view>
+     </view>
+</view>
+
+<view class="shade" hidden="{{!isshow}}"></view>
+<view class="room" hidden="{{!isshow}}">
+  <view class="room_div"> 
+    <view class="secret_title">退房详情</view>
+    <view class="secret_item">
+      <view class="item_left">房号</view>
+      <view class="item_right" >{{order.roomSn}}</view>
+    </view>
+     <view class="secret_item">
+      <view class="item_left">是否入住</view>
+      <view class="item_right" >{{isIn}}</view>
+     </view>
+      <view class="secret_item">
+      <view class="item_left">订单时间</view>
+      <view class="item_right" >{{time}}</view>
+     </view>
+     <view class="secret_item">
+      <view class="item_left">退款金额</view>
+      <view class="item_right" >{{refund}}</view>
+     </view>
+   </view>
+     <view class="bottom_button">
+      <view class="cancel" bindtap="cancelLeave">取消</view>
+      <view class="submit" bindtap="modal2Confirm">退房</view>
+     </view>
+</view>
+
+
+ <modal show="{{showmodal}}" height='20%' bindconfirm='confirmDelete' >
+   <view class="error_tooltips">{{tooltip}}</view>
+ </modal>
+  <modal show="{{showmodal2}}" height='20%' bindconfirm='confirmCancel' >
+   <view class="error_tooltips">{{tooltip}}</view> 
+ </modal>
+ <tootip show="{{showmodal_t}}" height='20%' >
+   <view class="error_tooltips">{{tooltip}}</view>
+ </tootip>

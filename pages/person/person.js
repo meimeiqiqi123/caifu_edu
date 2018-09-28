@@ -212,19 +212,26 @@ Page({
   publish:function(e){
     var index = e.currentTarget.dataset.id;
     var pic = this.data.pics[index];
-    var agencyId = this.data.userinfo.manager.agencyId;
+    var agencyId = pic.picture.agencyId;
     if(agencyId){
       wx.navigateTo({
-        url: '../p_publish/p_publish?url=' + pic.url+'&agencyId='+agencyId,
+        url: '../p_publish/p_publish?url=' + pic.picture.url+'&agencyId='+agencyId,
       })
     }
     
   },
   gotoOrder:function(e){
     var status = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '../myorder/myorder?status=' + status,
-    })
+    if(status == -1){
+      wx.navigateTo({
+        url: '../myorder/myorder',
+      })
+    }else{
+      wx.navigateTo({
+        url: '../myorder/myorder?status=' + status,
+      })
+    }
+    
   },
   editDes:function(e){
     var userInfo = wx.getStorageSync('userInfo');

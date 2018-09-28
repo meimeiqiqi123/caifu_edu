@@ -19,6 +19,7 @@ page{
   height: 280rpx;
   border-top-left-radius: 20rpx;
   border-bottom-left-radius:20rpx;
+ 
 } 
 .course_list .course .content{
   flex:40%;
@@ -156,6 +157,7 @@ margin-top: 10rpx;
   display: flex;
   flex-wrap: wrap;
   align-content: space-between;
+  padding: 20rpx
 }
 .student image{
   width: 33%;

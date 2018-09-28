@@ -1,91 +1,58 @@
-<view class="cate">
-    <view class="cate-item {{currentTabsIndex==0?'hover':''}}" bindtap="catClick" data-sid='0'> 
-      待付款
-  </view>
-    <view class="cate-item {{currentTabsIndex==1?'hover':''}}" bindtap="catClick"  data-sid='1'> 
-     已付款
-  </view>
-    <view class="cate-item {{currentTabsIndex==3?'hover':''}}" bindtap="catClick" data-sid='3'> 
-     已成交
-  </view>
-    <view class="cate-item {{currentTabsIndex==6?'hover':''}}" bindtap="catClick"  data-sid='6'> 
-     已完成
-  </view>
-</view>
-
+<wxs module="filter" src="myorder.wxs"></wxs>
 <view class='blank' hidden="{{isBlank}}">
- <image src="../../resource/images/u74.png" class="cart-image"/>
+ <image src="../../resource/images/order.png" class="cart-image"/>
   <view class="des">暂时没有订单</view>
 </view>
+ 
+<block wx:for="{{ orders }}" wx:for-item="order" wx:key="{{index}}" >
+<view class="order" bindtap='orderDetail' data-order="{{order}}">
+  <view class="title">{{filter.timeToFix(order.orderDate)}}</view>
+  <view class="detail">
+    <view class="detail_h">
+      <view class="hotel">
+        <view class="hotel_l">{{order.course.name}}</view>
+        <view class="hotel_r bt_b_color" wx:if="{{order.status == 0}}">待付款</view>
+        <view class="hotel_r bt_b_color" wx:if="{{order.status == 1}}">待使用</view>
+        <view class="hotel_r" wx:if="{{order.status == 2}}" style='background-color: #767676'>已取消</view>
+        <view class="hotel_r" wx:if="{{order.status == 6}}" style='background-color: #767676'>待评价</view>
+        <view class="hotel_r" wx:if="{{order.status == 7}}" style='background-color: #767676'>已完成</view>
 
-<view class="orderlist">
-<view class="order" wx:for="{{orders}}" wx:key="{{index}}">
-  <view class="order_item" > 
-    <view class="order_title"> 
-      <view class="course_name">
-      {{item.course.name}}
-      <image src="../../resource/images/right.png"></image>
       </view>
-    </view>
-   <view class="order_div">
-     <view class="order_left">
-      <dl>
-        <dt>订单号：{{item.number}}</dt>
-        <dd>下单时间：{{item.orderDate}}</dd>
-      </dl>
-      </view>
-      <view class="order_right">
-      <view class="price" wx:if="{{item.status=='0'}}">
-          <view class="refuse">待付款：<text>¥</text>{{item.totalPrice}}</view></view>
-       <view class="price" wx:if="{{item.status=='1'}}"><text>¥</text>{{item.totalPrice}}</view>
-       <view class="price" wx:if="{{item.status=='4'}}">
-          <view class="refuse">待退款：<text>¥</text>{{item.refuseAmount}}</view></view>
-       <view class="price" wx:if="{{item.status=='7'}}">
-           <text>¥</text>{{item.totalPrice-item.refuseAmount}}</view>
-      
-      </view>
-      
-   </view>
-    <view class="order_status">
-      <view class="order_status_left"></view>
-      <view class="order_status_right" >
-        <block wx:if="{{item.status=='0'}}">
-          <view class="order_status_button" bindtap="payOrder" data-id='{{item.id}}'>
-            立即支付
-          </view>
-          <view class="order_status_button" bindtap="delOrder" data-id='{{item.id}}'>
-            删除订单
-          </view>
-        </block>
 
-      <block wx:if="{{item.status=='1'}}">
-        <!--<view class="order_status_button" bindtap="xuzhu"  data-id='{{item.id}}'
-           wx:if="{{userInfo.sign == 1}}" data-price='{{item.price}}'>
-            续住
-        </view>-->
-          <view class="order_status_button" bindtap="cancelOrder" data-id='{{item.id}}'>
-            申请退款
-          </view>
-        </block>
+      <view class="base_room">
+      <view class="base_room_l">
 
-        <block wx:if="{{item.status=='4'}}">
-          <view class="order_status_button" bindtap="gotoComment" 
-         data-id='{{item.id}}'  wx:if="{{item.comment != 1}}">
-            评价
+      <view class="roomsn" wx:if="{{order.roomSn}}">培训机构：{{order.course.agency.name}}</view>
+      <view class="time"> 
+          <view class="time_l" wx:if="{{order.status == 1 || order.status == 0}}">
+            <view class="time_s"  >使用期限</view>
+            <view class="butt" >1年6个月</view>
+            
           </view>
-        </block>
-
-         <block wx:if="{{item.status=='7'}}">
-         <view class="order_status_button" bindtap="gotoComment" 
-         data-id='{{item.id}}'  wx:if="{{item.comment != 1}}">
-            评价
-          </view>
-          <view class="order_status_button" bindtap="delOrder" data-id='{{item.id}}'>
-            删除订单
-          </view>
-        </block>
       </view>
+          
+      </view>
+   
+      <view class="base_room_r">
+          <view class="time_r" wx:if="{{order.status == 1 || order.status == 2}}">
+            ¥{{order.totalPrice}}</view>
+          <view class="time_r" wx:if="{{order.status == 4}}">
+          <text style='font-size:30rpx'>待退款：</text>¥{{order.refuseAmount}}</view>
+           <view class="time_r" wx:if="{{order.status == 6}}">
+          ¥{{filter.numberToFix(order.totalPrice-order.refuseAmount)}}</view>
+          <view class="time_r" wx:if="{{order.status == 7}}">
+          ¥{{filter.numberToFix(order.totalPrice-order.refuseAmount)}}</view>
+      </view>
+      </view>
+
+       <image class="image_item" src="{{picUrl}}{{order.course.logo}}" />
+       <view class="location" catchtap='gotoAddress' data-location="{{order.course.agency.location}}" data-longitude="{{order.course.agency.longitude}}" data-latitude="{{order.course.agency.latitude}}">
+        <image class="address" src="../../resource/images/location.png" />
+         {{order.course.agency.location}}
+       </view>
     </view>
   </view>
+
 </view>
-</view>
+</block>
+

@@ -1,10 +1,10 @@
-<view class="container">
-  <view class="title">课程预订成功!</view>
+<view class="container_1">
+  <view class="title">课程购买成功!</view>
 
   <view class="secret blue" wx:if="{{bond==0}}" >您还没有手机认证</view>
 
    <view class="forget" bindtap="bond" wx:if="{{bond==0}}">前去认证？</view>
-
+    <image class="image_item" src="{{picUrl}}{{pic}}" />
     <view class="hotel">  
         <view class="name">课程名称</view>
         <view class="name_detail">{{courseName}}</view>

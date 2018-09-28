@@ -138,7 +138,7 @@ Page({
                       'paySign': data.paySign,
                       'success': function (res) {
                         wx.navigateTo({
-                        url: '../paysuccess/paysuccess?courseName='+that.data.order.courseName
+                        url: '../paysuccess/paysuccess?courseName='+that.data.order.courseName+'&pic='+that.data.order.pic
                         })
                       },
                       'fail': function (res) {
@@ -165,7 +165,7 @@ Page({
               })
             } else {
               wx.navigateTo({
-                url: '../paysuccess/paysuccess?courseName=' + that.data.order.courseName
+                url: '../paysuccess/paysuccess?courseName=' + that.data.order.courseName + '&pic=' + that.data.order.pic
               })
             }
           } else {
