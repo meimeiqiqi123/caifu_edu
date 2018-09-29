@@ -10,6 +10,7 @@ Page({
     currentTabsIndex: 1,
     title: '添加学生',
     agencyId:0,
+    students:null,
     studentName:'',
     phone:'',
     gradeIndex: 0,
@@ -270,5 +271,19 @@ Page({
       return '请输入有效的手机号码！'
     }
     return '1'
+  },
+  loadData: function (e) {
+    var _this = this;
+    util.request({
+      url: 'wx/student/agency/' + _this.data.agencyId,
+      method: 'POST',
+      success: function (res) {
+        if (res.data.ret == 1) {
+          _this.setData({
+            students: res.data.data
+          })
+        }
+      }
+    });
   },
 })

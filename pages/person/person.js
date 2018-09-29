@@ -14,7 +14,52 @@ Page({
     count:0,
     fans:0,
     pics:null, 
-    showDes:false
+    showDes:false,
+    courseCount: 0,
+    count1: 0,
+    count2: 0,
+    length1: 0,
+    length2: 0,
+    agencyId: null,
+    list: [
+      {
+        id: 1,
+        title: '团购课',
+        subtitle: '报名人数',
+        content: '0',
+        d: '0%',
+        w: '0%',
+        m: '0%'
+      },
+      {
+        id: 1,
+        title: '体验课',
+        subtitle: '报名人数',
+        content: '0',
+        d: '0%',
+        w: '0%',
+        m: '0%'
+      },
+      {
+        id: 1,
+        title: '新增',
+        subtitle: '关注人数',
+        content: '0',
+        d: '0%',
+        w: '0%',
+        m: '0%'
+      },
+      {
+        id: 1,
+        title: '新增',
+        subtitle: '内容推送',
+        content: '0',
+        d: '0%',
+        w: '0%',
+        m: '0%'
+      }
+    ],
+    role:0
   },
 
   /**
@@ -22,28 +67,51 @@ Page({
    */
   onLoad: function (options) {
     var _this = this;
-    if (wx.getStorageSync('userInfo')) {
-      var userId = wx.getStorageSync('userInfo').wxInfo.id;
-      util.request({
-        url: 'wx/user/' + userId,
-        method: 'POST',
-        success: function (res) {
-          if (res.data.ret == 1) {
-            var userinfo = res.data.data;
-            _this.setData({
-              userinfo: userinfo
-            })
-            if (userinfo.phone) {
-              var sn = userinfo.phone.substring(0, 3) + "****" + userinfo.phone.substring(7, 11);
+    var userinfo = wx.getStorageSync('userInfo');
+    if(userinfo){
+      var user = userinfo.wxInfo;
+      var role = user.role;
+      _this.setData({
+        role: role
+      })
+      if (user.phone) {
+        var sn = user.phone.substring(0, 3) + "****" + user.phone.substring(7, 11);
+        _this.setData({
+          sn: sn
+        })
+      }
+      if(role == 0){
+        _this.setData({
+          userinfo: user
+        })
+        _this.getPersons(user.id);
+      }else if(role == 1 || role == 3){
+        util.request({
+          url: 'wx/user/agency/' + user.id,
+          method: 'POST',
+          success: function (res) {
+            if (res.data.ret == 1) {
+              var userinfo = res.data.data;
               _this.setData({
-                sn: sn
+                userinfo: userinfo,
+                agencyId: userinfo.manager.agencyId
               })
+              
             }
           }
+        });
+        if(role == 3){
+          _this.getPersons(user.id);
+          _this.getCourseCount(user.id);
+          _this.getStudentCount(user.id);
+          _this.getTopics(user.id);
         }
-      });
-      this.getPersons(userId)
-    } 
+        
+      }
+      
+    }
+   
+    
     
   },
 
@@ -209,7 +277,16 @@ Page({
       }
     });
   },
-  publish:function(e){
+  publish: function () {
+    var agencyId = this.data.userinfo.manager.agencyId;
+    if (agencyId) {
+      wx.navigateTo({
+        url: '../publish/publish?agencyId=' + agencyId,
+      })
+    }
+  },
+
+  publish_p:function(e){
     var index = e.currentTarget.dataset.id;
     var pic = this.data.pics[index];
     var agencyId = pic.picture.agencyId;
@@ -293,5 +370,107 @@ Page({
       }
       
     })
-  }
+  },
+  uploadPic: function (e) {
+    var agencyId = this.data.userinfo.manager.agencyId;
+    var managerId = this.data.userinfo.managerId;
+    if (agencyId) {
+      wx.navigateTo({
+        url: '../upload_pic/upload_pic?agencyId=' + agencyId + '&managerId=' + managerId,
+      })
+    }
+
+  },
+  getCourseCount: function (userId) {
+    var _this = this;
+    util.request({
+      url: 'wx/course/count/' + userId,
+      method: 'POST',
+      success: function (res) {
+        if (res.data.ret == 1) {
+          var count = res.data.data;
+          if (count) {
+            _this.setData({
+              courseCount: count
+            })
+          }
+
+        }
+      }
+    });
+  },
+  kaoqin: function (e) {
+    wx.navigateTo({
+      url: '../course_list/course_list',
+    })
+  },
+  getStudentCount: function (userId) {
+    var _this = this;
+    util.request({
+      url: 'wx/student/course/scale/' + userId,
+      method: 'POST',
+      success: function (res) {
+        if (res.data.ret == 1) {
+          _this.setData({
+            count1: res.data.data,
+            count2: res.data.order,
+            length1: res.data.data * 10,
+            length2: res.data.order * 10,
+          })
+
+        }
+      }
+    });
+  },
+  getTopics: function (userId) {
+    var _this = this;
+    util.request({
+      url: 'wx/topic/up/user/' + userId,
+      method: 'POST',
+      data: {
+        offset: 0,
+        pageSize: 2
+      },
+      success: function (res) {
+        if (res.data.ret == 1) {
+          _this.setData({
+            topics: res.data.data
+          })
+        }
+      }
+    })
+  },
+  addManager: function (e) {
+    if(this.data.agencyId){
+      wx.navigateTo({
+        url: '../teacher_m/teacher_m?agencyId=' + this.data.agencyId,
+      })
+    }
+    
+  },
+  addStudent: function () {
+    if (this.data.agencyId) {
+      wx.navigateTo({
+        url: '../student_a/student_a?agencyId=' + this.data.agencyId,
+      })
+    }
+    
+  },
+
+  addCourse: function (e) {
+    if (this.data.agencyId) {
+      wx.navigateTo({
+        url: '../course_a/course_a?agencyId=' + this.data.agencyId,
+      })
+    }
+   
+  },
+  addGrade: function () {
+    if (this.data.agencyId) {
+      wx.navigateTo({
+        url: '../grade_a/grade_a?agencyId=' + this.data.agencyId,
+      })
+    }
+    
+  },
 })

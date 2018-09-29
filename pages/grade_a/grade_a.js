@@ -161,7 +161,7 @@ Page({
       })
     }
   },
-  loadData:function(e){
+  loadData:function(e){ 
     var _this = this;
     util.request({
       url: 'wx/grade/agency/' + _this.data.agencyId,

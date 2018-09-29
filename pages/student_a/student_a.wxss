@@ -153,3 +153,31 @@
 .upload-img  text{
     padding-left: 15rpx;
 }
+
+
+#panel .text{
+  padding:30rpx 0;
+  border-bottom: 1rpx solid #000;
+}
+.line{
+  padding:30rpx 0;
+  border-bottom: 1rpx dashed #000;
+}
+
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.flex-column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.flex-cell{
+  flex: 1;
+}

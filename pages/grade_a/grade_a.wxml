@@ -58,7 +58,7 @@
       </view>
 </view>
 </view>
-
+ 
 
 <view class="container1" wx:if="{{currentTabsIndex==2}}">
   <view class="page">
@@ -73,11 +73,11 @@
        <text class="flex-cell flex-row text">编辑</text>
      </view>
      <view wx:for="{{grades}}" wx:key="index">
-        <view class="flex-row flex-cell">
-        <text class="flex-cell flex-row line">{{item.id}}</text>
-          <!--<text class="flex-cell flex-row line">{{item.number}}</text>-->
-          <text class="flex-cell flex-row line">{{item.name}}</text>
-          <view class="flex-cell flex-row line" >    
+        <view class="flex-row flex-cell line">
+        <text class="flex-cell flex-row ">{{item.id}}</text>
+          <!--<text class="flex-cell flex-row ">{{item.number}}</text>-->
+          <text class="flex-cell flex-row ">{{item.name}}</text>
+          <view class="flex-cell flex-row " >    
              <!-- <image src="../../resource/images/u145.png" catchtap="editGrade" data-id="{{index}}"></image>-->
               <image src="../../resource/images/u147.png" catchtap="delGrade" data-id="{{item.id}}"></image>
           </view>             

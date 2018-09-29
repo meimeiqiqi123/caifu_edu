@@ -1,5 +1,3 @@
-/* pages/teacher/teacher.wxss */
- 
 .image {
   width: 130rpx;
   height: 130rpx;
