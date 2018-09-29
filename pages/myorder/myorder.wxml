@@ -22,7 +22,7 @@
       <view class="base_room">
       <view class="base_room_l">
 
-      <view class="roomsn" wx:if="{{order.roomSn}}">培训机构：{{order.course.agency.name}}</view>
+      <view class="roomsn" >培训机构：{{order.course.agency.name}}</view>
       <view class="time"> 
           <view class="time_l" wx:if="{{order.status == 1 || order.status == 0}}">
             <view class="time_s"  >使用期限</view>
@@ -34,7 +34,7 @@
       </view>
    
       <view class="base_room_r">
-          <view class="time_r" wx:if="{{order.status == 1 || order.status == 2}}">
+          <view class="time_r" wx:if="{{order.status == 0 ||order.status == 1 || order.status == 2}}">
             ¥{{order.totalPrice}}</view>
           <view class="time_r" wx:if="{{order.status == 4}}">
           <text style='font-size:30rpx'>待退款：</text>¥{{order.refuseAmount}}</view>

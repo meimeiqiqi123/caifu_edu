@@ -9,6 +9,7 @@ Page({
   data: {
     picUrl: config.picUrl,
     order: null,
+    cancelDisable: false,
   },
 
   /**
@@ -104,14 +105,10 @@ Page({
       method: 'POST',
       success: function (res) {
         if (res.data.ret == 1) {
-          wx.showToast({
-            title: '删除成功',
-            icon: 'success',
-            duration: 2000
-          })
-          wx.switchTab({
-            url: '../order/order',
-          })
+         
+          wx.navigateBack({
+            delta: 1, // 回退前 delta(默认为1) 页面
+          });
         }
       }
     })
@@ -139,21 +136,44 @@ Page({
           cancelDisable: false
         })
         if (res.data.ret == 1) {
-          wx.showToast({
+          /*wx.showToast({
             title: '订单取消成功',
             icon: 'success',
             duration: 2000
-          })
-          wx.switchTab({
-            url: '../order/order',
-          })
+          })*/
+          wx.navigateBack({
+            delta: 1, // 回退前 delta(默认为1) 页面
+          });
         } else {
           _this.setData({
             showmodal_t: true,
             tooltip: res.data.data
           })
         }
+      },
+      fail:function(res){
+        _this.setData({
+          cancelDisable: false
+        })
       }
+    })
+  },
+  pay:function(e){
+    var order = {
+      id: this.data.order.id,
+      totalPrice: this.data.order.totalPrice,
+      orderType: this.data.order.orderType,
+      courseName: this.data.order.course.name,
+      pic: this.data.order.course.logo,
+      incount: this.data.order.course.incount,
+      leagueCount: this.data.order.course.leagueCount,
+      agencyName: this.data.order.course.agency.name,
+      number: this.data.order.number,
+      openId: this.data.order.openId
+    };
+    var order = JSON.stringify(order);
+    wx.navigateTo({
+      url: '../orderconfirm/orderconfirm?order=' + order,
     })
   },
   gotoAddress: function (e) {

@@ -86,106 +86,60 @@ Page({
     })
   },
   submit: function (e) {
-    var courseId = this.data.order.courseId;
-    var userinfo = wx.getStorageSync('userInfo');
-    var totalPrice = this.data.order.totalPrice;
     var payment = this.data.payment;
     var that = this;
     this.setData({
       subdisabled: true
     })
-    if (userinfo && courseId) {
-      util.request({
-        url: 'wx/order/add',
-        method: 'POST',
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        data: {
-          courseId: courseId,
-          openId: userinfo.openid,
-          totalPrice: totalPrice,
-          orderType: this.data.order.orderType,
-          userId: userinfo.wxInfo.id,
-          payment: payment
-        },
-        success: function (res) {
-          //订单创建成功,调用微信支付接口创建预支付订单
-          console.log("订单创建成功,开始创建预支付订单")
-          if (res.data.ret == 1) {
-            var orderNo = res.data.data.number;
-            var orderId = res.data.data.id;
-            var total_fee = res.data.data.totalPrice;
-            if (total_fee > 0 && payment == 2) {
-              util.request({
-                url: 'wx/pay',
-                method: 'POST',
-                data: {
-                  orderNo: orderNo,
-                  openId: userinfo.openid,
-                  total_fee: total_fee
-                },
-                success: function (res) {
-                  if (res.data.ret == 1) {
-                    console.log("预支付订单创建成功,调用支付接口");
-                    var data = res.data.data;
-                    var pack = data.package.split('=')[1];
-                    wx.requestPayment({
-                      'timeStamp': data.timestamp,
-                      'nonceStr': data.noncestr,
-                      'package': data.package,
-                      'signType': 'MD5',
-                      'paySign': data.paySign,
-                      'success': function (res) {
-                        wx.navigateTo({
-                        url: '../paysuccess/paysuccess?courseName='+that.data.order.courseName+'&pic='+that.data.order.pic
-                        })
-                      },
-                      'fail': function (res) {
-                        if (res.errMsg = 'requestPayment:fail cancel') {
-                          that.setData({
-                            subdisabled: false
-                          })
-                        }
-                      }
-                    })
-                  } else {
-                    console.log(res.data);
-                    that.setData({
-                      subdisabled: false
-                    })
-                  }
-                },
-                fail: function (res) {
-                  console.log("预支付订单创建失败")
-                  that.setData({
-                    subdisabled: false
-                  })
-                }
-              })
+    if(this.data.order.id){
+      // 存在order id 直接支付
+      this.beginPay(this.data.order, payment);
+    }else{
+      var courseId = this.data.order.courseId;
+      var userinfo = wx.getStorageSync('userInfo');
+      var totalPrice = this.data.order.totalPrice;
+      if (userinfo && courseId) {
+        util.request({
+          url: 'wx/order/add',
+          method: 'POST',
+          header: {
+            'content-type': 'application/json' // 默认值
+          },
+          data: {
+            courseId: courseId,
+            openId: userinfo.openid,
+            totalPrice: totalPrice,
+            orderType: this.data.order.orderType,
+            userId: userinfo.wxInfo.id,
+            payment: payment
+          },
+          success: function (res) {
+            //订单创建成功,调用微信支付接口创建预支付订单
+            console.log("订单创建成功,开始创建预支付订单")
+            if (res.data.ret == 1) {
+              var order = res.data.data;
+              that.beginPay(order, payment);
+
             } else {
-              wx.navigateTo({
-                url: '../paysuccess/paysuccess?courseName=' + that.data.order.courseName + '&pic=' + that.data.order.pic
+              that.setData({
+                showtooltip: true,
+                tooltip: res.data.data
+              })
+              that.setData({
+                subdisabled: false
               })
             }
-          } else {
-            that.setData({
-              showtooltip: true,
-              tooltip: res.data.data
-            })
+          },
+          fail: function () {
+            console.log("订单创建失败");
             that.setData({
               subdisabled: false
             })
           }
-        },
-        fail: function () {
-          console.log("订单创建失败");
-          that.setData({
-            subdisabled: false
-          })
-        }
-      });
+        });
+      }
     }
+    
 
   },
   calTotal: function (obj) {
@@ -218,5 +172,63 @@ Page({
     this.setData({
       payment: index
     })
+  },
+  beginPay: function (order, payment){
+    var that = this;
+    var orderNo = order.number;
+    var orderId = order.id;
+    var total_fee = order.totalPrice;
+    if (total_fee > 0 && payment == 2) {
+      util.request({
+        url: 'wx/pay',
+        method: 'POST',
+        data: {
+          orderNo: orderNo,
+          openId: order.openId,
+          total_fee: total_fee
+        },
+        success: function (res) {
+          if (res.data.ret == 1) {
+            console.log("预支付订单创建成功,调用支付接口");
+            var data = res.data.data;
+            var pack = data.package.split('=')[1];
+            wx.requestPayment({
+              'timeStamp': data.timestamp,
+              'nonceStr': data.noncestr,
+              'package': data.package,
+              'signType': 'MD5',
+              'paySign': data.paySign,
+              'success': function (res) {
+                wx.navigateTo({
+                  url: '../paysuccess/paysuccess?courseName=' + that.data.order.courseName + '&pic=' + that.data.order.pic
+                })
+              },
+              'fail': function (res) {
+                if (res.errMsg = 'requestPayment:fail cancel') {
+                  that.setData({
+                    subdisabled: false
+                  })
+                }
+              }
+            })
+          } else {
+            console.log(res.data);
+            that.setData({
+              subdisabled: false
+            })
+          }
+        },
+        fail: function (res) {
+          console.log("预支付订单创建失败")
+          that.setData({
+            subdisabled: false
+          })
+        }
+      })
+    } else {
+      wx.navigateTo({
+        url: '../paysuccess/paysuccess?courseName=' + that.data.order.courseName + '&pic=' + that.data.order.pic
+      })
+    }
   }
 })

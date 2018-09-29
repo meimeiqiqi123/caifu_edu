@@ -15,7 +15,8 @@ Page({
     recordNum: 10,
     total: 0,
     load: true,
-    status:null
+    status:null,
+    isClose: true,
   },
 
   /**
@@ -42,7 +43,30 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (!this.data.isClose) {
+      this.loadData();
+    }
+    if(this.data.status == 0){
+      wx.setNavigationBarTitle({
+        title: '待付款订单',
+      });
+    } else if (this.data.status == 1){
+      wx.setNavigationBarTitle({
+        title: '待使用订单',
+      });
+    } else if (this.data.status == 6) {
+      wx.setNavigationBarTitle({
+        title: '待评价订单',
+      });
+    } else if (this.data.status == 7) {
+      wx.setNavigationBarTitle({
+        title: '已完成订单',
+      });
+    }else{
+      wx.setNavigationBarTitle({
+        title: '我的订单',
+      });
+    }
   },
 
   /**
@@ -56,7 +80,10 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    var that = this
+    setTimeout(function () {
+      that.setData({ isClose: true })
+    }, 200)
   },
 
   /**
@@ -165,6 +192,9 @@ Page({
   orderDetail: function (e) {
     var order = e.currentTarget.dataset.order;
     var order = JSON.stringify(order);
+    this.setData({
+      isClose: false
+    })
     wx.navigateTo({
       url: '../order_detail/order_detail?order=' + order,
     })
