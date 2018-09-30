@@ -157,7 +157,8 @@ Page({
       pic:this.data.course.logo,
       incount:this.data.course.incount,
       leagueCount:this.data.course.leagueCount,
-      agencyName:this.data.course.agency.name
+      agencyName:this.data.course.agency.name,
+      agencyId:this.data.course.agencyId
     };
     var order = JSON.stringify(order);
     wx.navigateTo({

@@ -176,8 +176,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
+  margin-bottom: 100rpx
 }
 
 .flex-cell{
   flex: 1;
+}
+image{
+  width: 38rpx; 
+  height: 38rpx;
 }

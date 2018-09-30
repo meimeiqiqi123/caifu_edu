@@ -10,7 +10,7 @@ Page({
     currentTabsIndex: 1,
     title: '添加学生',
     agencyId:0,
-    students:null,
+    students:[],
     studentName:'',
     phone:'',
     gradeIndex: 0,
@@ -20,6 +20,10 @@ Page({
     arrimg: [],           // 上传img的attr     => 页面显示的img                  
     len: 1,              // 上传的img的最大的length
     index: 0,         // 上传完成的个数
+    startPage: 1,     //分页
+    recordNum: 20,
+    total: 0,
+    load: true,
   },
 
   /**
@@ -162,9 +166,7 @@ Page({
   catClick: function (event) {
     var _this = this;
     var sid = event.currentTarget.dataset.sid;
-    _this.setData({
-      currentTabsIndex: sid
-    })
+    
     if (sid == 1) {
       _this.setData({
         title: '添加学生'
@@ -174,7 +176,13 @@ Page({
       _this.setData({
         title: '学生管理'
       })
+      if (_this.data.currentTabsIndex!=2){
+        this.loadData();
+      }
     }
+    _this.setData({
+      currentTabsIndex: sid
+    })
   },
   submitInfo: function (e) {
     var studentName = this.data.studentName;
@@ -276,11 +284,53 @@ Page({
     var _this = this;
     util.request({
       url: 'wx/student/agency/' + _this.data.agencyId,
+      data: {
+        offset: _this.data.startPage,
+        pageSize: _this.data.recordNum
+      },
       method: 'POST',
       success: function (res) {
         if (res.data.ret == 1) {
           _this.setData({
-            students: res.data.data
+            students: res.data.data,
+            total:res.data.order
+          })
+        }
+      }
+    });
+  },
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    console.log(111)
+    var students = this.data.students.length;
+    if (!this.data.load || students >= this.data.total || this.data.currentTabsIndex==1) {
+      return;
+    }
+    this.setData({
+      load: false,
+    })
+    var _this = this;
+    var startPage = _this.data.startPage + 1;
+    util.request({
+      url: 'wx/student/agency/' + _this.data.agencyId,
+      showLoading: false,
+      data: {
+        offset: startPage,
+        pageSize: _this.data.recordNum
+      },
+      method: 'POST',
+      success: function (res) {
+        if (res.data.ret == 1) {
+          _this.setData({
+            students: _this.data.students.concat(res.data.data),
+            startPage: startPage,
+            load: true,
+          })
+        } else {
+          _this.setData({
+            load: true,
           })
         }
       }

@@ -146,20 +146,22 @@ Page({
   catClick: function (event) {
     var _this = this;
     var sid = event.currentTarget.dataset.sid;
-    _this.setData({
-      currentTabsIndex: sid
-    })
     if(sid == 1){
       _this.setData({
         title:'添加班级'
       })
     }
     if(sid==2){
-      this.loadData();
       _this.setData({
         title: '班级列表'
       })
+      if (_this.data.currentTabsIndex!=2){
+        _this.loadData();
+      }
     }
+    _this.setData({
+      currentTabsIndex: sid
+    })
   },
   loadData:function(e){ 
     var _this = this;

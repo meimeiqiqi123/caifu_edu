@@ -89,15 +89,16 @@
   <view class="header_s"> 
      <view class="ft fw title_content flex-center">{{title}}</view>                           
    </view>
-   <view id="panel" class="flex-column font24">
+   <view id="panel" class="flex-column font24" >
      <view class="flex-cell flex-row">
+       <text class="flex-cell flex-row text">序号</text>
        <text class="flex-cell flex-row text">学生姓名</text>
-      
        <text class="flex-cell flex-row text">联系方式</text>
        <text class="flex-cell flex-row text">编辑</text>
      </view>
      <view wx:for="{{students}}" wx:key="index">
         <view class="flex-row flex-cell line">
+         <text class="flex-cell flex-row ">{{index+1}}</text>
         <text class="flex-cell flex-row ">{{item.name}}</text>
           <!--<text class="flex-cell flex-row ">{{item.number}}</text>-->
           <text class="flex-cell flex-row ">{{item.phone}}</text>

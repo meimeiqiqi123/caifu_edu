@@ -141,20 +141,22 @@ Page({
   catClick: function (event) {
     var _this = this;
     var sid = event.currentTarget.dataset.sid;
-    _this.setData({
-      currentTabsIndex: sid
-    })
     if (sid == 1) {
       _this.setData({
         title: '添加课程'
       })
     }
     if (sid == 2) {
-      this.loadCourse();
       _this.setData({
         title: '课程列表'
       })
+      if (_this.data.currentTabsIndex!=2){
+        _this.loadCourse();
+      }
     }
+    _this.setData({
+      currentTabsIndex: sid
+    })
   },
   loadCourse: function (e) {
     var _this = this;

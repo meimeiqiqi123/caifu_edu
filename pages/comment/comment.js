@@ -100,7 +100,6 @@ Page({
     var _this = this;
     var user = wx.getStorageSync('userInfo').wxInfo;
     var userId = user.id;
-    var openid = user.openId;
     util.request({
       url: 'wx/comment/add/',
       header: {
@@ -109,16 +108,13 @@ Page({
       data: {
         orderId: _this.data.orderId,
         userId:userId,
-        openId: openid,
         content:_this.data.content,
-        hotelEnv: _this.data.hotelenv,
-        roomEnv: _this.data.roomenv,
-        roomDev: _this.data.roomdev
+        level: _this.data.hotelenv  
       },
       method: 'POST',
       success: function (res) {
-        wx.switchTab({
-          url: '../index/index',
+        wx.navigateTo({
+          url: '../myorder/myorder',
         })
       }
     })

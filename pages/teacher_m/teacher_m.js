@@ -137,9 +137,6 @@ Page({
   catClick: function (event) {
     var _this = this;
     var sid = event.currentTarget.dataset.sid;
-    _this.setData({
-      currentTabsIndex: sid
-    })
     if(sid == 1){
       _this.setData({
         title:'编辑老师信息',
@@ -154,16 +151,21 @@ Page({
      
     }
     if (sid == 2) {
-      this.loadTeacher();
       _this.setData({
         title: '老师列表'
       })
+      if (_this.data.currentTabsIndex!=2){
+        _this.loadTeacher();
+      }
     }
     if (sid == 3) {
       _this.setData({
         title: '考勤管理'
       })
     }
+    _this.setData({
+      currentTabsIndex: sid
+    })
   },
   loadTeacher: function (e) {
     var _this = this;

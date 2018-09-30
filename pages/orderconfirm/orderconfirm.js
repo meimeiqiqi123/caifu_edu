@@ -96,6 +96,7 @@ Page({
       this.beginPay(this.data.order, payment);
     }else{
       var courseId = this.data.order.courseId;
+      var agencyId = this.data.order.agencyId;
       var userinfo = wx.getStorageSync('userInfo');
       var totalPrice = this.data.order.totalPrice;
       if (userinfo && courseId) {
@@ -107,6 +108,7 @@ Page({
           },
           data: {
             courseId: courseId,
+            agencyId:agencyId,
             openId: userinfo.openid,
             totalPrice: totalPrice,
             orderType: this.data.order.orderType,

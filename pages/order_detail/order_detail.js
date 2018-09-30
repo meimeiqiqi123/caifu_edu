@@ -84,9 +84,8 @@ Page({
   },
   gotoComment: function (event) {
     var orderId = this.data.order.id;
-    var scaleId = this.data.order.scaleId;
     wx.navigateTo({
-      url: '../remark/remark?orderId=' + orderId + '&scaleId=' + scaleId,
+      url: '../comment/comment?orderId=' + orderId ,
     })
   },
   delOrder: function (e) {

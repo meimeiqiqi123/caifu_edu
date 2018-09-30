@@ -377,14 +377,14 @@
                           
                         </view>
                          <view class="tc" catchtap='addManager'>
-                          <view bindtap="teacherManager">                          
+                          <view >                          
                             <image class="title_image"   src="../../resource/images/u691.png"></image>
                           </view>
                           <view style="font-size:26rpx">老师</view>
                           
                         </view>
                         <view class="tc" catchtap='addGrade'>
-                          <view bindtap="gradeManager">
+                          <view >
                             <image class="title_image" src="../../resource/images/u89.png"></image>
                           </view>
                           <view style="font-size:26rpx" >班级</view>
@@ -392,7 +392,7 @@
                       
 
                         <view class="tc" catchtap='addStudent'>
-                          <view bindtap="studentManager">                          
+                          <view >                          
                             <image class="title_image"   src="../../resource/images/u61.png"></image>
                           </view>
                           <view style="font-size:26rpx">学生</view>
