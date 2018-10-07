@@ -1,12 +1,13 @@
 /* pages/bond/bond.wxss */
 .content{
-			background:linear-gradient(#00BFFF,#00ffff);
-			height: 100vh;
+			/*background:linear-gradient(#00BFFF,#00ffff);*/
+      background-color: #fff;
+			
 		}
 .caifu{
   padding-top: 20%;
   font-size: 52rpx;
-  color:#fff;
+  color:#000;
   text-align: center;
 }
 .add-page{
@@ -23,7 +24,7 @@
   align-items: center;
   height: 90rpx;
   padding: 0 20rpx;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid #cccccc;
   
 }
 .t-name,.t-code{
@@ -42,7 +43,7 @@
 .t-code .code button{
   width: 180rpx;
   height:60rpx;
-  background-color: #00ffff;
+  background-color: #f27d00;
   border-radius: 10rpx;
   font-size: 12px;
   line-height: 60rpx;
@@ -68,7 +69,7 @@
   text-align: center;
   font-size: 16px;
   border: 0 none;
-  background: #00ffff;
+  background: #f27d00;
   color: #fff;
   margin: 50rpx auto;
   border-radius: 50px;

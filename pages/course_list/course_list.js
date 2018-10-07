@@ -16,7 +16,7 @@ Page({
     currentCardId:0,
     year:0,
     month:0,
-
+    top:0,
   },
 
   /**
@@ -158,7 +158,7 @@ Page({
           _this.setData({
             lessons: lessons
           });
-          console.log(lessons)
+         //console.log(lessons)
         }
       }
     });
@@ -245,5 +245,6 @@ Page({
         }
       }
     });
-  }
+  },
+ 
 })

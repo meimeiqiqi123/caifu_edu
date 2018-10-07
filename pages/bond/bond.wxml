@@ -1,4 +1,3 @@
-<!--pages/bond/bond.wxml-->
 <view class="content">
 <view class="caifu">采赋</view>
 <view class="add-page">

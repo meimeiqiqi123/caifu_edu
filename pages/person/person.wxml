@@ -1,4 +1,4 @@
-<view class="container" wx:if="{{role==0}}">    
+<view class="container" wx:if="{{page==0}}">    
       <view class="header"> 
         <view class="userInfo">
         <block wx:if="{{userinfo}}">
@@ -8,7 +8,7 @@
               <view class="font26 fw">{{userinfo.nickName}}</view>            
             </view>    
             <view wx:if="{{userinfo.bond!=1}}" bindtap='bond' class="view_bu">绑定</view>      
-            <view wx:if="{{userinfo.role!=0}}" bindtap='switchRole' class="view_bu">切换角色</view>           
+            <!--<view wx:if="{{userinfo.role!=0}}" bindtap='switchRole' class="view_bu">切换角色</view>    -->       
           </view>
         
           <view class="font" style="margin-left:40rpx;margin-top:20rpx">
@@ -55,7 +55,7 @@
                 <view class="weui-cell__bd" wx:if="{{picNum==2}}">
                     <view class="profile">
                       <image class="image_cell_1" src="{{picUrl}}{{pics[0].picture.url}}" mode="aspectFill" catchtap='publish_p' data-id="0"></image>
-                      <image class="image_cell_1" src="{{picUrl}}{{pics[1].picture.url}}" mode="aspectFill" catchtap='publish_p' data-id="1"></image>
+                      <image class="image_cell_1" src="{{picUrl}}{{pics[1].picture.url}}" mode="aspectFill" catchtap='publish_p' style="border-left:2px solid #fff" data-id="1"></image>
                     </view>
                     
                 </view>   
@@ -64,8 +64,8 @@
                     <view class="profile">
                       <image class="image_cell_1" src="{{picUrl}}{{pics[0].picture.url}}" mode="aspectFill" catchtap='publish_p' data-id="0"></image>
                       <view class="right">
-                      <image class="image_cell_2" src="{{picUrl}}{{pics[1].picture.url}}" mode="aspectFill" catchtap='publish_p' data-id="1"></image>
-                      <image class="image_cell_2" src="{{picUrl}}{{pics[2].picture.url}}" mode="aspectFill" catchtap='publish_p' data-id="2"></image>
+                      <image class="image_cell_2" src="{{picUrl}}{{pics[1].picture.url}}" mode="aspectFill" catchtap='publish_p' data-id="1" style="border-left:2px solid #fff"></image>
+                      <image class="image_cell_2" src="{{picUrl}}{{pics[2].picture.url}}" mode="aspectFill" catchtap='publish_p' data-id="2" style="border-left:2px solid #fff;border-top:2px solid #fff"></image>
                       </view>
                     </view>
                    
@@ -156,7 +156,7 @@
   </view>
 
 
-<view class="container" wx:if="{{role==3}}">    
+<view class="container" wx:if="{{page==3}}">    
       <view class="header"> 
         <view class="userInfo bb">
           <view class="flex-around">
@@ -279,7 +279,7 @@
   </view>
 
 
-<view class="container" wx:if="{{role==1}}">    
+<view class="container" wx:if="{{page==1}}">    
       <view class="header"> 
         <view class="userInfo">
           <view class="flex-start">
@@ -431,7 +431,9 @@
 
 
 
-
+ <view class="com-widget-goTop" bindtap="switchRole" wx:if="{{role==1 || role==3}}">
+               <view>切换</view>
+      </view>
 
 
 
