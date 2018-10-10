@@ -1282,6 +1282,12 @@ form {
   justify-content: space-around;
   align-items: center;
 }
+.flex-wrap1{
+  display: flex;
+  
+  align-items: center;
+  flex-wrap:wrap;
+}
 .flex-start {
   display: flex;
   justify-content: flex-start;
