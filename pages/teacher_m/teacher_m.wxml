@@ -40,6 +40,14 @@
           <input class="weui-input" maxlength="15" placeholder="填写教龄" bindinput='changeAge' value="{{age}}" type="number" />
         </view>
       </view>
+      <view class="weui-cell weui-cell_input font28 ft-gray height90"> 
+         <view class="weui-cell__hd ">
+            <view class="weui-label font28">标签</view>
+          </view>     
+        <view class="weui-cell__bd font24">
+          <input class="weui-input" maxlength="32" placeholder="填写老师标签,以空格隔开" bindinput='changeLabel' value="{{label}}"/>
+        </view>
+      </view> 
      <view class="weui-cell weui-cell_input font28 ft-gray height90"> 
          <view class="weui-cell__hd ">
             <view class="weui-label font28">老师简介</view>
@@ -126,6 +134,27 @@
                  
 </view>
 </view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <tootip show="{{showtooltip}}" height='20%' >
    <view class="error_tooltips">{{tooltip}}</view>

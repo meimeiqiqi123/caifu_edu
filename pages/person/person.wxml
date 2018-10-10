@@ -166,10 +166,10 @@
               <view class="font">{{userinfo.manager.agency.name}}</view>
              
             </view>
-            <view>
-              <view class="font label label0">性格好</view>
-              <view class="font label label1">技术一流</view>
-              <view class="font label label2">认真负责</view>              
+            <view> 
+              <view class="font label label0">{{label[0]}}</view>
+              <view class="font label label1">{{label[1]}}</view>
+              <view class="font label label2">{{label[2]}}</view>              
             </view>          
           </view>
           <view class="font" style="margin-left:40rpx;">
@@ -200,7 +200,7 @@
                         <image class="weui_image" src="{{picUrl}}{{item.url}}" mode="aspectFill"></image>
                           <view class="zan">
                             <image class="zan_img" src="../../resource/images/index_33.png"></image>
-                            <view class="zan_title">{{item.up}}</view>
+                            <view class="zan_title">{{item.up?item.up:0}}</view>
                           </view>
                         </view>
                       </block>
@@ -283,7 +283,7 @@
       <view class="header"> 
         <view class="userInfo">
           <view class="flex-start">
-            <image class="image" src="{{userinfo.headUrl}}"/>
+            <image class="image" src="{{agencyLogo?agencyLogo:userinfo.headUrl}}" bindtap="chooseImage"/>
             <view  style="margin-left:10rpx;">
               <view class="font26 bold">{{userinfo.manager.agency.name}}</view>             
             </view>                  

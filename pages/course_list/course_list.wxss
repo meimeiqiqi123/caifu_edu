@@ -7,7 +7,6 @@
 .main-box{
     position: relative;
     width: 100%;
-    height: 1500rpx;
     display: flex;
     flex-direction: row;
     padding-bottom: 100rpx;
@@ -73,16 +72,13 @@
 .kb-ctn{
     flex: 1;
     width: 100%;
-    height: 1500rpx;
     display: flex;
     flex-direction: column;
     align-items: stretch;
    
 }
+
 .kb-title{
-    position: fixed;
-    top: 0;
-    left: 0;
     display: flex;
     width: 1000rpx;
     justify-content: space-around;
@@ -90,9 +86,8 @@
     background-color: #fff;
     padding-left: 10rpx;
     border-bottom: 1rpx solid #eee;
-    margin-left: 110rpx;
+    margin-left: 10rpx;
     color: #777;
-    z-index: 9999
 }
 .kb-date{
     color: #909090;
@@ -100,21 +95,18 @@
     
 }
 .kb-title-item{
-
    text-align: center;
     font-size: 9pt;
     line-height: 60rpx;
 }
 
 .kb-cards-ctn{
-    position: relative;
     width: 1000rpx;
-    height: 1500rpx;
     display: flex;
     margin-top: 60rpx;
-    padding-bottom: 100rpx;
     justify-content: space-between;
-    margin-left: 110rpx;
+    margin-left: 10rpx;
+     
 }
 .kb-cards-column{
     display: flex;
@@ -122,47 +114,19 @@
     width: 120rpx;
     height: 100%;
     margin-right: 10rpx;
-    text-align: center
+    text-align: center;
+   
 }
-
-
-.kb-timeline{
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    margin-top: -2rpx;
-    width: 220rpx;
-    height: 5rpx;
-    background: #0069d9;
-    z-index: 99;
-    opacity: .6;
-}
-.kb-timeline::before,
-.kb-timeline::after{
-    content: '';
-    position: absolute;
-    width: 5rpx;
-    height: 10rpx;
-    border-radius: 1rpx;
-    background: #0069d9;
-}
-.kb-timeline::before{
-    left: -3rpx;
-    top: -2rpx;
-}
-.kb-timeline::after{
-    right: -3rpx;
-    top: -2rpx;
-}
-
 .kb-card{
-    position: absolute;
     width: 150rpx;
     height:180rpx;
     border-radius: 5rpx;
-    background-color: #73b4ef;
-    margin-top: 10rpx
+    background-color: #7acfa6;
+    margin-top: 10rpx;
+    position: absolute
+}
+.nocard{
+  background: #fff;
 }
 .card1{
     margin-top: 10rpx

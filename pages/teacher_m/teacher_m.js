@@ -22,6 +22,7 @@ Page({
     selectname:'',
     title:'编辑老师信息',
     description:'',
+    label:'',
     age:'',
     arrimg: [],           // 上传img的attr     => 页面显示的img                  
     len: 1,              // 上传的img的最大的length
@@ -97,6 +98,7 @@ Page({
       phone: tea.phone,
       age:tea.age,
       description:tea.description,
+      label:tea.label,
       arrimg:arr,
       index:1,
       currentTabsIndex: 1,
@@ -144,6 +146,7 @@ Page({
         phone: '',
         age: '',
         description: '',
+        label:'',
         arrimg: [],
         index: 0,
         currentId: 0,
@@ -185,6 +188,11 @@ Page({
   changeDes: function (e) {
     this.setData({
       description: e.detail.value
+    })
+  },
+  changeLabel: function (e) {
+    this.setData({
+      label: e.detail.value
     })
   },
   changeName: function (e) {
@@ -291,6 +299,7 @@ Page({
       return;
     }
     var description = this.data.description;
+    var label = this.data.label;
     this.setData({
       subdisabled: true
     })
@@ -310,6 +319,7 @@ Page({
         phone: phone,
         agencyId: _this.data.agencyId,
         description: description,
+        label:label,
         age: age
       },
       success: function (res) {
@@ -335,6 +345,7 @@ Page({
               phone: '',
               age: '',
               description: '',
+              label:'',
               arrimg: [],
               index: 0,
               currentId: 0,
@@ -362,6 +373,7 @@ Page({
               name: teacherName,
               phone: phone,
               description: description,
+              label:label,
               age: age
               },
             showLoading:false,

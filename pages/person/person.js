@@ -21,6 +21,7 @@ Page({
     length1: 0,
     length2: 0,
     agencyId: null,
+    agencyLogo:'',
     list: [
       {
         id: 1,
@@ -92,9 +93,15 @@ Page({
           success: function (res) {
             if (res.data.ret == 1) {
               var userinfo = res.data.data;
+              var label = [];
+              if (userinfo.manager.label){
+                label = userinfo.manager.label.split(" ");
+              }
               _this.setData({
                 userinfo: userinfo,
-                agencyId: userinfo.manager.agencyId
+                agencyId: userinfo.manager.agencyId,
+                agencyLogo: config.picUrl + userinfo.manager.agency.logo,
+                label: label
               })
               
             }
@@ -262,8 +269,8 @@ Page({
           }
           if (zans) {
             _this.setData({
-              zan: zans.up,
-              count: zans.count
+              zan: zans.up ? zans.up:0,
+              count: zans.count ? zans.count:0
             })
           }
           if (fans) {
@@ -473,4 +480,39 @@ Page({
     }
     
   },
+  chooseImage: function () {   // 上传的fn
+    var _this = this;
+    // 调取手机的上传
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {       // 成功
+        var tempFilePaths = res.tempFilePaths[0].toString();
+        if (tempFilePaths) {
+          //上传
+          // 提交信息
+          wx.uploadFile({
+            url: config.requestUrl + 'wx/agency/logo/' + _this.data.agencyId,
+            filePath: tempFilePaths,
+            name: 'imageFile',
+            success: function (res) {
+              var data = JSON.parse(res.data);
+              if (data.ret == 1) {
+                _this.setData({
+                  agencyLogo: config.picUrl + data.data
+                })
+                wx.showToast({
+                  title: '上传成功',
+                  icon: 'success',
+                  duration: 2000
+                })
+              } 
+            },
+          });
+
+        }
+      }
+    })
+  }
 })

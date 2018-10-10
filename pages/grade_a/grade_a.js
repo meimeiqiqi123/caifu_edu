@@ -1,3 +1,5 @@
+const TITLE_HEIGHT = 30
+const config = require('../../utils/config.js');
 const app = getApp();
 const util = require('../../utils/util.js');
 Page({
@@ -6,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    picUrl:config.picUrl,
     currentTabsIndex:1,
     gradeName:'',
     gradeNumber:'',
@@ -20,8 +23,15 @@ Page({
     subdisabled:false,
     selectIds: '',
     selectname: '',
-    teachers:null,
-    title:'添加班级'
+    teachers:[],
+    title:'添加班级',
+    animationData: '',
+    showModalStatus: false,
+    t_list:[],
+    toView: '',
+    scrollTop: 0,
+    listHeight: [],
+    currentTIndex: 0,
   },
 
   /**
@@ -87,11 +97,6 @@ Page({
     var index = e.currentTarget.dataset.id;
     var grade = this.data.grades[index];
 
-
-
-
-
-    
   },
   courseChange: function (e) {
     var courses_index = e.detail.value;
@@ -107,7 +112,6 @@ Page({
       method: 'POST',
       success: function (res) {
         if (res.data.ret == 1) {
-          
           if (res.data.data.length>0){
             _this.setData({
               courses: res.data.data,
@@ -274,21 +278,40 @@ Page({
       }
     });
   },
+  returnb:function(e){
+    this.hideModal();
+  },
   selectTeacher: function (e) {
-    this.setData({
-      showselector: true
-    })
+    if(this.data.teachers.length>0){
+      this.setData({
+        t_list: this._normalizeSinger(this.data.teachers),
+      })
+      this.showModal();
+      this._calculateHeight();
+    }else{
+      this.setData({
+        showtooltip: true,
+        tooltip: '暂无老师'
+      })
+      return;
+    }
+
   },
   selectThis: function (e) {
     var teachers = this.data.teachers;
     var id = e.currentTarget.dataset.id;
     for (var i = 0; i < teachers.length; i++) {
       if (id == teachers[i].id) {
-        teachers[i].check = true
+        if (teachers[i].check){
+          teachers[i].check = false
+        }else{
+          teachers[i].check = true
+        }
       }
     }
     this.setData({
-      teachers: teachers
+      teachers: teachers,
+      t_list: this._normalizeSinger(teachers),
     })
   },
   delThis: function (e) {
@@ -317,5 +340,156 @@ Page({
       selectIds: selectIds.join(","),
       selectname: selectname.join(",")
     })
+    this.hideModal();
   },
+
+  //选择老师列表 仿微信通信录
+  _normalizeSinger:function(list) {
+    //歌手列表渲染
+    let map = {
+
+    }
+    list.forEach((item, index) => {
+      const key = item.surname
+      if (!map[key]) {
+        map[key] = {
+          title: key,
+          items: []
+        }
+      }
+      map[key].items.push({
+        name: item.name,
+        avatar: item.headUrl,
+        id:item.id,
+        check:item.check
+      })
+    })
+    // 为了得到有序列表，我们需要处理 map
+    let ret = []
+    for (let key in map) {
+      let val = map[key]
+      if (val.title.match(/[a-zA-Z]/)) {
+        ret.push(val)
+      }
+    }
+    ret.sort((a, b) => {
+      return a.title.charCodeAt(0) - b.title.charCodeAt(0)
+    })
+    return ret
+  },
+  scroll: function (e) {
+    var newY = e.detail.scrollTop;
+    this.scrollY(newY);
+  },
+  scrollY:function(newY) {
+    const listHeight = this.data.listHeight;
+    // 当滚动到顶部，newY>0
+    if (newY == 0 || newY < 0) {
+      this.setData({
+        currentTIndex: 0,
+        fixedTitle: ''
+      })
+      return
+    }
+    // 在中间部分滚动
+    for (let i = 0; i < listHeight.length - 1; i++) {
+      let height1 = listHeight[i]
+      let height2 = listHeight[i + 1]
+      if (newY >= height1 && newY < height2) {
+        this.setData({
+          currentTIndex: i,
+          fixedTitle: this.data.t_list[i].title
+        })
+        this.fixedTt(height2 - newY);
+        return
+      }
+    }
+    // 当滚动到底部，且-newY大于最后一个元素的上限
+    this.setData({
+      currentTIndex: listHeight.length - 2,
+      fixedTitle: this.data.t_list[listHeight.length - 2].title
+    })
+  },
+  fixedTt: function(newVal) {
+    let fixedTop = (newVal > 0 && newVal < TITLE_HEIGHT) ? newVal - TITLE_HEIGHT : 0
+    if (this.data.fixedTop === fixedTop) {
+      return
+    }
+    this.setData({
+      fixedTop: fixedTop
+    })
+  },
+  _calculateHeight: function() {
+    var lHeight = [],
+      that = this;
+    let height = 0;
+    lHeight.push(height);
+    var query = wx.createSelectorQuery();
+    query.selectAll('.list-group').boundingClientRect(function (rects) {
+      var rect = rects,
+        len = rect.length;
+      for (let i = 0; i < len; i++) {
+        height += rect[i].height;
+        lHeight.push(height)
+      }
+
+    }).exec();
+    var calHeight = setInterval(function () {
+      if (lHeight != [0]) {
+        that.setData({
+          listHeight: lHeight
+        });
+        clearInterval(calHeight);
+      }
+    }, 1000)
+  },
+  scrollToview: function(e) {
+    var id = e.target.dataset.id;
+    this.setData({
+      toView: id
+    })
+
+  },
+
+  showModal: function () {
+    var animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    animation.translateY(300).step()
+    this.setData({
+      animationData: animation.export(),
+      showModalStatus: true
+    })
+    this._calculateHeight();
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export()
+      })
+    }.bind(this), 200)
+    
+  },
+  hideModal: function () {
+    var animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    animation.translateY(300).step()
+    this.setData({
+      animationData: animation.export(),
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export(),
+        showModalStatus: false
+      })
+    }.bind(this), 200)
+  },
+
 })

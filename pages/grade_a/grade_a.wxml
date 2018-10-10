@@ -1,4 +1,4 @@
-<view class="cate">
+<view class="cate" wx:if="{{!showModalStatus}}">
     <view class="cate-item {{currentTabsIndex==1?'hover':''}}" bindtap="catClick"  data-sid='1'> 
      编辑班级
   </view>
@@ -7,8 +7,7 @@
   </view>
 </view>
 
-<view class="container1" wx:if="{{currentTabsIndex==1}}">
-  <view>
+<view class="container1" wx:if="{{currentTabsIndex==1 && !showModalStatus}}">
   <view class="header_s"> 
      <view class="ft fw title_content flex-center">{{title}}</view>                            
    </view>
@@ -57,10 +56,9 @@
         <button class='button' disabled="{{subdisabled}}" >保存</button>
       </view>
 </view>
-</view>
  
 
-<view class="container1" wx:if="{{currentTabsIndex==2}}">
+<view class="container1" wx:if="{{currentTabsIndex==2 && !showModalStatus}}">
   <view class="page">
   <view class="header_s"> 
      <view class="ft fw title_content flex-center">{{title}}</view>                           
@@ -87,7 +85,30 @@
                  
 </view>
 </view>
-
+<!-- 老师列表 仿微信通信录-->
+<scroll-view scroll-y style="height:100%;white-space:nowrap;" scroll-into-view="{{toView}}" enable-back-to-top bindscroll="scroll" scroll-with-animation scroll-top="{{scrollTop}}" wx:if="{{showModalStatus}}" animation="{{animationData}}">
+  <view class="list-group" wx:for="{{t_list}}"  wx:key="{{index}}">
+    <view class="title" id="{{item.title}}">{{item.title}}</view>
+    <block wx:for="{{item.items}}" wx:for-item="user"  wx:key="{{index}}">
+      <view class="list-group-item {{user.check?'b_green':''}}" data-id='{{user.id}}' bindtap='selectThis'>
+        <image class="icon" src="{{picUrl}}{{user.avatar}}" lazy-load="true"></image>
+        <text class="log-item">{{user.name}}</text>
+      </view>
+    </block>
+  </view>
+</scroll-view>
+  <!-- 侧边字母导航 -->
+  <view class="list-shortcut" wx:if="{{showModalStatus}}">
+    <block wx:for="{{t_list}}" wx:key="{{index}}">
+      <text class="{{currentTIndex===index?'current':''}}" data-id="{{item.title}}" bindtap='scrollToview'>{{item.title}}</text>
+    </block>
+  </view>
+  <view class="confirm"  bindtap="confirmSelect" wx:if="{{showModalStatus}}">
+      <view >确定</view>
+  </view>
+  <view class="return"  bindtap="returnb" wx:if="{{showModalStatus}}">
+      <view >返回</view>
+  </view>
 
 
 <tootip show="{{showtooltip}}" height='20%' >
@@ -97,19 +118,3 @@
    <view class="error_tooltips">{{tooltip}}</view>
  </modal>
 
- <selector show="{{showselector}}" height='50%' bindconfirm='confirmSelect' >
-    <block wx:for="{{teachers}}" wx:key="item">
-      <view class='select'>
-        <view class="left">
-        <block wx-if="{{!item.check}}">
-          <view class='icon_none' catchtap='selectThis' data-id='{{item.id}}'></view>
-        </block>
-        <block wx-if="{{item.check}}">
-           <icon type="success" size="20" color="green" catchtap='delThis' data-id='{{item.id}}' />
-        </block>
-        </view>
-        <view class="content">{{item.name}}</view>
-      </view>
-    </block>
-   
- </selector>

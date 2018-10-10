@@ -10,7 +10,6 @@
                   <view class="des" >
                     <view class="font fw">{{userinfo.manager.name}}</view>
                     <view class="font">{{userinfo.manager.agency.name}}</view>
-                    <view class="font">{{userinfo.manager.description}}</view>
                   </view>
                   <view class="guanzhu" bindtap='guanzhu' wx:if="{{!fan}}">
                     <button class="weui-btn weui-btn_mini weui-btn_primary font">+关注</button>
@@ -21,7 +20,7 @@
                 </view>
                 <view class="font" style="margin-left:40rpx;">
                   <view>采赋号：{{sn}}</view>
-                  <text class="font-gray">个人简介： 怡丰最受欢迎的足球教练</text>
+                  <text class="font-gray">个人简介： {{userinfo.manager.description}}</text>
                   <text class="appreciates">获赞：{{zan}}</text>
                 </view>
               </view>      

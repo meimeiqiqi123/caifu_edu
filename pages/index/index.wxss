@@ -1,7 +1,7 @@
-/**index.wxss**/
 .page{
   height:100%;
-  width: 100%
+  width: 100%;
+  overflow: hidden
 }
 .cover{
   width: 100%;

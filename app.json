@@ -27,6 +27,7 @@
     "pages/orderconfirm/orderconfirm",
     "pages/search/search",
     "pages/order_detail/order_detail"
+    
   ],
   "window": {
     "navigationBarTextStyle": "black",

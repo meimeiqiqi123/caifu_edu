@@ -143,7 +143,6 @@ Page({
           _this.setData({
             fansList: res.data.data
           })
-          console.log(res.data.data)
         }
       }
     });

@@ -7,7 +7,7 @@
       <button class="weui-btn weui-btn_mini weui-btn_primary btn_course title" wx:else></button>  -->
     </view> 
     <view class="ft flex-around">
-      已报名：<text class="title fw">{{course.num}}</text>
+      已报名：<text class="title fw">{{course.num?course.num:0}}</text>
       <button class="weui-btn btn"> 报名 </button>       
     </view>   
   </view>
