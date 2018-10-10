@@ -13,7 +13,7 @@ Page({
     courses:null,
     fan:false,
     userinfo:null,
-    topics:null,
+    topics:[],
     fansList:null,
     currentData: 0,
     top: 0,
@@ -260,5 +260,18 @@ Page({
       return;
     }
     
-  }
+  },
+  previewImage: function (e) {
+    var current = e.target.dataset.src;
+    var images = [];
+    var topics = this.data.topics;
+    topics.forEach((item, index) => {
+      images.push(this.data.picUrl + item.url)
+
+    })
+    wx.previewImage({
+      current: current, // 当前显示图片的http链接		  	
+      urls: images // 需要预览的图片http链接列表		
+    })
+  }  
 })
