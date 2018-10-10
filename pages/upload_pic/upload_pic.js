@@ -171,7 +171,7 @@ Page({
     });
     var _this = this;
     for(var i = 0; i < arrimg.length;i++){
-      var path = arrimg[0];
+      var path = arrimg[i];
       var index = 0;
       if (i == arrimg.length-1){
         index = 1

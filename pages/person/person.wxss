@@ -290,3 +290,20 @@ text-align: center;
 .wire{
   border-bottom:1px solid #cccccc;
 }
+
+.com-widget-goTop { 
+position: fixed; 
+width: 80rpx;
+height: 80rpx;
+bottom: 30rpx; 
+right: 5px; 
+background: rgba(0,0,0,0.48); 
+border-radius: 50%; 
+overflow: hidden; 
+z-index: 500; 
+word-break: break-all;
+line-height: 80rpx;
+font-size: 24rpx; 
+color: #ffffff; 
+text-align: center;
+} 

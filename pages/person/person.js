@@ -60,7 +60,8 @@ Page({
         m: '0%'
       }
     ],
-    role:0
+    role:0,
+    page:0
   },
 
   /**
@@ -73,7 +74,8 @@ Page({
       var user = userinfo.wxInfo;
       var role = user.role;
       _this.setData({
-        role: role
+        role: role,
+        page:role
       })
       if (user.phone) {
         var sn = user.phone.substring(0, 3) + "****" + user.phone.substring(7, 11);
@@ -238,17 +240,30 @@ Page({
     })
   },
   switchRole:function(e){
-    var role = this.data.userinfo.role;
-    if(role == 3){
-      wx.navigateTo({
-        url: '../teacher/teacher',
-      })
+    var role = this.data.role;
+    var page = this.data.page;
+    if(role == 1){
+      if(page == 0){
+        this.setData({
+          page:1
+        })
+      }else{
+        this.setData({
+          page:0
+        })
+      }
     }else if(role == 2){
 
-    }else if(role == 1){
-      wx.navigateTo({
-        url: '../agency/agency',
-      })
+    }else if(role == 3){
+      if (page == 0) {
+        this.setData({
+          page: 3
+        })
+      } else {
+        this.setData({
+          page: 0
+        })
+      }
     }
   },
   getPersons: function (userId){

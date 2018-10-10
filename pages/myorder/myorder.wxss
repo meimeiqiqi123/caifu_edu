@@ -9,6 +9,7 @@ page{
 .blank .des{
   margin-top: 20rpx;
   text-align: center;
+  font-size: 24rpx
 }
 .blank .cart-image {
   width: 80px;
