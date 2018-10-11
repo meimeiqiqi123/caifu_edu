@@ -188,7 +188,7 @@ Page({
     })
   },
   topnav: function (e) {
-    if (this.data.currentData != 0 && this.data.top > 100) {
+    if (this.data.currentData != 0 && this.data.top > 300) {
       this.setData({
         topnav: true
       })
@@ -211,7 +211,6 @@ Page({
   },
 
   scrollTopFun: function (e) {
-    console.log(e.detail.scrollTop);
     this.setData({
       top: e.detail.scrollTop
     })

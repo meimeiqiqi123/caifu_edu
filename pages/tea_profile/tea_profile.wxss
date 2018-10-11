@@ -75,7 +75,8 @@
   padding: 80rpx 0;
 }
 .appreciates {
-  margin-left: 128rpx;
+  float: right;
+  margin-right: 30rpx;
   font-size: 26rpx;
   color: #FFFF00;
 }

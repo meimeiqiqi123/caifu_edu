@@ -1,6 +1,9 @@
 .tc{
    position:relative;
  }
+ .page_body{
+   width: 33.3%
+ }
  image{
   width:247rpx;
   height:290rpx;
