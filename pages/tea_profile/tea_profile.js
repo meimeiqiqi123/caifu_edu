@@ -129,6 +129,7 @@ Page({
           _this.setData({
             topics:res.data.data
           })
+          console.log(_this.data.topics)
         }
       }
     });
