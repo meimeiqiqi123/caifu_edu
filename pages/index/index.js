@@ -70,7 +70,7 @@ Page({
                 iszan:true
               })
             }
-            _this.getRecords(currentId);
+            //_this.getRecords(currentId);
            // _this.getUserRecord(currentId)
           }
         }

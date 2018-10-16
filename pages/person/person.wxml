@@ -283,7 +283,7 @@
       <view class="header"> 
         <view class="userInfo">
           <view class="flex-start">
-            <image class="image" src="{{agencyLogo?agencyLogo:userinfo.headUrl}}" bindtap="chooseImage"/>
+            <image class="image" src="{{agencyLogo}}" bindtap="chooseImage"/>
             <view  style="margin-left:10rpx;">
               <view class="font26 bold">{{userinfo.manager.agency.name}}</view>             
             </view>                  

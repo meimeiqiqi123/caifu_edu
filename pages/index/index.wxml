@@ -4,7 +4,7 @@
                     bindload='imgHeight' data-id="{{item.id}}"></image>
         </swiper-item>
 </swiper>
-    <view class='comment' wx:if="{{currentId != 0}}">
+    <!--<view class='comment' wx:if="{{currentId != 0}}">
     <view class="toux"><image src="../../resource/images/index_1.png"></image></view>
     <swiper autoplay="true" interval="3000" duration="1200"  class="com_swp">
           <swiper-item wx:for="{{records}}" wx:key="{{index}}"  item-id="{{item.id}}">
@@ -12,7 +12,7 @@
             </swiper-item>
     </swiper>
     <view class="mine" bindtap="sendMessage"><text>我想说</text></view> 
-    </view>
+    </view>-->
 
   <view class="music" wx:if="{{currentId != 0}}" bindtap='musicChange'>
       <image class="avatar" src="../../resource/images/music_on.png" wx:if="{{musicon}}"></image>

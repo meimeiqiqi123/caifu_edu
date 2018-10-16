@@ -72,56 +72,59 @@ Page({
     var userinfo = wx.getStorageSync('userInfo');
     if(userinfo){
       var user = userinfo.wxInfo;
-      var role = user.role;
-      _this.setData({
-        role: role,
-        page:role
-      })
-      if (user.phone) {
-        var sn = user.phone.substring(0, 3) + "****" + user.phone.substring(7, 11);
-        _this.setData({
-          sn: sn
-        })
-      }
-      if(role == 0){
-        _this.setData({
-          userinfo: user
-        })
-        _this.getPersons(user.id);
-      }else if(role == 1 || role == 3){
-        util.request({
-          url: 'wx/user/agency/' + user.id,
-          method: 'POST',
-          success: function (res) {
-            if (res.data.ret == 1) {
-              var userinfo = res.data.data;
-              var label = [];
-              if (userinfo.manager.label){
-                label = userinfo.manager.label.split(" ");
-              }
+      util.request({
+        url: 'wx/user/' + user.id,
+        method: 'POST',
+        success: function (res) {
+          if (res.data.ret == 1) {
+            var userinfo = res.data.data;
+            var role = userinfo.role;
+            _this.setData({
+              userinfo: userinfo,
+              role: role,
+              page: role
+            })
+            if (userinfo.phone) {
+              var sn = userinfo.phone.substring(0, 3) + "****" + userinfo.phone.substring(7, 11);
               _this.setData({
-                userinfo: userinfo,
-                agencyId: userinfo.manager.agencyId,
-                agencyLogo: config.picUrl + userinfo.manager.agency.logo,
-                label: label
+                sn: sn
               })
-              
+            }
+            _this.getPersons(user.id);
+            if(role == 1 || role ==3){
+              util.request({
+                url: 'wx/user/agency/' + user.id,
+                method: 'POST',
+                success: function (res) {
+                  if (res.data.ret == 1) {
+                    var userinfo = res.data.data;
+                    var label = [];
+                    if (userinfo.manager.label) {
+                      label = userinfo.manager.label.split(" ");
+                    }
+                    var logo = userinfo.manager.agency.logo;
+                    if(logo){
+                      logo = config.picUrl + logo
+                    }else{
+                      logo = userinfo.headUrl
+                    }
+                    _this.setData({
+                      userinfo: userinfo,
+                      agencyId: userinfo.manager.agencyId,
+                      agencyLogo: logo,
+                      label: label
+                    })
+                  }
+                }
+              });
+              _this.getCourseCount(user.id);
+              _this.getStudentCount(user.id);
+              _this.getTopics(user.id);
             }
           }
-        });
-        if(role == 3){
-          _this.getPersons(user.id);
-          _this.getCourseCount(user.id);
-          _this.getStudentCount(user.id);
-          _this.getTopics(user.id);
         }
-        
-      }
-      
+      });
     }
-   
-    
-    
   },
 
   /**
