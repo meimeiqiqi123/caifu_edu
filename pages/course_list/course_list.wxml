@@ -35,7 +35,7 @@
                     <!-- 每一列为一组 -->
                     <view class="kb-cards-column" wx:for="{{lessons}}" wx:key="{{day}}" wx:for-item="day_lesson" wx:for-index="day">                              
                         <!-- 循环当天的课 -->                      
-                        <view class="kb-card card{{item.scale}} " wx:for="{{day_lesson.cards}}" wx:key="{{item.id}}" >
+                        <view class="kb-card card{{item.scale-scale}} "  wx:for="{{day_lesson.cards}}" wx:key="{{item.id}}" >
                               <view wx:if="{{item.time}}">                                
                                  <view class="kb-card-name">
                                       <text class="kb-card-name-text" >{{item.courseName}}</text>

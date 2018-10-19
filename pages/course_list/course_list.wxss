@@ -104,7 +104,7 @@
 .kb-cards-ctn{
     width: 1000rpx;
     display: flex;
-    margin-top: 60rpx;
+    margin-top: 20rpx;
     justify-content: space-between;
     margin-left: 10rpx;
      

@@ -17,6 +17,7 @@ Page({
     year: 0,
     month: 0,
     top: 0,
+    scale:0      //最早的一门课
 
   },
 
@@ -156,8 +157,11 @@ Page({
         if (res.data.ret == 1) {
           var lessons = res.data.data;
           _this.setData({
-            lessons: lessons
+            lessons: lessons,
+            scale:res.data.order-1
           });
+          //console.log(lessons)
+
         }
       }
     });
