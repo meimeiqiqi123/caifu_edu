@@ -1,0 +1,46 @@
+<view class="order_header header_b_color weui-cell__bd ">
+    <view class="header_item">
+      <view class="orcount bold">0</view>
+      <view class="title">今日订单</view>
+    </view>
+    <view class="header_item">
+      <view class="orcount bold">0</view>
+      <view class="title">今日收入</view>
+    </view>
+</view>
+
+<view class="cate" >
+  <view class="cate-item {{currentTabsIndex==1?'hover':''}}" bindtap="catClick"  data-sid='1'> 
+     体验课
+  </view>
+  <view class="cate-item {{currentTabsIndex==2?'hover':''}}" bindtap="catClick" data-sid='2'> 
+      团购课
+  </view>
+   <view class="cate-item {{currentTabsIndex==3?'hover':''}}" bindtap="catClick" data-sid='3'> 
+      单独购
+  </view>
+</view>
+
+<scroll-view scroll-y="true" style='height:100%' >
+
+  <view class="order">
+    <view class="order_h" >
+      <view class="order_no">订单号：</view>
+      <view class="info">
+        <view class="user">dddd</view>
+        <view class="phone">电话</view>
+      </view>
+    </view>
+     <view class="order_c">
+      <image src='' class="pic" mode="aspectFill" ></image>
+      <view class="content">
+        <view class="name">ssss</view>
+        <view class="price">¥<text style='font-size:32rpx;font-weight:bold'>100</text></view>
+        <view class="verfy">
+          <view class="butt b_color">验证</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</scroll-view>

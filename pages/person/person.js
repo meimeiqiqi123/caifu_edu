@@ -532,5 +532,15 @@ Page({
         }
       }
     })
+  },
+  gotoOrder:function(e){
+    var status = e.currentTarget.dataset.status;
+    var agencyId = this.data.agencyId;
+    if(agencyId){
+      wx.navigateTo({
+        url: '../agency_order/agency_order?status=' + status + '&agencyId=' + agencyId,
+      })
+    }
+    
   }
 })

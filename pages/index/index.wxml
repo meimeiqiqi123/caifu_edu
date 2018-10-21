@@ -1,4 +1,4 @@
-<swiper duration="500" bindchange="changeScale" style='height:{{Height}};' circular='false'>
+<swiper duration="500" bindchange="changeScale" style='height:{{Height}};' circular='false' vertical="true">
       <swiper-item wx:for="{{topics}}" wx:key="{{index}}"  item-id="{{index}}">
           <image class="cover" src="{{picUrl}}{{item.url}}"  mode="aspectFill"           
                     bindload='imgHeight' data-id="{{item.id}}"></image>

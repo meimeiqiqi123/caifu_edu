@@ -1,0 +1,151 @@
+<view class="container" wx:if="{{page==1}}">    
+      <view class="header header_b_color"> 
+        <view class="agency_header">
+          <view class="header-left">
+            <view  style="margin-left:10rpx;">
+              <view class="font26 bold">{{userinfo.manager.agency.name}}</view>  
+              <view class="font">采赋号：
+               {{userinfo.manager.agency.number}}</view>
+              <view class="font">
+                机构简介：{{userinfo.manager.agency.description}}
+              </view>            
+            </view>                  
+          </view>
+          <view class="header-right font" style="margin-left:40rpx;">
+              <image class="image" src="{{agencyLogo}}" bindtap="chooseImage"/>
+          </view>
+      </view>
+      </view>
+
+      <view class="weui-cells ">            
+        <view class="weui-cell weui-cell_access ft">
+              <view class="weui-cell__bd">
+                  <view class="ft fw">昨日指标</view>
+              </view>
+              <view class="weui-cell__ft font24" bindtap="jumppage">{{look_all}}</view>
+          </view>
+
+          <view class="weui-cell">
+              <view class="weui-cell__bd">
+                  <block wx:for="{{list}}" wx:key="index" index="index" item="item">
+                    <view class="inline font24">
+                      <view class="border {{index == list.length-1 ? 'border1': ''}}">
+                        <view>
+                          <view>
+                            {{item.title}}
+                          </view>
+
+                          <view>
+                            {{item.subtitle}}
+                          </view>
+                        </view>
+                        <view class="font40 fw">
+                          {{item.content}}
+                        </view>
+                        <view style="font-size:20rpx; text-align:left; margin-bottom:15px;">
+                          <view class="height30">
+                            <text class="inlilne">日</text>
+                            <image style="width:20rpx;height:20rpx" src="../../resource/images/up.png"></image>
+                            <text class="inline">
+                              {{item.d}}
+                            </text> 
+                          </view>
+                          <view  class="height30">
+                            <text class="inline">周</text>
+                            <image style="width:20rpx;height:20rpx" src="../../resource/images/up.png"></image>
+                            <text class="inline">
+                              {{item.w}}
+                            </text> 
+                          </view>
+
+                          <view class="height30">
+                            <text class="inline">月</text>
+                            <image style="width:20rpx;height:20rpx" src="../../resource/images/down.png"></image>
+                            <text class="inline">
+                              {{item.m}}
+                            </text> 
+                          </view>                             
+                        </view>
+                      </view>                                                               
+                    </view>                        
+                  </block>
+              </view>
+                                          
+          </view>
+        </view>
+        
+
+        <view class="weui-cells">            
+          <view class="weui-cell weui-cell_access ft">
+                <view class="weui-cell__bd">
+                    <view class="ft fw">日常管理</view>
+                </view>                      
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__bd flex-around listheight">
+                <view class="tc" catchtap="addCourse">
+                  <view >                          
+                    <image class="title_image"   src="../../resource/images/u73.png"></image>
+                  </view>
+                  <view style="font-size:26rpx">课程</view>
+                </view>
+                  <view class="tc" catchtap='addManager'>
+                  <view >                          
+                    <image class="title_image"   src="../../resource/images/u691.png"></image>
+                  </view>
+                  <view style="font-size:26rpx">老师</view>
+                </view>
+                <view class="tc" catchtap='addGrade'>
+                  <view >
+                    <image class="title_image" src="../../resource/images/u89.png"></image>
+                  </view>
+                  <view style="font-size:26rpx" >班级</view>
+                </view>
+                <view class="tc" catchtap='addStudent'>
+                  <view >                          
+                    <image class="title_image"   src="../../resource/images/u61.png"></image>
+                  </view>
+                  <view style="font-size:26rpx">学生</view>
+                </view>                      
+            </view>                  
+          </view>
+        </view>            
+
+        <view class="weui-cells">            
+          <view class="weui-cell weui-cell_access ft">
+                <view class="weui-cell__bd">
+                    <view class="ft fw">订单管理</view>
+                </view>                      
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__bd flex-around listheight">
+                <view class="tc" catchtap="addCourse">
+                  <view >                          
+                    <image class="title_image"   src="../../resource/images/u73.png"></image>
+                  </view>
+                  <view style="font-size:26rpx">已购买</view>
+                </view>
+                  <view class="tc" catchtap='addManager'>
+                  <view >                          
+                    <image class="title_image"   src="../../resource/images/u691.png"></image>
+                  </view>
+                  <view style="font-size:26rpx">已消费</view>
+                </view>
+                <view class="tc" catchtap='addGrade'>
+                  <view >
+                    <image class="title_image" src="../../resource/images/u89.png"></image>
+                  </view>
+                  <view style="font-size:26rpx" >待消费</view>
+                </view>
+                <view class="tc" catchtap='addStudent'>
+                  <view >                          
+                    <image class="title_image"   src="../../resource/images/u61.png"></image>
+                  </view>
+                  <view style="font-size:26rpx">已评价</view>
+                </view>                      
+            </view>                  
+          </view>
+        </view>         
+                                      
+          
+  </view>

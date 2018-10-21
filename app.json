@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/agency_order/agency_order",
+    "pages/temp/temp",
     "pages/course_list/course_list",
     "pages/course_detail/course_detail",
     "pages/courses/courses",
@@ -27,7 +29,6 @@
     "pages/orderconfirm/orderconfirm",
     "pages/search/search",
     "pages/order_detail/order_detail"
-    
   ],
   "window": {
     "navigationBarTextStyle": "black",
