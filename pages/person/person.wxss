@@ -117,11 +117,6 @@
   width: 480rpx;
   height: 280rpx;
 }
-.title_image{
-  width: 50rpx;
-  height: 50rpx;
-}
-
 .tc{
 text-align: center;
 }
@@ -249,8 +244,8 @@ text-align: center;
   vertical-align: middle
 }
 .title_image{
-  width: 70rpx;
-  height: 70rpx;
+  width: 60rpx;
+  height: 60rpx;
 }
 .title_image1{
   width: 68rpx;
