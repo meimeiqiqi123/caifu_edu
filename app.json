@@ -28,7 +28,8 @@
     "pages/paysuccess/paysuccess",
     "pages/orderconfirm/orderconfirm",
     "pages/search/search",
-    "pages/order_detail/order_detail"
+    "pages/order_detail/order_detail",
+    "pages/agency_comment/agency_comment"
   ],
   "window": {
     "navigationBarTextStyle": "black",

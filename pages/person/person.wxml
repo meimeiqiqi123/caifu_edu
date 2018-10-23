@@ -1,5 +1,5 @@
 <view class="container" wx:if="{{page==0}}">    
-      <view class="header"> 
+      <view class="header" style='padding-bottom:80rpx'> 
         <view class="userInfo">
         <block wx:if="{{userinfo}}">
           <view class="flex-start">
@@ -157,7 +157,7 @@
 
 
 <view class="container" wx:if="{{page==3}}">    
-      <view class="header"> 
+      <view class="header" style='padding-bottom:80rpx'> 
         <view class="userInfo bb">
           <view class="flex-around">
             <image class="image2" src="{{picUrl}}{{userinfo.manager.headUrl}}"/>
@@ -292,7 +292,7 @@
             </view>                  
           </view>
           <view class="header-right font" style="margin-left:40rpx;">
-              <image class="image" src="{{agencyLogo}}" bindtap="chooseImage"/>
+              <image class="image2" src="{{agencyLogo}}" bindtap="chooseImage"/>
           </view>
       </view>
       </view>
@@ -399,25 +399,25 @@
           </view>
           <view class="weui-cell">
             <view class="weui-cell__bd flex-around listheight">
-                <view class="tc" catchtap="gotoOrder" data-status="1">
+                <view class="tc" catchtap="gotoAgencyOrder" data-status="-1">
                   <view >                          
                     <image class="title_image"   src="../../resource/images/p_bay.png"></image>
                   </view>
-                  <view style="font-size:26rpx">已购买</view>
+                  <view style="font-size:26rpx">全部订单</view>
                 </view>
-                  <view class="tc" catchtap='gotoOrder' data-status="1">
+                  <view class="tc" catchtap='gotoAgencyOrder' data-status="3">
                   <view >                          
                     <image class="title_image"   src="../../resource/images/p_used.png"></image>
                   </view>
                   <view style="font-size:26rpx">已消费</view>
                 </view>
-                <view class="tc" catchtap='gotoOrder' data-status="1">
+                <view class="tc" catchtap='gotoAgencyOrder' data-status="1">
                   <view >
                     <image class="title_image" src="../../resource/images/p_use.png"></image>
                   </view>
                   <view style="font-size:26rpx" >待消费</view>
                 </view>
-                <view class="tc" catchtap='gotoOrder' data-status="1">
+                <view class="tc" catchtap='gotoAgencyOrder' data-status="7">
                   <view >                          
                     <image class="title_image"   src="../../resource/images/p_comment.png"></image>
                   </view>

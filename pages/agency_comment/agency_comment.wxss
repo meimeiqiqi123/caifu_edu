@@ -1,0 +1,135 @@
+page{
+  font-size: 28rpx
+}
+.order_header{
+  width: 100%;
+  height:60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: #fff
+}
+.cate{
+  display: flex;
+  font-size: 14px;
+  background: #fff;
+  flex-wrap: wrap;
+  color: #666;
+  width: 100%;
+}
+.cate-item{
+  text-align: center;
+  width:33%;
+  margin-top:20rpx;
+  padding-bottom: 20rpx;
+}
+.hover{
+  color: #2EC5E8;
+  border-bottom: 1px solid #2EC5E8
+}
+.blank{
+  margin-top: 200rpx;
+  margin-left: 40%
+}
+.blank .des{
+  margin-top: 20rpx;
+  text-align: left;
+  font-size: 24rpx
+}
+.blank .cart-image {
+  width: 80px;
+  height: 80px;
+}
+.order{
+  margin-top: 20rpx;
+  background-color: #fff;
+  font-size: 24rpx
+}
+.order .order_h{
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  border-bottom: 1rpx solid #eeeeee;
+  height: 80rpx
+}
+.info{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.info .user{
+  text-align: left;
+  margin-left: 10rpx;
+  flex:45%
+}
+.user_logo{
+  flex:15%;
+}
+.user_logo image{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-top: 10rpx
+}
+.order_date{
+  line-height: 80rpx;
+}
+.order_no{
+  line-height: 80rpx;
+
+  
+}
+
+.order_c{
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.order_c .comment{
+  height: 100rpx;
+  line-height: 100rpx
+}
+.order_e{
+  width: 90%;
+  margin: 0 auto;
+  height: 100rpx;
+  display: flex;
+  justify-content:space-between;
+}
+.reply{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  border-bottom: 1rpx solid #eeeeee;
+}
+.order_e .reply_b{
+  width: 80rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border-radius: 20rpx;
+  background-color: #2EC5E8;
+  color: #fff;
+  margin-top: 25rpx
+}
+
+ 
+.send-view{
+  margin: 5rpx auto;
+  margin-top: 20rpx
+}
+
+.send-input{
+  width:600rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  margin-top: 5rpx;
+  padding-left: 5rpx;
+  margin-bottom: 18rpx;
+  font-size: 28rpx;
+}

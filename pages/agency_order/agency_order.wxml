@@ -1,13 +1,30 @@
+<wxs module="filter" src="agency_order.wxs"></wxs>
 <view class="order_header header_b_color weui-cell__bd ">
     <view class="header_item">
-      <view class="orcount bold">0</view>
+      <view class="orcount bold">{{orderCount}}</view>
       <view class="title">今日订单</view>
     </view>
     <view class="header_item">
-      <view class="orcount bold">0</view>
+      <view class="orcount bold">{{orderPrice}}</view>
       <view class="title">今日收入</view>
     </view>
 </view>
+<!--搜索-->
+<view class="search_c b_color">
+<view class="weui-search-bar b_color">
+  <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">     
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon> 
+          <input type="text" class="weui-search-bar__input" placeholder="搜索订单号，电话号码" bindinput='changeQuery'
+           value="{{query}}" maxlength='15' placeholder-class="phcolor"/>
+          <view class="weui-icon-clear" wx:if="{{query.length > 0}}" bindtap="clearInput">
+              <icon type="clear" size="14" ></icon>
+          </view>
+      </view>
+    </view>
+  </view>
+</view>
+
 
 <view class="cate" >
   <view class="cate-item {{currentTabsIndex==1?'hover':''}}" bindtap="catClick"  data-sid='1'> 
@@ -21,26 +38,52 @@
   </view>
 </view>
 
-<scroll-view scroll-y="true" style='height:100%' >
-
-  <view class="order">
-    <view class="order_h" >
-      <view class="order_no">订单号：</view>
-      <view class="info">
-        <view class="user">dddd</view>
-        <view class="phone">电话</view>
-      </view>
-    </view>
-     <view class="order_c">
-      <image src='' class="pic" mode="aspectFill" ></image>
-      <view class="content">
-        <view class="name">ssss</view>
-        <view class="price">¥<text style='font-size:32rpx;font-weight:bold'>100</text></view>
-        <view class="verfy">
-          <view class="butt b_color">验证</view>
+<scroll-view scroll-y="true" style='height:900rpx;'  bindscrolltolower="loadMore" >
+  <view class='blank' hidden="{{isBlank}}">
+    <image src="../../resource/images/order.png" class="cart-image"/>
+    <view class="des">暂时没有订单</view>
+  </view>
+  <block wx:for="{{ orders }}" wx:for-item="order" wx:key="{{index}}" >
+    <view class="order">
+      <view class="order_h" >
+        <view class="order_no">订单号：<text style='font-size:22rpx'>{{filter.strToFix(order.number)}}</text></view>
+        <view class="info">
+          <view class="user_logo"><image src="{{order.user.headUrl}}" /></view>
+          <view class="user">{{order.user.nickName}}</view>
+          <image class="phone" src="../../resource/images/phone.png" />
         </view>
       </view>
+      <view class="order_c">
+        <image src='{{picUrl}}{{order.course.logo}}' class="pic" mode="aspectFill" ></image>
+        <view class="content">
+          <view class="name">{{order.course.name}}</view>
+          <view class="price">¥<text style='font-size:32rpx;font-weight:bold'>{{order.totalPrice}}</text></view>
+          <view class="verfy" wx:if="{{order.status == 1}}">
+            <view class="butt b_color" bindtap='verify' data-id="{{order.id}}">验证</view>
+          </view>
+        </view>
+        <view class="gaizhang" wx:if="{{order.status != 1}}"><image src="../../resource/images/xiaofei.png" /></view>
+      </view>
     </view>
-  </view>
-
+    </block>
+ 
 </scroll-view>
+<tootip show="{{showtooltip}}" height='20%' >
+   <view class="error_tooltips">{{tooltip}}</view>
+ </tootip>
+
+
+<view class='mask' wx:if='{{showverify}}' >
+ <view class='modal-content'>
+  <view  class='main-content'>
+     <view class="modal_title">提示</view>
+     <view class="modal_c">已将验证码发送至顾客账户</view>
+     <view class="modal_input">
+      <input  placeholder-class="phcolor2" maxlength="8" placeholder="请输入顾客验证码" bindinput='changeCode' type="number" />
+      </view>
+  </view>
+  <view class='modal-btn-wrapper'>
+   <view class='confirm-btn' style='color:#13b5f5' bindtap='confirm'>确定</view>
+  </view>
+ </view>
+</view>

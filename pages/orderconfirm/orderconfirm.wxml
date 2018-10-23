@@ -3,7 +3,7 @@
   <view class="detail">
       <view> <image class="item" src="{{picUrl}}{{order.pic}}" /></view>
       <view class="hotel">
-        <view class="name">{{order.agencyName}}<text wx:if="{{order.orderType==2}}">(体验课)</text></view>
+        <view class="name">{{order.agencyName}}<text wx:if="{{order.orderType==1}}">(体验课)</text></view>
         <view class="name">{{order.courseName}}</view>
         <!--<view class="price">{{order.totalPrice}}元</view>-->
       
@@ -12,7 +12,7 @@
 
    <view class="room_detail">
       
-      <view class="room_sn" wx:if="{{order.orderType == 3}}">
+      <view class="room_sn" wx:if="{{order.orderType == 2}}">
         <view >当前团课人数</view><view class="sn" style='color:#709fff'>{{order.incount==null?0:order.incount}}</view>
       </view>
       <view class="room_sn">

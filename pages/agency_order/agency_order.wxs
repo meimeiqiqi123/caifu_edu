@@ -1,0 +1,15 @@
+
+var filter = {
+  strToFix: function (value) {
+    return value.substring(7)
+  },
+
+  dateToFix:function(value){
+    return value.split(" ")[0]
+  }
+
+}
+module.exports = {
+  strToFix: filter.strToFix,
+  dateToFix: filter.dateToFix,
+}

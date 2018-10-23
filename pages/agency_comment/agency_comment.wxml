@@ -1,0 +1,61 @@
+<wxs module="filter" src="../agency_order/agency_order.wxs"></wxs>
+<view class="order_header header_b_color">
+    今日收到评价（{{commentCount}}）
+</view>
+<view class="cate" >
+  <view class="cate-item {{currentTabsIndex==1?'hover':''}}" bindtap="catClick"  data-sid='1'> 
+     未回复差评
+  </view>
+  <view class="cate-item {{currentTabsIndex==2?'hover':''}}" bindtap="catClick" data-sid='2'> 
+      未回复
+  </view>
+   <view class="cate-item {{currentTabsIndex==3?'hover':''}}" bindtap="catClick" data-sid='3'> 
+      全部
+  </view>
+</view>
+
+<scroll-view scroll-y="true" style='height:900rpx;'  bindscrolltolower="loadMore" >
+
+  <view class='blank' hidden="{{isBlank}}">
+    <image src="../../resource/images/order.png" class="cart-image"/>
+    <view class="des">暂时没有评论</view>
+  </view>
+  <block wx:for="{{comments}}"  wx:key="{{index}}" >
+    <view class="order">
+      <view class="order_h" >
+        <view class="info">
+          <view class="user_logo"><image src="{{item.user.headUrl}}" /></view>
+          <view class="user">{{item.user.nickName}}</view>
+        </view>
+        <view class="order_no">订单号：{{filter.strToFix(item.order.number)}}</view>
+        <view class="order_date">{{filter.dateToFix(item.order.orderDate)}}</view>
+      </view>
+      <view class="order_c">  
+        <view class="comment">{{item.content}}</view>
+         <block wx:for="{{ item.commentBranches }}" wx:for-item="branch" wx:key="{{index}}" >
+          <view class="reply">
+            <view class="info" style='flex:80%'>
+              <view class="user_logo" style='flex:15%'><image src="{{picUrl}}{{item.agency.logo}}" /></view>
+              <view class="user" style='flex:20%'>商家回复:</view>
+              <view class="order_no" style='flex:65%;'>{{branch.content}}</view>
+            </view>
+            <view class="order_date">{{filter.dateToFix(branch.date)}}</view>
+
+          </view>
+         </block>
+      </view>
+       <view class="order_e" wx:if="{{item.reply != 1}}">  
+         <view class="send-view" >
+            <textarea class="send-input"  bindinput='contentChange' wx:if="{{showreply}}"
+             placeholder='回复顾客评论'  maxlength='32' focus="{{focousreply}}" ></textarea>
+        </view>
+        <view class="reply_b" bindtap='replyComment' data-id="{{item.id}}">回复</view>
+      </view>
+    </view>
+  </block>
+ 
+</scroll-view>
+
+<tootip show="{{showtooltip}}" height='20%' >
+   <view class="error_tooltips">{{tooltip}}</view>
+ </tootip>

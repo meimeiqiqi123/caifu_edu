@@ -143,9 +143,9 @@ Page({
   },
   getOrderInfo: function (orderType) {
     var totalPrice = this.data.course.realAmount;
-    if(orderType==2){
+    if(orderType==1){
       totalPrice = this.data.course.experienceAmount;
-    }else if(orderType == 3){
+    }else if(orderType == 2){
       totalPrice = this.data.course.leagueAmount;
     }
     var courseId = this.data.course.id;

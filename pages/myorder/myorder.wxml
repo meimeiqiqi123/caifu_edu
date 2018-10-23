@@ -22,7 +22,7 @@
       <view class="base_room">
       <view class="base_room_l">
 
-      <view class="roomsn" >培训机构：{{order.course.agency.name}}</view>
+      <view class="roomsn" >培训机构：{{order.agency.name}}</view>
       <view class="time"> 
           <view class="time_l" wx:if="{{order.status == 1 || order.status == 0}}">
             <view class="time_s"  >使用期限</view>
@@ -46,9 +46,9 @@
       </view>
 
        <image class="image_item" src="{{picUrl}}{{order.course.logo}}" />
-       <view class="location" catchtap='gotoAddress' data-location="{{order.course.agency.location}}" data-longitude="{{order.course.agency.longitude}}" data-latitude="{{order.course.agency.latitude}}">
+       <view class="location" catchtap='gotoAddress' data-location="{{order.agency.location}}" data-longitude="{{order.agency.longitude}}" data-latitude="{{order.agency.latitude}}">
         <image class="address" src="../../resource/images/location.png" />
-         {{order.course.agency.location}}
+         {{order.agency.location}}
        </view>
     </view>
   </view>

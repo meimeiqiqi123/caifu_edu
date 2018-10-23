@@ -72,7 +72,7 @@
   content: "";
   clear: both;
   display: block;
-  margin-top: 30rpx
+  margin-top: -5rpx
 }
 .tabBorer {
   border-bottom: 2px solid #FFFF00;
@@ -290,7 +290,7 @@ text-align: center;
 position: fixed; 
 width: 80rpx;
 height: 80rpx;
-bottom: 30rpx; 
+bottom: 15%; 
 right: 5px; 
 background: rgba(0,0,0,0.48); 
 border-radius: 50%; 
@@ -321,4 +321,7 @@ text-align: center;
 }
 .listheight{
   height:150rpx
+}
+.weui-cell:before {
+  border-top: none;
 }

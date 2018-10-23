@@ -67,10 +67,10 @@
 
 <view class="blooth" >
      <view class="share">
-      <view class="location" catchtap='gotoAddress' data-location="{{order.course.agency.location}}" data-longitude="{{order.course.agency.longitude}}" data-latitude="{{order.course.agency.latitude}}">
+      <view class="location" catchtap='gotoAddress' data-location="{{order.agency.location}}" data-longitude="{{order.agency.longitude}}" data-latitude="{{order.agency.latitude}}">
         <view style='margin-top:30rpx'>
         <image class="address" src="../../resource/images/location.png" />
-         {{order.course.agency.location}}</view>
+         {{order.agency.location}}</view>
        </view>
 
        <view class="phone">

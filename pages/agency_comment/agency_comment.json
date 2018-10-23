@@ -1,6 +1,6 @@
 {
   "usingComponents": {
     "tootip": "/components/tooltip/tooltip"
-  }
-
+  },
+  "navigationBarTitleText": "订单评价"
 }
