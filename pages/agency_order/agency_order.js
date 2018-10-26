@@ -38,7 +38,12 @@ Page({
       agencyId:agencyId
     })
     this.getOrder();
-    this.getOrderInfo();
+    if(this.data.status == 1){
+      this.getOrderInfoByStatus();
+    }else if(this.data.status == 3){
+      this.getOrderInfoByDate();
+    }
+    
   },
 
   /**
@@ -131,6 +136,9 @@ Page({
     })
     this.getOrder(1);
   },
+  searchOrder:function(e){
+    this.getOrder(1);
+  },
   getOrder:function(startPage){
     var status = this.data.status;
     var agencyId = this.data.agencyId;
@@ -209,12 +217,35 @@ Page({
       }
     });
   },
-  getOrderInfo: function (e) {
+  getOrderInfoByDate: function (e) {
     var agencyId = this.data.agencyId;
     var _this = this;
     if (agencyId) {
       util.request({
-        url: 'wx/order/info/' + agencyId,
+        url: 'wx/order/info/date/' + agencyId,
+        method: 'POST',
+        success: function (res) {
+          if (res.data.ret == 1) {
+            var orderCount = res.data.data;
+            var orderPrice = res.data.order;
+            _this.setData({
+              orderCount: orderCount,
+              orderPrice: orderPrice
+            })
+          }
+        }
+      });
+    }
+  },
+  getOrderInfoByStatus: function (e) {
+    var agencyId = this.data.agencyId;
+    var _this = this;
+    if (agencyId) {
+      util.request({
+        url: 'wx/order/info/status/' + agencyId,
+        data:{
+          status:_this.data.status
+        },
         method: 'POST',
         success: function (res) {
           if (res.data.ret == 1) {

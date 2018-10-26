@@ -1,22 +1,24 @@
 <wxs module="filter" src="agency_order.wxs"></wxs>
-<view class="order_header header_b_color weui-cell__bd ">
+<view class="order_header header_b_color weui-cell__bd " wx:if="{{status != -1}}">
     <view class="header_item">
       <view class="orcount bold">{{orderCount}}</view>
-      <view class="title">今日订单</view>
+      <view class="title" wx:if="{{status == 3}}">今日订单</view>
+       <view class="title" wx:if="{{status == 1}}">总计订单</view>
     </view>
     <view class="header_item">
       <view class="orcount bold">{{orderPrice}}</view>
-      <view class="title">今日收入</view>
+      <view class="title" wx:if="{{status == 3}}">今日收入</view>
+       <view class="title" wx:if="{{status == 1}}">总计金额</view>
     </view>
 </view>
 <!--搜索-->
-<view class="search_c b_color">
+<view class="search_c b_color" wx:if="{{status != -1}}">
 <view class="weui-search-bar b_color">
   <view class="weui-search-bar__form">
       <view class="weui-search-bar__box">     
           <icon class="weui-icon-search_in-box" type="search" size="14"></icon> 
           <input type="text" class="weui-search-bar__input" placeholder="搜索订单号，电话号码" bindinput='changeQuery'
-           value="{{query}}" maxlength='15' placeholder-class="phcolor"/>
+           value="{{query}}" maxlength='15' placeholder-class="phcolor" bindconfirm='searchOrder'/>
           <view class="weui-icon-clear" wx:if="{{query.length > 0}}" bindtap="clearInput">
               <icon type="clear" size="14" ></icon>
           </view>
@@ -38,7 +40,7 @@
   </view>
 </view>
 
-<scroll-view scroll-y="true" style='height:900rpx;'  bindscrolltolower="loadMore" >
+<scroll-view scroll-y="true" style="height:{{status == -1? '1100rpx':'900rpx'}};"  bindscrolltolower="loadMore" >
   <view class='blank' hidden="{{isBlank}}">
     <image src="../../resource/images/order.png" class="cart-image"/>
     <view class="des">暂时没有订单</view>

@@ -10,10 +10,11 @@ page{
 }
 .cate{
   display: flex;
-  font-size: 14px;
+  font-size: 30rpx;
   background: #fff;
   flex-wrap: wrap;
-  color: #666;
+  color: #000;
+  font-weight: 500;
   width: 100%;
 }
 .cate-item{

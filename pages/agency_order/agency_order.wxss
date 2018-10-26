@@ -21,10 +21,11 @@ page{
 
 .cate{
   display: flex;
-  font-size: 14px;
+  font-size: 30rpx;
   background: #fff;
   flex-wrap: wrap;
-  color: #666;
+  color: #000;
+  font-weight: 500;
   width: 100%;
 }
 .cate-item{
@@ -170,7 +171,7 @@ page{
   height: 28px;
   line-height: 28px;
   font-size: 24rpx;
-  color: #eee
+  color: #000
 }
 .weui-icon-clear {
   position: absolute;
