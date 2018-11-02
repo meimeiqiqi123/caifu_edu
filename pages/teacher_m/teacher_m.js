@@ -15,6 +15,7 @@ Page({
     tooltip: '',
     agencyId: 0,
     teachers: null,
+    cards:null,
     currentId: 0,
     subdisabled: false,
     tea_select:'',
@@ -162,6 +163,9 @@ Page({
       }
     }
     if (sid == 3) {
+      if (_this.data.currentTabsIndex != 3) {
+        _this.loadTeacherCards();
+      }
       _this.setData({
         title: '考勤管理'
       })
@@ -180,6 +184,21 @@ Page({
         if (res.data.ret == 1) {
           _this.setData({
             teachers: res.data.data
+          })
+        }
+      }
+    });
+  },
+  loadTeacherCards: function (e) {
+    var _this = this;
+    util.request({
+      url: 'wx/manager/card/' + _this.data.agencyId,
+      method: 'POST',
+      showLoading: false,
+      success: function (res) {
+        if (res.data.ret == 1) {
+          _this.setData({
+            cards: res.data.data
           })
         }
       }

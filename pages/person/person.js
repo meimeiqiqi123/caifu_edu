@@ -16,12 +16,9 @@ Page({
     pics:null, 
     showDes:false,
     courseCount: 0,
-    count1: 0,
-    count2: 0,
-    length1: 0,
-    length2: 0,
     agencyId: null,
     agencyLogo:'',
+    nickname:'',
     list: [
       {
         id: 1,
@@ -81,6 +78,7 @@ Page({
             var role = userinfo.role;
             _this.setData({
               userinfo: userinfo,
+              nickname: userinfo.nickName.length < 10 ? userinfo.nickName : userinfo.nickName.substring(0, 10),
               role: role,
               page: role
             })
@@ -118,7 +116,7 @@ Page({
                 }
               });
               _this.getCourseCount(user.id);
-              _this.getStudentCount(user.id);
+              //_this.getStudentCount(user.id);
               _this.getTopics(user.id);
             }
           }
@@ -429,24 +427,7 @@ Page({
       url: '../course_list/course_list',
     })
   },
-  getStudentCount: function (userId) {
-    var _this = this;
-    util.request({
-      url: 'wx/student/course/scale/' + userId,
-      method: 'POST',
-      success: function (res) {
-        if (res.data.ret == 1) {
-          _this.setData({
-            count1: res.data.data,
-            count2: res.data.order,
-            length1: res.data.data * 10,
-            length2: res.data.order * 10,
-          })
-
-        }
-      }
-    });
-  },
+  
   getTopics: function (userId) {
     var _this = this;
     util.request({

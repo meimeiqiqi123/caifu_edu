@@ -120,14 +120,14 @@
    <view id="panel" class="flex-column font24">
      <view class="flex-cell flex-row">
        <text class="flex-cell flex-row text">老师姓名</text>
-       <text class="flex-cell flex-row text">出勤次数</text>
-       <text class="flex-cell flex-row text">缺勤次数</text>
+       <text class="flex-cell flex-row text">应勤天数</text>
+       <text class="flex-cell flex-row text">出勤天数</text>
      </view>
-     <view wx:for="{{teachers}}" wx:key="index">
+     <view wx:for="{{cards}}" wx:key="index">
         <view class="flex-row flex-cell">
           <text class="flex-cell flex-row line">{{item.name}}</text>
-          <text class="flex-cell flex-row line">{{item.phone}}</text>
-           <text class="flex-cell flex-row line">{{item.phone}}</text>        
+          <text class="flex-cell flex-row line">{{item.wordDay}}</text>
+           <text class="flex-cell flex-row line">{{item.signDay}}</text>        
         </view> 
      </view>
    </view>                              

@@ -1,118 +1,183 @@
 .weui-cells{
     margin-top: 15rpx;
   }
-.image {
-  width: 100rpx;
-  height: 100rpx;
-  margin: 0 20rpx;
-  border-radius: 50%
+page{
+  font-size: 28rpx;
 }
+.container{
+  background-color: #fff
+}
+.header {
+  height: 260rpx;
+}
+.person_header{
+  display: flex;
+  flex-direction: row;
+  
+}
+.person_header .header-left{
+  flex: 70%;  
+  margin-top: 40rpx;
+  margin-left: 20rpx
+}
+.person_header .header-right{
+  flex: 30%;
+  margin-top: 40rpx;
+  text-align: center
+}
+.p_info .nickname{
+  display: inline-block;
+  font-size: 32rpx;
+  color: #fff;
+}
+.edit{
+  display: inline-block;
+  margin-left: 20rpx
+}
+.edit image{
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: middle
+}
+.xinren{
+  display: inline-block;
+  width: 120rpx;
+  height: 40rpx;
+  background-color: #cccccc;
+  color: #fff;
+  font-size: 22rpx;
+  margin-left: 50rpx;
+  line-height: 40rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  border: solid 1rpx #fff
+}
+.login{
+  width: 180rpx;
+  height: 60rpx;
+  font-size: 26rpx;
+  margin-top: 70rpx
+}
+
+.topTabSwiper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 26rpx;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 20rpx;
+}
+.tab_item{
+  display: flex;
+  flex-direction: row;
+  height: 60rpx;
+  color: #fff
+}
+.i_left{
+  height: 20rpx;
+  border-left: solid 1px #fff;
+  margin-left: 20rpx;
+  margin-top:10rpx
+}
+.daily{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 20rpx;
+
+}
+.daily .d_title{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.d_title .tt{
+  font-size: 32rpx;
+  font-weight: 600;
+}
+.d_title .more{
+  color: #cccccc
+}
+.d_content{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx
+}
+.d_time{
+  flex: 30%
+}
+.ss{
+  font-size: 24rpx;
+}
+.pic{
+  flex:70%;
+  display: flex;
+  flex-direction: column;
+}
+.pic_list{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx
+}
+.pic_list .image_cell{
+  width: 150rpx;
+  height: 150rpx;
+}
+.pic_list .image_cell1{
+  width: 150rpx;
+  height: 150rpx;
+  margin-left: 10rpx
+}
+
+.oprate{
+  display: flex;
+  justify-content:flex-end;
+  
+}
+.d_zan{
+  display: flex;
+  margin-left: 30rpx;
+  align-items: center
+}
+.d_zan image{
+  width: 30rpx;
+  height: 30rpx;
+  vertical-align: middle
+}
+
+.line{
+  border-bottom: solid 1rpx #eeeeee
+}
+
+.image {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+}
+
 .image2 {
   width: 130rpx;
   height: 130rpx;
   border-radius: 50%;
-  margin-left: -20rpx
 }
-.login{
-  width: 150rpx;
-  height: 60rpx;
-  font-size: 26rpx
-}
-.view_bu{
-  display: inline-block;
-  border:1px solid #dddddd;
-  height: 40rpx;
-  width: 100rpx;
-  line-height: 40rpx;
+.daka{
+  width:200rpx;
+  height: 80rpx;
+  background-color: #2EC5E8;
+  color: #fff;
+  border-radius: 50rpx;
   text-align: center;
-  border-radius: 10rpx;
-  color:#fff;
-  margin-left: 20rpx;
-  font-size: 22rpx
-}
-.description{
-  border:1px solid #dddddd;
-  height: 40rpx;
-  width: 80rpx;
-  line-height: 40rpx;
-  text-align: center;
-  border-radius: 10rpx;
-  color:#fff;
-  margin-right: 20rpx;
-  font-size: 24rpx;
-  float: right
-
+  line-height: 80rpx
 }
 
-
-.userInfo {
-  margin-top: 10rpx;
-}
-.weui-btn_primary {
-  background-color: #0099FF;
-  border-radius: 0;
-}
 .font {
   color: #FFF;
   font-size: 26rpx;
 }
-.font-gray {
-  color: gray;
-  font-size: 24rpx;
-}
-.tab {
-  float: left;
-  width: 33.3333%;
-  text-align: center;
-  padding: 3rpx 0;
-  font-size: 28rpx;
-}
 
-.topTabSwiper:after {
-  content: "";
-  clear: both;
-  display: block;
-  margin-top: -5rpx
-}
-.tabBorer {
-  border-bottom: 2px solid #FFFF00;
-  color: #FFF;
-}
-.swiper {
-  width: 100%;
-}
-.swiper_con {
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  padding: 80rpx 0;
-}
-.appreciates {
-  margin-left: 72px;
-  font-size: 28rpx;
-  color: #FFFF00;
-}
-.label{
-  background: #FFF;
-  color: #6E9933;
-  margin: 10rpx;
-  border-radius: 10px;
-  font-size: 24rpx;
-  text-align: center
-}
-.label0{
-  margin-right: 40rpx;
-}
-.label1{
-  margin-left: 40rpx;
-}
-.label2{
-  margin-right: 40rpx;
-}
-.title_cell{
-  margin-top: 0;
-  background: #F2F2F2;
-}
+
 .weui_image{
   width: 480rpx;
   height: 280rpx;
@@ -123,14 +188,7 @@ text-align: center;
 .class_cell{
   margin-top: 15rpx;
 }
-.progress{  
-  height:15px;
-  display:inline-block;
-  background:#EBEBEB;
-  border:1px solid #7d7d7d;
-  margin:0 20px;
 
-}
 .weui-cell{
   padding: 10rpx 30rpx;
 }
@@ -247,10 +305,7 @@ text-align: center;
   width: 60rpx;
   height: 60rpx;
 }
-.title_image1{
-  width: 68rpx;
-  height: 68rpx;
-}
+
 .absolute {
   position: absolute;
   width: 140rpx;

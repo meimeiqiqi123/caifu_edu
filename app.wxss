@@ -1337,7 +1337,6 @@ form {
   width: 100%;
   height: 200rpx;
   background-color: #2EC5E8
-
 }
 .error_tooltips{
   text-align: center;
