@@ -148,19 +148,20 @@ Page({
   },
   getCourseList: function (isshow) {
     var _this = this;
-    var userId = wx.getStorageSync('userInfo').wxInfo.id;
+    //var userId = wx.getStorageSync('userInfo').wxInfo.id;
+    var managerId = wx.getStorageSync('userInfo').wxInfo.managerId;
     util.request({
-      url: 'wx/course/card/' + userId,
+      url: 'wx/course/card/' + managerId,
       showLoading: isshow,
       method: 'POST',
       success: function (res) {
         if (res.data.ret == 1) {
-          var lessons = res.data.data;
+          var lessons = res.data.data
           _this.setData({
             lessons: lessons,
             scale:res.data.order-1
           });
-          //console.log(lessons)
+          console.log(lessons)
 
         }
       }

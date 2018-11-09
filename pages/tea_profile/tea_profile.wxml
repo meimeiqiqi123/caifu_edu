@@ -3,7 +3,7 @@
 <import src="../../component/video_cell/video_cell.wxml"/>
 <view class="container" style="overflow:hidden;height:100%"> 
       <block wx:if="{{!topnav}}">
-        <view class="header"> 
+        <view class="header" > 
               <view class="userInfo bb">
                 <view class="flex-around">
                   <image class="image" src="{{picUrl}}{{userinfo.manager.headUrl}}"/>

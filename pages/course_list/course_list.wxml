@@ -30,7 +30,7 @@
                 </view>
                 
                 <!-- 卡片部分 -->
-               <scroll-view scroll-y="true" style='height:1000rpx' >
+               <scroll-view scroll-y="true" style='height:1050rpx' >
                 <view class="kb-cards-ctn" >
                     <!-- 每一列为一组 -->
                     <view class="kb-cards-column" wx:for="{{lessons}}" wx:key="{{day}}" wx:for-item="day_lesson" wx:for-index="day">                              

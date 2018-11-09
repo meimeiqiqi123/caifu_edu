@@ -18,7 +18,8 @@
       <image class="avatar" src="../../resource/images/music_on.png" wx:if="{{musicon}}"></image>
       <image class="avatar" src="../../resource/images/music_off.png" wx:if="{{!musicon}}"></image>
   </view>
-  <view class="right_content" wx:if="{{currentId != 0}}" >
+
+  <!--<view class="right_content" wx:if="{{currentId != 0}}" >
     <view class="head" bindtap='profilePage'>
       <image class="avatar" src="{{headUrl}}"></image>
     </view>
@@ -47,9 +48,37 @@
 
 
 
-    </view>
+    </view>-->
 
-    
+  <view class="foot_tab_b"></view>
+  <view class="foot_tab">
+      <view class="content_r_1">
+          <view class="con_agency">
+            <view class="a_name">{{agency}}</view>
+          
+          </view>
+      </view>
+      <view class="content_r_2">
+          <view class="con_school"><view class="a_name">高新区一小</view></view>
+      </view>
+  </view>
+  <view class="foot_bo">
+      <view class="foot_l">
+        <image  src="{{headUrl}}" bindtap='profilePage'></image>
+        <view class="f_des">{{topicDes}}</view>
+      </view>
+      <view class="foot_r">
+        <image  src="../../resource/images/index_3.png" style='width:60rpx;height:60rpx'
+        wx:if="{{!iszan}}" bindtap="dianzan"></image>
+        <image  src="../../resource/images/p_zan.png" wx:if="{{iszan}}"></image>
+        <view style='margin-left:10rpx' >{{zan}}</view>
+        <image  src="../../resource/images/p_mess.png" style='margin-left:20rpx' bindtap="sendMessage"></image>
+        <view style='margin-left:10rpx'>{{comment}}</view>
+        <button class="zan_button" style='margin-left:20rpx' open-type="share"></button>
+      </view>
+  </view>
+
+
 
     <audio id="myAudio" src="{{autioUrl}}{{mp3}}" action="{{action}}" loop="false" bindplay="funplay" bindpause="funpause" bindended="funended" binderror="funerror"></audio>
 

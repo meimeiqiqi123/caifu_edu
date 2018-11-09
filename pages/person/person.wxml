@@ -149,13 +149,30 @@
         </view>
       </view>  
     <view class="line"></view>
-    <view class="weui-cells bt-none">                            
-        <view class="weui-cell">
-          <view class="weui-cell__bd ft fw">
-              帮助中心                                       
-          </view>                  
-      </view>
-    </view>  
+    <view class="weui-cells bt-none">            
+        <view class="weui-cell weui-cell_access ft">
+              <view class="weui-cell__bd">
+                  <view class="ft fw">帮助中心</view>
+              </view>                      
+        </view>
+
+          <view class="weui-cell">
+            <view class="weui-cell__bd flex-around">
+                <view class="tc">
+                  <view>
+                    <image class="title_image" src="../../resource/images/jianyi.png"></image>
+                  </view>
+                  <view style="font-size:26rpx">意见反馈</view>
+                </view>
+                <view class="tc">
+                  <view>                          
+                    <image class="title_image"   src="../../resource/images/hezuo.png"></image>
+                  </view>
+                  <view style="font-size:26rpx">商务合作</view>
+                </view>                       
+            </view>                  
+        </view>
+      </view>  
 </view>
           
         
