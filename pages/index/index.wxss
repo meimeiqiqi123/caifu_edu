@@ -181,7 +181,7 @@ background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAhCAMAAACGE/
   display: flex;
   justify-content: flex-end;
   font-size: 22rpx;
-  margin-top: 10rpx;
+  margin-top: 50rpx;
   color: #fff
 }
 

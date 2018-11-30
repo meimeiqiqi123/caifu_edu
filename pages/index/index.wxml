@@ -58,9 +58,9 @@
           
           </view>
       </view>
-      <view class="content_r_2">
+      <!--<view class="content_r_2">
           <view class="con_school"><view class="a_name">高新区一小</view></view>
-      </view>
+      </view>-->
   </view>
   <view class="foot_bo">
       <view class="foot_l">
